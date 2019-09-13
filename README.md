@@ -1,5 +1,6 @@
 # J. F. Sebastian
 
+
 ## About
 
 J. F. Sebastian, named after a former genetic designer of the Tyrell Corporation, provides new ways to control and explore the sonic possibilities of the CS80-inspired Deckard's Dream synthesiser (DDRM). It works both as a stand-alone app and as an audio plug-in with automatable parameters.
