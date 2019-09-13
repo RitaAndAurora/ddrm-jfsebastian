@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2019
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JFSebastian - Standalone Plugin", "JFSebastian_StandalonePlugin.vcxproj", "{317853F5-BA51-6FE0-4D56-7C5991AFF2E6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B2E21C0B-A508-16CA-DA0B-C72D3377AC7A} = {B2E21C0B-A508-16CA-DA0B-C72D3377AC7A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JFSebastian - VST3", "JFSebastian_VST3.vcxproj", "{6762D2EB-DF0D-D092-70CE-E944E8F5B3E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B2E21C0B-A508-16CA-DA0B-C72D3377AC7A} = {B2E21C0B-A508-16CA-DA0B-C72D3377AC7A}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JFSebastian - Shared Code", "JFSebastian_SharedCode.vcxproj", "{B2E21C0B-A508-16CA-DA0B-C72D3377AC7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6762D2EB-DF0D-D092-70CE-E944E8F5B3E1}.Debug|x64.ActiveCfg = Debug|x64
+		{6762D2EB-DF0D-D092-70CE-E944E8F5B3E1}.Debug|x64.Build.0 = Debug|x64
+		{6762D2EB-DF0D-D092-70CE-E944E8F5B3E1}.Release|x64.ActiveCfg = Release|x64
+		{6762D2EB-DF0D-D092-70CE-E944E8F5B3E1}.Release|x64.Build.0 = Release|x64
+		{317853F5-BA51-6FE0-4D56-7C5991AFF2E6}.Debug|x64.ActiveCfg = Debug|x64
+		{317853F5-BA51-6FE0-4D56-7C5991AFF2E6}.Debug|x64.Build.0 = Debug|x64
+		{317853F5-BA51-6FE0-4D56-7C5991AFF2E6}.Release|x64.ActiveCfg = Release|x64
+		{317853F5-BA51-6FE0-4D56-7C5991AFF2E6}.Release|x64.Build.0 = Release|x64
+		{B2E21C0B-A508-16CA-DA0B-C72D3377AC7A}.Debug|x64.ActiveCfg = Debug|x64
+		{B2E21C0B-A508-16CA-DA0B-C72D3377AC7A}.Debug|x64.Build.0 = Debug|x64
+		{B2E21C0B-A508-16CA-DA0B-C72D3377AC7A}.Release|x64.ActiveCfg = Release|x64
+		{B2E21C0B-A508-16CA-DA0B-C72D3377AC7A}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

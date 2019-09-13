@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+dist
+build
+x64
+xcuserdata/
+*.pyc
+__pycache__
