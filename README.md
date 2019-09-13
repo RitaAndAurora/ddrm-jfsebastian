@@ -38,6 +38,6 @@ J.F. Sebastian uses some fonts released under open licenses as well:
 
 ## Credits and acknowledgements
 
-J.F. Sebastian has been ideated and developed by *Rita & Aurora*, a sort of fancy branding name I've given to my audio-developer self.
+J.F. Sebastian has been ideated and developed by [Rita & Aurora](), a sort of fancy branding name I've given to my audio-developer [self](https://ffont.github.io).
 
 Enormous thanks to Paul Shiling for creating the great CS80 presets bank that has been used for the tone selector. Also thanks to Black Corporation for making such a great synth!
