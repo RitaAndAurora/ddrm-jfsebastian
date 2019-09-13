@@ -1,6 +1,6 @@
 # J.F. Sebastian
 
-![J.F. Sebastian screenshot](docs/screenshot.png)
+![J.F. Sebastian screenshot](docs/screenshot_1000.png)
 
 ## Overview
 
