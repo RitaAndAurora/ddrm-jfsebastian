@@ -35,7 +35,7 @@ public:
          "Please check out " + String(MORE_INFO_URL) + " for more information about J.F. Sebastian and how to use it.\n\n"
          "\nCredits, licenses, acknowledgements\n-------------------------------\n\n"
          "J.F. Sebastian has been ideated and developed by Rita & Aurora, a sort of fancy branding name I've given to my audio-developer self.\n\n"
-         "J.F. Sebastian uses the following open source software libraries: tapkee (BSD 3-clause), delaunator-cpp (MIT) and juce (GPLv3); and is released under GPLv3 software license.  Source code is available at https://example.com.\n\n"
+         "J.F. Sebastian uses the following open source software libraries: tapkee (BSD 3-clause), delaunator-cpp (MIT) and juce (GPLv3); and is released under GPLv3 software license.  Source code is available at " + String(SOURCE_CODE_URL) + ".\n\n"
          "Enormous thanks to Paul Shiling for creating the great CS80 presets bank that has been used for the tone selector.\n\n"
          "Also thanks to Black Corporation for making such a great synth!\n\n");
         

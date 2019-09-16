@@ -67,12 +67,17 @@ public:
             w.setLookAndFeel(&customLookAndFeel);
             w.addCustomComponent(&about);
             w.addButton ("Ok", 0, KeyPress (KeyPress::returnKey, 0, 0));
-            w.addButton ("More info...", 1, KeyPress (KeyPress::returnKey, 0, 0));
-            if (w.runModalLoop() == 1) // use clicked "more info"
+            w.addButton ("More info", 1, KeyPress (KeyPress::returnKey, 0, 0));
+            w.addButton ("Donate :)", 2, KeyPress (KeyPress::returnKey, 0, 0));
+            int modalReturn = w.runModalLoop();
+            if (modalReturn == 1) // use clicked "more info"
             {
                 URL(MORE_INFO_URL).launchInDefaultBrowser();
             }
-            
+            else if (modalReturn == 2) // use clicked "donate"
+            {
+                URL(DONATE_URL).launchInDefaultBrowser();
+            }
         }
     }
     

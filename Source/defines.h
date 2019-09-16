@@ -9,7 +9,9 @@
 #pragma once
 
 #define VERSION "0.1"
-#define MORE_INFO_URL "https://example.com"
+#define MORE_INFO_URL "https://ritaandaurora.github.io/ddrm-jfsebastian"
+#define DONATE_URL "https://ritaandaurora.github.io/ddrm-jfsebastian/donate"
+#define SOURCE_CODE_URL "https://github.com/ritaandaurora/ddrm-jfsebastian"
 
 #define ACTION_LOG_PREFIX "LOG:"
 #define LOG_IN_UI 0
