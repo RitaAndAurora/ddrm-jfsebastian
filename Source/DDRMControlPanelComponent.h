@@ -716,8 +716,8 @@ public:
         addAndMakeVisible (&sliderDDRM_MIX);
         sliderAttachmentDDRM_MIX.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_MIX", sliderDDRM_MIX));
         sliderDDRM_MIX.textFromValueFunction = [](double value) {
-            float percentageCh1 = 100.0 * value / 127.0;
-	        float percentageCh2 = 100.0 - 100.0 * value / 127.0;
+            float percentageCh1 = 100.0 * value / 126.0;
+	        float percentageCh2 = 100.0 - 100.0 * value / 126.0;
 	        return String::formatted("Mix: %.0f%% I - %.0f%% II", percentageCh1, percentageCh2);
         };
         // Slider DDRM_BRILL
