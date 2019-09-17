@@ -164,9 +164,15 @@ public:
             loadBankFile();
         } else if (button == &saveToCurrentBankLocationButton)
         {
-            AlertWindow w ("",
-                           "Plase choose the location where the preset should be saved",
-                           AlertWindow::NoIcon);
+            #if JUCE_WINDOWS
+                AlertWindow w ("Plase choose the location where the preset should be saved",
+                               "",
+                               AlertWindow::NoIcon);
+            #else
+                AlertWindow w ("",
+                               "Plase choose the location where the preset should be saved",
+                               AlertWindow::NoIcon);
+            #endif
             
             w.setLookAndFeel(&customLookAndFeel);
             w.addTextEditor ("bankLocation", "", "");
