@@ -43,7 +43,7 @@ namespace ProjectInfo
 {
     const char* const  projectName    = "JFSebastian";
     const char* const  companyName    = "Rita & Aurora";
-    const char* const  versionString  = "0.0.1";
-    const int          versionNumber  = 0x1;
+    const char* const  versionString  = "1.0";
+    const int          versionNumber  = 0x10000;
 }
 #endif
