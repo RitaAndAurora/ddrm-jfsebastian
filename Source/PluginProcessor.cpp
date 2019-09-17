@@ -278,7 +278,7 @@ DdrmtimbreSpaceAudioProcessor::DdrmtimbreSpaceAudioProcessor()
                 std:: make_unique < AudioParameterFloat > ("DDRM_MIX", // parameter ID
                                                             "Mix", // parameter name
                                                             NormalisableRange < float > (0.0f, 126.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                            63.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_BRILL", // parameter ID
                                                             "Brilliance", // parameter name
                                                             NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
