@@ -6,3 +6,4 @@ x64
 xcuserdata/
 *.pyc
 __pycache__
+.vs
