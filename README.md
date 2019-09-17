@@ -23,7 +23,7 @@ J.F. Sebastian uses the JUCE library and can be built following standard JUCE-bu
 
 ## Licensing
 
-J.F. Sebastian is released under the **GPLv3** open source software license (see LICENSE file). J.F. Sebastian uses the following open source software libraries: 
+J.F. Sebastian is released under the **GPLv3** open source software license (see [LICENSE](https://github.com/ritaandaurora/ddrm-jfsebastian/blob/master/LICENSE) file) with the code being available at  [https://github.com/ritaandaurora/ddrm-jfsebastian](https://github.com/ritaandaurora/ddrm-jfsebastian). J.F. Sebastian uses the following open source software libraries: 
 
  * [tapkee](http://tapkee.lisitsyn.me), available under BSD 3-clause license 
  * [delaunator-cpp](https://github.com/delfrrr/delaunator-cpp), available underMIT license
@@ -38,7 +38,7 @@ J.F. Sebastian uses some fonts released under open licenses as well:
 
 ## Credits and acknowledgements
 
-J.F. Sebastian has been ideated and developed by [Rita & Aurora](), a sort of fancy branding name I've given to my audio-developer [self](https://ffont.github.io).
+J.F. Sebastian has been ideated and developed by [Rita & Aurora](https://ritaandaurora.github.io), a sort of fancy branding name I've given to my audio-developer [self](https://ffont.github.io).
 
 Enormous thanks to Paul Shiling for creating the great CS80 presets bank that has been used for the tone selector. Also thanks to Black Corporation for making such a great synth!
 
