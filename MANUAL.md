@@ -113,6 +113,8 @@ The Timbre Space contains a triangle mesh in which each triangle edge correspond
 
 When selecting a point in the space, the preset numbers in which the new preset is based are displayed on screen (see picture above). If any of DDRM controls is changed after a specific point of the Timbre Sopace is loaded, the preset numbers on screen will dissapear to idnicate that the slider values are no longer *in sync* with the values of the selected Timbre Space position.
 
+The selected position in the Timbre Space is also exposed by J.F. Sebastian as two **audio parameters** named **Space X** and **Space Y**. These parameters can also be automated. 
+
 
 ### 2.5 CS80-like Tone Selector
 
