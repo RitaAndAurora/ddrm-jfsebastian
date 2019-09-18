@@ -13,7 +13,6 @@
 			font-family: 'Helvetica', sans-serif;
 			font-style: normal;
 			font-weight: 100;
-			width: 900px;
 			margin: auto;
 			color:white;
 			font-family: 'Roboto', sans-serif;
@@ -40,32 +39,56 @@
 			font-family: 'Roboto Condensed', sans-serif;
 		}
 
-		.feature_container {
+		.feature_container_wrapper{
 			text-align: center;
-			width: 900px;
-			margin-bottom: 40px;
+		}
+
+		.feature_container {
+			display: block;
+			max-width: 830px;
+			margin: auto;
 		}
 
 		.feature_container img {
 			width:100%;
 			border-radius: 5px;
-			vertical-align: middle;
+			padding-top:20px;
+			/*position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;*/
 		}
 
 		.feature_left_side {
-			display: inline-block;
+			display: block;
 			text-align: right;
-			margin-right: 10px;
 			width: 400px;
-			vertical-align: middle;
+			float: left;
+			margin-bottom: 15px;
 		}
 
 		.feature_right_side {
-			display: inline-block;
+			display: block;
 			text-align: left;
-			margin-left: 10px;
-			width: 400px;
-			vertical-align: middle;
+			width: 400px;	
+			float: right;
+			margin-bottom: 15px;
+		}
+
+		.centered_content {
+			height: 100%;
+			width: 100%;
+			/*position: relative;*/
+		}
+
+		.feature_text {
+			/*position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;*/
 		}
 
 		.btn {
@@ -78,7 +101,8 @@
 			line-height: 130%;
 			text-transform: uppercase;
 			padding-top: 45px;
-			margin-right: 3px;
+			margin: 2px;
+			margin-bottom: 5px;
 		}
 
 		.donate-btn {
@@ -114,14 +138,44 @@
 		}
 
 		.buttons_container {
-			margin-top:100px;
-			margin-bottom:60px;
 			text-align: center;
+			margin: auto;
+			margin-top: 70px;
+			margin-bottom: 30px;
+			max-width:80%;
 		}
 
 		.headline {
 			text-align: center;
 			margin-bottom: 70px;
+		}
+
+		@media (max-width: 850px) {
+			.feature_container {
+				padding:20px;
+			}
+
+			.feature_container img {
+				max-width:500px;
+			}
+
+			.feature_left_side {
+				display: block;
+				text-align: left;
+				margin-left: 0px;
+				width: 100%;
+				float:none;
+				margin-bottom: 0px;
+			}
+
+			.feature_right_side {
+				display: block;
+				text-align: left;
+				margin-left: 0px;
+				width: 100%;
+				float:none;
+				margin-bottom: 0px;
+			}
 		}
 
 	</style>
@@ -130,69 +184,111 @@
 <body>
 
 	<div>
-		<img src="TitleLogo2.png" alt="J.F. Sebastian, a companion tool for DDRM" title="J.F. Sebastian, a companion tool for DDRM" style="display: block;margin-left: auto;margin-right: auto;width:700px;margin-top:60px;"/>
+		<img src="TitleLogo2.png" alt="J.F. Sebastian, a companion tool for DDRM" title="J.F. Sebastian, a companion tool for DDRM" style="display: block;margin-left: auto;margin-right: auto;width:100%;max-width:700px;margin-top:60px;"/>
 	</div>
 
 	<div>
-		<img src="screenshot.png" alt="J.F. Sebastian, a companion tool for DDRM" title="J.F. Sebastian, a companion tool for DDRM" style="display: block;margin-left: auto;margin-right: auto;width:800px;margin-top:10px;"/>
+		<img src="screenshot.png" alt="J.F. Sebastian, a companion tool for DDRM" title="J.F. Sebastian, a companion tool for DDRM" style="display: block;margin-left: auto;margin-right: auto;width:100%;max-width:800px;margin-top:10px;"/>
 	</div>
 
 	<div class="headline">
 		<h1>headline text</h1>
 	</div>
 
-	<div class="feature_container">
-		<div class="feature_left_side">
-			<img src="tsC.png" alt="Timbre Space" title="Timbre Space" />
+	<div class="feature_container_wrapper">
+		<div class="feature_container">
+			<div class="feature_left_side">
+				<div class="centered_content">
+					<img src="tsC.png" alt="Timbre Space" title="Timbre Space" />
+				</div>
+			</div>
+			<div class="feature_right_side">
+				<div class="centered_content">
+					<div class="feature_text">
+						<h1>Timbre Space</h1>
+						<p>Explore the sonic possibilities of DDRM in completely new ways. Just
+						click anywhere on the Timbre Space and play the synth.</p>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="feature_right_side">
-			<h1>Timbre Space</h1>
-			<p>Explore the sonic possibilities of DDRM in completely new ways. Just
-			click anywhere on the Timbre Space and play the synth.</p>
-		</div>
-	</div>
 
-	<div class="feature_container">
-		<div class="feature_left_side">
-			<h1>CS80-like tone selector</h1>
-			<p>Explore the sonic possibilities of DDRM in completely new ways. Just
-				click anywhere on the Timbre Space and play the synth.</p>
-		</div>
-		<div class="feature_right_side">
-			<img src="tone_selector.png" alt="Tone Selector" title="Tone Selector" />
-		</div>
-	</div>
+		<br style="clear:both;">
 
-	<div class="feature_container">
-		<div class="feature_left_side">
-			<img src="ddrm_panel.png" alt="DDRM control panel" title="DDRM control panel" />
+		<div class="feature_container">
+			<div class="feature_right_side">
+				<div class="centered_content">
+					<img src="tone_selector.png" alt="Tone Selector" title="Tone Selector" />
+				</div>
+			</div>
+			<div class="feature_left_side">
+				<div class="centered_content">
+					<div class="feature_text">
+						<h1>CS80-like tone selector</h1>
+						<p>Explore the sonic possibilities of DDRM in completely new ways. Just
+							click anywhere on the Timbre Space and play the synth.</p>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="feature_right_side">
-			<h1>Parameters</h1>
-			<p>Explore the sonic possibilities of DDRM in completely new ways. Just
-				click anywhere on the Timbre Space and play the synth.</p>
-		</div>
-	</div>
 
-	<div class="feature_container">
-		<div class="feature_left_side">
-			<h1>Works everywhere</h1>
-			<p>Aufio Plugin (VST, AU), for macOS and Windows.</p>
-		</div>
-		<div class="feature_right_side">
-			<img src="platform_logos.png" alt="DDRM control panel" title="DDRM control panel" />
-		</div>
-	</div>
+		<br style="clear:both;">
 
-	<div class="feature_container">
-		<div class="feature_left_side">
-			<img src="code.png" alt="DDRM control panel" title="DDRM control panel" />
+		<div class="feature_container">
+			<div class="feature_left_side">
+				<div class="centered_content">
+					<img src="ddrm_panel.png" alt="DDRM control panel" title="DDRM control panel" />
+				</div>
+			</div>
+			<div class="feature_right_side">
+				<div class="centered_content">
+					<div class="feature_text">
+						<h1>Parameters</h1>
+						<p>Explore the sonic possibilities of DDRM in completely new ways. Just
+							click anywhere on the Timbre Space and play the synth.</p>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="feature_right_side">
-			<h1>Open Source</h1>
-			<p>Explore the sonic possibilities of DDRM in completely new ways. Just
-				click anywhere on the Timbre Space and play the synth.</p>
+
+		<br style="clear:both;">
+
+		<div class="feature_container">
+			<div class="feature_right_side">
+				<div class="centered_content">
+					<img src="platform_logos.png" alt="DDRM control panel" title="DDRM control panel" />
+				</div>
+			</div>
+			<div class="feature_left_side">
+				<div class="centered_content">
+					<div class="feature_text">
+						<h1>Works everywhere</h1>
+						<p>Aufio Plugin (VST, AU), for macOS and Windows.</p>
+					</div>
+				</div>
+			</div>
 		</div>
+
+		<br style="clear:both;">
+
+		<div class="feature_container">
+			<div class="feature_left_side">
+				<div class="centered_content">
+					<img src="code.png" alt="DDRM control panel" title="DDRM control panel" />
+				</div>
+			</div>
+			<div class="feature_right_side">
+				<div class="centered_content">
+					<div class="feature_text">
+						<h1>Open source</h1>
+						<p>Explore the sonic possibilities of DDRM in completely new ways. Just
+						click anywhere on the Timbre Space and play the synth.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<br style="clear:both;">
 	</div>
 
 	<div class="buttons_container">
@@ -202,8 +298,8 @@
 		<a href="donate.html" class="btn donate-btn" style="text-decoration: none;">Donate<br><span style="font-size:150%;line-height: 0px;vertical-align: middle;">&#127881;</span></a>		
 	</div>
 	
-	<div style="padding: 10px;">
-		<p><b>Credits and acknowledgements</b></p>
+	<div style="padding: 20px; max-width: 800px;margin:auto;">
+		<h1>Credits and acknowledgements</h1>
 		<p>J.F. Sebastian has been ideated and developed by <a href="https://ritaandaurora.github.io">Rita & Aurora</a>, a sort of fancy branding name I've given to my
 		audio-developer <a href="https://ffont.github.io">self</a>.
 		</p>
@@ -215,7 +311,7 @@
 		<a href="https://ritaandaurora.github.io">
 		<img src="RitaAuroraLogo1.png" alt="Rita & Aurora"
 			title="Rita & Aurora"
-			style="display: block;margin-left: auto;margin-right: auto;width:250px;margin-top:30px;margin-bottom:80px;" />
+			style="display: block;margin-left: auto;margin-right: auto;width:250px;margin-top:30px;margin-bottom:40px;" />
 		</a>
 	</div>
 	

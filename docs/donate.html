@@ -13,7 +13,6 @@
 			font-family: 'Helvetica', sans-serif;
 			font-style: normal;
 			font-weight: 100;
-			width: 900px;
 			margin: auto;
 			color:white;
 			font-family: 'Roboto', sans-serif;
@@ -40,88 +39,11 @@
 			font-family: 'Roboto Condensed', sans-serif;
 		}
 
-		.feature_container {
-			text-align: center;
-			width: 900px;
-			margin-bottom: 40px;
-		}
-
-		.feature_container img {
-			width:100%;
-			border-radius: 5px;
-			vertical-align: middle;
-		}
-
-		.feature_left_side {
-			display: inline-block;
-			text-align: right;
-			margin-right: 10px;
-			width: 400px;
-			vertical-align: middle;
-		}
-
-		.feature_right_side {
-			display: inline-block;
-			text-align: left;
-			margin-left: 10px;
-			width: 400px;
-			vertical-align: middle;
-		}
-
-		.btn {
-			border-radius: 5px;
-			font-size: 150%;
-			height: 105px;
-			width: 150px;
-			display: inline-block;
-			text-align: center;
-			line-height: 130%;
-			text-transform: uppercase;
-			padding-top: 45px;
-			margin-right: 3px;
-		}
-
-		.donate-btn {
-			background-color: rgb(47, 110, 90); 
-		}
-
-		.download-btn {
-			background-color: rgb(190, 60, 55);
-		}
-
-		.manual-btn {
-			background-color: rgb(255, 246, 116);
-		}
-
-		.code-btn {
-			background-color: rgb(219, 219, 219);
-		}
-
-		.donate-btn:hover {
-			background-color: rgb(87, 209, 171); 
-		}
-
-		.manual-btn:hover {
-			background-color: rgb(250, 244, 161);
-		}
-
-		.download-btn:hover {
-			background-color: rgb(218, 87, 82);
-		}
-
-		.code-btn:hover {
-			background-color: rgb(255, 255, 255);
-		}
-
-		.buttons_container {
-			margin-top:100px;
-			margin-bottom:60px;
-			text-align: center;
-		}
-
 		.headline {
 			text-align: center;
-			margin-bottom: 70px;
+			padding: 20px;
+			max-width: 800px;
+			margin: auto;
 		}
 
 		.donate_wrapper {
@@ -131,6 +53,24 @@
 			max-width: 150px;
 			max-height:60px;
 			margin: auto;
+			margin-top: 40px;
+		}
+
+		.logo_top {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width:100%;
+			max-width:700px;
+			margin-top:60px;
+			margin-bottom:60px;
+		}
+
+		@media (max-width: 700px) {
+			.logo_top {
+				margin-top:40px;
+				margin-bottom:0px;
+			}
 		}
 
 	</style>
@@ -141,14 +81,14 @@
 	<div>
 		<img src="TitleLogo2.png" alt="J.F. Sebastian, a companion tool for DDRM"
 			title="J.F. Sebastian, a companion tool for DDRM"
-			style="display: block;margin-left: auto;margin-right: auto;width:700px;margin-top:60px;" />
+			class="logo_top" />
 	</div>
 	<br>
 	<div class="headline">
-		<br><br>
-		<img src="ddrm_panel.png" alt="DDRM control panel" title="DDRM control panel" style="width:400px;" />
+	
+		<img src="ddrm_panel.png" alt="DDRM control panel" title="DDRM control panel" 
+			style="display: block;margin-left: auto;margin-right: auto;width:100%;max-width:400px;" />
 		
-
 		<h1>Thanks for reaching this page &#127881;<br> Why donate?</h1>
 		<p>Explore the sonic possibilities of DDRM in completely new ways. Just
 		click anywhere on the Timbre Space and play the synth.</p>
