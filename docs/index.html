@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap" rel="stylesheet">
 	<title>J.F. Sebastian, a companion tool for DDRM</title>
 	<style>
 		body { 
@@ -12,69 +13,210 @@
 			font-family: 'Helvetica', sans-serif;
 			font-style: normal;
 			font-weight: 100;
-			min-width: 500px;
+			width: 900px;
+			margin: auto;
+			color:white;
+			font-family: 'Roboto', sans-serif;
 		}
 
 		a {
-			color: white;
 			text-decoration: underline;
+			color:white;
 		}
 
 		a:hover {
-			color: white;
+			color:white;
 		}
 
 		a:visited {
-			color: white;
+			color:white;
 		}
 
 		a:active {
-			color: white;
+			color:white;
 		}
+
+		h2 {
+			font-family: 'Roboto Condensed', sans-serif;
+		}
+
+		.feature_container {
+			text-align: center;
+			width: 900px;
+			margin-bottom: 40px;
+		}
+
+		.feature_container img {
+			width:100%;
+			border-radius: 5px;
+			vertical-align: middle;
+		}
+
+		.feature_left_side {
+			display: inline-block;
+			text-align: right;
+			margin-right: 10px;
+			width: 400px;
+			vertical-align: middle;
+		}
+
+		.feature_right_side {
+			display: inline-block;
+			text-align: left;
+			margin-left: 10px;
+			width: 400px;
+			vertical-align: middle;
+		}
+
+		.btn {
+			border-radius: 5px;
+			font-size: 150%;
+			height: 105px;
+			width: 150px;
+			display: inline-block;
+			text-align: center;
+			line-height: 130%;
+			text-transform: uppercase;
+			padding-top: 45px;
+			margin-right: 3px;
+		}
+
+		.donate-btn {
+			background-color: rgb(47, 110, 90); 
+		}
+
+		.download-btn {
+			background-color: rgb(190, 60, 55);
+		}
+
+		.manual-btn {
+			background-color: rgb(255, 246, 116);
+		}
+
+		.code-btn {
+			background-color: rgb(219, 219, 219);
+		}
+
+		.donate-btn:hover {
+			background-color: rgb(87, 209, 171); 
+		}
+
+		.manual-btn:hover {
+			background-color: rgb(250, 244, 161);
+		}
+
+		.download-btn:hover {
+			background-color: rgb(218, 87, 82);
+		}
+
+		.code-btn:hover {
+			background-color: rgb(255, 255, 255);
+		}
+
+		.buttons_container {
+			margin-top:100px;
+			margin-bottom:60px;
+			text-align: center;
+		}
+
+		.headline {
+			text-align: center;
+			margin-bottom: 70px;
+		}
+
 	</style>
 </head>
 
 <body>
 
 	<div>
-		<img src="TitleLogo.png" alt="J.F. Sebastian, a companion tool for DDRM" title="J.F. Sebastian, a companion tool for DDRM" style="display: block;margin-left: auto;margin-right: auto;width:700px;margin-top:50px;"/>
+		<img src="TitleLogo2.png" alt="J.F. Sebastian, a companion tool for DDRM" title="J.F. Sebastian, a companion tool for DDRM" style="display: block;margin-left: auto;margin-right: auto;width:700px;margin-top:60px;"/>
 	</div>
 
 	<div>
-		<img src="screenshot.png" alt="J.F. Sebastian, a companion tool for DDRM" title="J.F. Sebastian, a companion tool for DDRM" style="display: block;margin-left: auto;margin-right: auto;width:800px;margin-top:30px;"/>
+		<img src="screenshot.png" alt="J.F. Sebastian, a companion tool for DDRM" title="J.F. Sebastian, a companion tool for DDRM" style="display: block;margin-left: auto;margin-right: auto;width:800px;margin-top:10px;"/>
+	</div>
+
+	<div class="headline">
+		<h1>headline text</h1>
+	</div>
+
+	<div class="feature_container">
+		<div class="feature_left_side">
+			<img src="tsC.png" alt="Timbre Space" title="Timbre Space" />
+		</div>
+		<div class="feature_right_side">
+			<h1>Timbre Space</h1>
+			<p>Explore the sonic possibilities of DDRM in completely new ways. Just
+			click anywhere on the Timbre Space and play the synth.</p>
+		</div>
+	</div>
+
+	<div class="feature_container">
+		<div class="feature_left_side">
+			<h1>CS80-like tone selector</h1>
+			<p>Explore the sonic possibilities of DDRM in completely new ways. Just
+				click anywhere on the Timbre Space and play the synth.</p>
+		</div>
+		<div class="feature_right_side">
+			<img src="tone_selector.png" alt="Tone Selector" title="Tone Selector" />
+		</div>
+	</div>
+
+	<div class="feature_container">
+		<div class="feature_left_side">
+			<img src="ddrm_panel.png" alt="DDRM control panel" title="DDRM control panel" />
+		</div>
+		<div class="feature_right_side">
+			<h1>Parameters</h1>
+			<p>Explore the sonic possibilities of DDRM in completely new ways. Just
+				click anywhere on the Timbre Space and play the synth.</p>
+		</div>
+	</div>
+
+	<div class="feature_container">
+		<div class="feature_left_side">
+			<h1>Works everywhere</h1>
+			<p>Aufio Plugin (VST, AU), for macOS and Windows.</p>
+		</div>
+		<div class="feature_right_side">
+			<img src="platform_logos.png" alt="DDRM control panel" title="DDRM control panel" />
+		</div>
+	</div>
+
+	<div class="feature_container">
+		<div class="feature_left_side">
+			<img src="code.png" alt="DDRM control panel" title="DDRM control panel" />
+		</div>
+		<div class="feature_right_side">
+			<h1>Open Source</h1>
+			<p>Explore the sonic possibilities of DDRM in completely new ways. Just
+				click anywhere on the Timbre Space and play the synth.</p>
+		</div>
+	</div>
+
+	<div class="buttons_container">
+		<a href="https://github.com/ritaandaurora/ddrm-jfsebastian/releases" class="btn download-btn" style="text-decoration: none;">Download<br>v1.0</a>
+		<a href="https://github.com/RitaAndAurora/ddrm-jfsebastian/blob/master/MANUAL.md" class="btn manual-btn" style="text-decoration: none;color:black;">User<br>Manual</a>
+		<a href="https://github.com/ritaandaurora/ddrm-jfsebastian" class="btn code-btn" style="text-decoration: none;color:black;">Source<br>Code</a>
+		<a href="donate.html" class="btn donate-btn" style="text-decoration: none;">Donate<br><span style="font-size:150%;line-height: 0px;vertical-align: middle;">&#127881;</span></a>		
 	</div>
 	
-	<div style="margin: auto;width: 800px;padding: 10px;color:white; margin-bottom: 50px;">
-		<p><b>About</b></p>
-		<p>J. F. Sebastian, named after a former genetic designer of the <i>Tyrell Corporation</i>, provides new ways to control and
-		explore the sonic possibilities of the CS80-inspired Deckard's Dream synthesiser (DDRM). It works both as a stand-alone
-		app and as an audio plug-in with automatable parameters.
-		</p>
-		<p>With J.F. Sebastian you can import DDRM bank files, edit patches and export them. When you import a bank file, a <i>Timbre
-		Space</i> will be created which will allow you to navigate all the presets in a colorful space and create new ones. Just
-		click anywhere on the Timbre Space and play the synth. Click on another point to get a new preset. Close points in the
-		space will result in similar sounding presets.</p>
-		<p>J.F. Sebastian also includes a <i>CS80-like tone selector</i> that allows you to use the original presetting system of the
-		CS80 in the DDRM. Simply click on the buttons of the upper row and lower row to configure slider positions for channel I
-		and II respectively.</p>
-		<p>Communication between J. F. Sebastian and DDRM happens over MIDI. Make sure you have properly configured MIDI IN/OUT
-		settings of both J. F. Sebastian and DDRM.</p>
-		<br>
-		<p><b>Credits, licenses, acknowledgements</b></p>
-		<p>J.F. Sebastian has been ideated and developed by <a href="https://github.com/RitaAndAurora">Rita & Aurora</a>, a sort of fancy branding name I've given to my
-		audio-developer self.
-		</p>
-		<p>J.F. Sebastian uses the following open source software libraries: <a href="">tapkee</a> (BSD 3-clause), <a href="">delaunator-cpp</a> (MIT) and <a href="">juce</a>
-		(GPLv3); and is released under GPLv3 software license. Source code is available at <a href="https://example.com">https://example.com</a>.
+	<div style="padding: 10px;">
+		<p><b>Credits and acknowledgements</b></p>
+		<p>J.F. Sebastian has been ideated and developed by <a href="https://ritaandaurora.github.io">Rita & Aurora</a>, a sort of fancy branding name I've given to my
+		audio-developer <a href="https://ffont.github.io">self</a>.
 		</p>
 		<p>Enormous thanks to Paul Shiling for creating the great CS80 presets bank that has been used for the tone selector.
 		Also thanks to Black Corporation for making such a great synth!
 		</p>
 	</div>
 	<div>
+		<a href="https://ritaandaurora.github.io">
 		<img src="RitaAuroraLogo1.png" alt="Rita & Aurora"
 			title="Rita & Aurora"
-			style="display: block;margin-left: auto;margin-right: auto;width:250px;margin-top:50px;margin-bottom:80px;" />
+			style="display: block;margin-left: auto;margin-right: auto;width:250px;margin-top:30px;margin-bottom:80px;" />
+		</a>
 	</div>
 	
 </body>
