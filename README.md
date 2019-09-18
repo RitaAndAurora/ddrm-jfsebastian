@@ -18,7 +18,7 @@ Please check the [user manual](MANUAL.md) for an explanation of the different fe
 
 ## Building J.F. Sebastian
 
-J.F. Sebastian uses the JUCE library and can be built following standard JUCE-building workflows. This repository includes project files for *XCode* (macOS) and *Visual Studio 2019* (windows) under the `Builds` folder. You can open the projcer file `JFSebastian.jucer` to create exporters for other platforms or edit the configuration of current project files.
+J.F. Sebastian uses the JUCE library and can be built following standard JUCE-building workflows. This repository includes project files for *XCode* (macOS) and *Visual Studio 2019* (windows) under the `Builds` folder. You can open the Projcer file `JFSebastian.jucer` to create exporters for other platforms or edit the configuration of current project files.
 
 
 ## Licensing
@@ -40,7 +40,7 @@ J.F. Sebastian uses some fonts released under open licenses as well:
 
 J.F. Sebastian has been ideated and developed by [Rita & Aurora](https://ritaandaurora.github.io), a sort of fancy branding name I've given to my audio-developer [self](https://ffont.github.io).
 
-Enormous thanks to Paul Shiling for creating the great CS80 presets bank that has been used for the tone selector. Also thanks to Black Corporation for making such a great synth!
+Enormous thanks to Paul Shilling for creating the great CS80 presets bank that has been used for the tone selector. Also thanks to Black Corporation for making such a great synth!
 
 <p align="center">
 <img src="docs/Rita&AuroraAudioLogo-square.png" width="250" />

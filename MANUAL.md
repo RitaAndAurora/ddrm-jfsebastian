@@ -27,7 +27,7 @@
 
 J. F. Sebastian, named after a former [genetic designer](https://bladerunner.fandom.com/wiki/J.F._Sebastian) of the [Tyrell Corporation](https://bladerunner.fandom.com/wiki/Tyrell_Corporation), provides new ways to control and explore the sonic possibilities of the [Deckard's Dream](https://www.deckardsdream.com) synthesiser (DDRM). It works both as a **stand-alone app** and as an **audio plug-in**.
 
-The DDRM is an awesome synthetizer designed by [Black Corporation](http://black-corporation.com) in Japan and inpired by the all mighty [Yamaha CS80](https://reverbmachine.com/blog/exploring-the-yamaha-cs-80). If you're reading this... you most probably know all about it :)
+The DDRM is an awesome synthesizer designed by [Black Corporation](http://black-corporation.com) in Japan and inspired by the all mighty [Yamaha CS80](https://reverbmachine.com/blog/exploring-the-yamaha-cs-80). If you're reading this... you most probably know all about it :)
 
 J.F. Sebastian interfaces with the DDRM and turns its sliders into audio plugin parameters that can be *modulated and automated* from your DAW. With J.F. Sebastian you can import DDRM bank files, edit patches and export them. When you import a bank file, a *Timbre Space* will be created which will allow you to navigate all the presets in a colorful space and create new ones. J.F. Sebastian also includes a *CS80-like tone selector* that allows you to use the original presetting system of the CS80 in the DDRM.
 
@@ -43,7 +43,7 @@ Here is a screenshot of J.F. Sebastian with the different parts of the interface
 
 J.F. Sebastian can run as a **stand-alone application** or as an **audio plugin** inside your DAW. When running as an audio plugin it works as an **audio effect** but effectively acts as a *bypass effect* for all the audio received in the input (i.e. it passes the input audio to the output and leaves it unaffected). The typical setup is to create a *MIDI/external instrument* track in your DAW which routes MIDI to the DDRM and receives the audio signal from DDRM. In that track J.F. Sebastian can be placed as an effect.
 
-The good side of loading J.F. Sebastian as a plugin is that it allows the DAW to control DDRM's parameters, enabling **parameter automtation** and any other sort of **modulation capabilities** offered by the DAW.
+The good side of loading J.F. Sebastian as a plugin is that it allows the DAW to control DDRM's parameters, enabling **parameter automation** and any other sort of **modulation capabilities** offered by the DAW.
 
 
 ### 2.2 MIDI configuration
@@ -54,7 +54,7 @@ The MIDI configuration section includes dropdowns for configuring the MIDI **inp
 
 #### 2.2.1 MIDI input
 
-MIDI input is used to receive MIDI data from the DDRM which allows to update the slider values when sliders are moved in the real hardware unit. **MIDI input configuration is optional** as J.F. Sebastian can opererate without it.
+MIDI input is used to receive MIDI data from the DDRM which allows to update the slider values when sliders are moved in the real hardware unit. **MIDI input configuration is optional** as J.F. Sebastian can operate without it.
 
 To configure MIDI input please select the device from the dropdown menu to which DDRM is sending messages. If your DDRM is connected over USB, you should see a device named **Deckard's Dream**. You also need to select the MIDI channel where DDRM sends the messages.
 
@@ -77,7 +77,7 @@ When a bank file is loaded, a new Timbre Space is built based on all the presets
 
 When navigating the different presets of a bank, you'll see how both the sliders on the screen and the sound of the DDRM change according to the selected preset. You'll also see how the selected point in the Timbre Space moves at each preset change. This indicates the point in the Timbre Space that corresponds to the selected preset (more info in [Section 2.4](#24-the-timbre-space)).
 
-Finally, note that if any parameter changes its value after loading a specific preset, the symbol * apprears next to the preset number to indicate that the sliders are no longer *in sync* with the stored values of that preset.
+Finally, note that if any parameter changes its value after loading a specific preset, the symbol * appears next to the preset number to indicate that the sliders are no longer *in sync* with the stored values of that preset.
 
 #### 2.3.2 Saving the current preset to a specific bank location
 
@@ -111,7 +111,7 @@ The Timbre Space contains a triangle mesh in which each triangle edge correspond
 <img src="docs/ts_highlighted.png" width="300px" />
 </p>
 
-When selecting a point in the space, the preset numbers in which the new preset is based are displayed on screen (see picture above). If any of DDRM controls is changed after a specific point of the Timbre Sopace is loaded, the preset numbers on screen will dissapear to idnicate that the slider values are no longer *in sync* with the values of the selected Timbre Space position.
+When selecting a point in the space, the preset numbers in which the new preset is based are displayed on screen (see picture above). If any of DDRM controls is changed after a specific point of the Timbre Space is loaded, the preset numbers on screen will disappear to indicate that the slider values are no longer *in sync* with the values of the selected Timbre Space position.
 
 The selected position in the Timbre Space is also exposed by J.F. Sebastian as two **audio parameters** named **Space X** and **Space Y**. These parameters can also be automated. 
 
@@ -123,7 +123,7 @@ The selected position in the Timbre Space is also exposed by J.F. Sebastian as t
 </p>
 
 
-J.F. Sebastian incorportates a tone selector similar to the one that the original CS80 incorporated. The upper row of the tone selector will affect DDRM's channel I parameters, while the lower row will affect channel II. Only one button per row at a time can be selected. Simply click on the buttons of the upper row and lower row to configure slider positions for channel I and II respectively.
+J.F. Sebastian incorporates a tone selector similar to the one that the original CS80 incorporated. The upper row of the tone selector will affect DDRM's channel I parameters, while the lower row will affect channel II. Only one button per row at a time can be selected. Simply click on the buttons of the upper row and lower row to configure slider positions for channel I and II respectively.
 
 When a button is selected it will be highlighted. However, if any parameter is changed after the button is selected, it will become *unselected* again to indicate that the slider values are no longer *in sync* with the expected values for channel I or channel II button.
 
@@ -136,7 +136,7 @@ Note that `Funky 4` button in the lower row does not work. Maybe there's some du
 <img src="docs/ddrm_panel.png" width="700px" />
 </p>
 
-J.F. Sebastian has a *virtual* representation of DDRM's hardware controls in the form of nice rounded sliders. The controls are layed down in the same way as in the hardware unit. Control names are not directly visible on screen, but are shown in a popup when hovering  over the controls with the mouse.
+J.F. Sebastian has a *virtual* representation of DDRM's hardware controls in the form of nice rounded sliders. The controls are laid down in the same way as in the hardware unit. Control names are not directly visible on screen, but are shown in a popup when hovering  over the controls with the mouse.
 
 If MIDI output is properly configured, moving the sliders in J.F. Sebastian will control the corresponding sliders in the DDRM hardware unit. Similarly, if MIDI input is properly configured, moving the sliders in the hardware unit will cause the sliders in J.F. Sebastian interface to move.
 
@@ -144,7 +144,7 @@ All sliders and buttons are exposed as **audio parameters** to the DAW, meaning 
 
 Double-clicking the sliders will set them to the center position.
 
-Note that the pannel incorporates two extra controls in the lower-right side - `Sustain time` and `Sustain mode` - which are not in the hardware unit. These are additional MIDI-controllable parameters that are only included as hardware controls in the DDRM expander. 
+Note that the panel incorporates two extra controls in the lower-right side - `Sustain time` and `Sustain mode` - which are not in the hardware unit. These are additional MIDI-controllable parameters that are only included as hardware controls in the DDRM expander. 
 
 
 ### 2.7 DDRM panel lower buttons
@@ -155,7 +155,7 @@ J.F. Sebastian incorporates a number of features to **edit and manage the slider
    *  `From patch file`: will open a dialog to select the *patch* file you want to load. Patch files have extension *.ddpatch*. Patch files contain parameter settings for both channels of DDRM plus the performance controls section.
    *  `From voice file to channel I/II`: will open a dialog to select the *voice* file you want to load in the chosen channel (I or II). Patch files have extension *.ddvoice*. Voice files contain parameter settings for a single DDRM channel controls.
 
- * `Save...`: use this button to stote the current DDRM preset into a *patch* file or a *voice* file (see menu option above more more information). Clicking the button will display a menu with the following options:
+ * `Save...`: use this button to store the current DDRM preset into a *patch* file or a *voice* file (see menu option above more more information). Clicking the button will display a menu with the following options:
    *  `To patch file`: will open a dialog in which the filename of the *patch* file to save can be specified. The *patch* file will store both channel settings and the performance controls of the current preset.
    *  `Channel I/II to voice file`: will open a dialog in which the filename of the *voice* file to save can be specified. The *voice* file will store the settings of the selected channel of the current preset.
 
@@ -177,13 +177,13 @@ J.F. Sebastian incorporates a number of features to **edit and manage the slider
 
 What follows is a list of known J.F. Sebastian bugs and limitations of the software. Please, for **bug reports** and **feature requests** visit [https://github.com/ritaandaurora/ddrm-jfsebastian/issues](https://github.com/ritaandaurora/ddrm-jfsebastian/issues).
 
- * J.F. Sebastian uses MIDI to communicate with DDRM and update its parameter values. However, as of formwarte version 1.3.0, **not all parameters in DDRM are currently controllable via MIDI**. All the sliders and buttons in the front panel can be controlled via MIDI, but not other *hidden* parameters like envolpe ranges, etc. What this means in practice is that loading presets from J.F. Sebastian **might not produce the exact same results** than loading them from the bank files copied in DDRM because the hidden controls can't be updated. Hopefully future updates of DDRM firmware will allow full MIDI control so that J.F. Sebastian (and other tools) can be updated accordingly.
+ * J.F. Sebastian uses MIDI to communicate with DDRM and update its parameter values. However, as of firmware version 1.3.0, **not all parameters in DDRM are currently controllable via MIDI**. All the sliders and buttons in the front panel can be controlled via MIDI, but not other *hidden* parameters like envelope ranges, etc. What this means in practice is that loading presets from J.F. Sebastian **might not produce the exact same results** than loading them from the bank files copied in DDRM because the hidden controls can't be updated. Hopefully future updates of DDRM firmware will allow full MIDI control so that J.F. Sebastian (and other tools) can be updated accordingly.
  
- * **DDRM firmware does not implement any method for dumping baank or slider values over MIDI**. Therefore, J.F. Sebastian has no way of knowing what's the current slider values in DDRM and displaying them. Hopefully this will be addressed in future DDRM firmware update and J.F. Sebastian updated accordingly :)
+ * **DDRM firmware does not implement any method for dumping bank or slider values over MIDI**. Therefore, J.F. Sebastian has no way of knowing what's the current slider values in DDRM and displaying them. Hopefully this will be addressed in future DDRM firmware update and J.F. Sebastian updated accordingly :)
 
- * Communication with DDRM is l**imited to the speed at which MIDI messages can be transmitted**. Automation and modulation of parameters is therefore subject to that. We did some testing and the message trhoughput seems to be quite good, specially using MIDI over USB, but still that could be a limitation for vey fast modulations.
+ * Communication with DDRM is **limited to the speed at which MIDI messages can be transmitted**. Automation and modulation of parameters is therefore subject to that. We did some testing and the message throughput seems to be quite good, specially using MIDI over USB, but still that could be a limitation for very fast modulations.
 
- * DDRM is very sensitive to MIDI in-out loops and MIDI control might not work properly if the messages that DDRM sends are put back into its input. J.F. Sebastian avoid creating such loops when both MIDI input and MIDI output are configured, but it can easily happen (it indeed happened to me!) that a feedback loop is created inadvertedly in the DAW. If you observe strange behaviour in J.F. Sebastian controlling DDRM (specially if some buttons in the tone selector section do not seem to work), **make sure you have not accidentally created a MIDI feedback loop**.   
+ * DDRM is very sensitive to MIDI in-out loops and MIDI control might not work properly if the messages that DDRM sends are put back into its input. J.F. Sebastian avoid creating such loops when both MIDI input and MIDI output are configured, but it can easily happen (it indeed happened to me!) that a feedback loop is created by mistake in the DAW. If you observe strange behaviour in J.F. Sebastian controlling DDRM (specially if some buttons in the tone selector section do not seem to work), **make sure you have not accidentally created a MIDI feedback loop**.   
 
  * When using J.F. Sebastian in stand-alone mode, it could happen that a **warning is displayed about potential audio feedback loops**. This is can be solved by clicking on the `Settings...` button that will appear in the warning and unticking the *Mute audio input* checkbox. J.F. Sebastian will remember this choice so the warning is not displayed again. This is a bug that will be addressed in future updates of J.F. Sebastian as J.F. Sebastian uses no audio and the warning should never appear.
 
@@ -208,7 +208,7 @@ J.F. Sebastian uses some fonts released under open licenses as well:
 
 J.F. Sebastian has been ideated and developed by [Rita & Aurora](https://ritaandaurora.github.io), a sort of fancy branding name I've given to my audio-developer [self](https://ffont.github.io).
 
-Enormous thanks to Paul Shiling for creating the great CS80 presets bank that has been used for the tone selector. Also thanks to Black Corporation for making such a great synth!
+Enormous thanks to Paul Shilling for creating the great CS80 presets bank that has been used for the tone selector. Also thanks to Black Corporation for making such a great synth!
 
 <p align="center">
 <img src="docs/Rita&AuroraAudioLogo-square.png" width="250" />
