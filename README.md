@@ -1,4 +1,4 @@
-# J.F. Sebastian
+# J.F. Sebastian, a Deckard's Dream companion tool
 
 ![J.F. Sebastian screenshot](docs/screenshot_1000.png)
 
@@ -9,6 +9,10 @@ J. F. Sebastian, named after a former genetic designer of the *Tyrell Corporatio
 With J.F. Sebastian you can import DDRM bank files, edit patches and export them. When you import a bank file, a *timbre Space* will be created which will allow you to navigate all the presets in a colorful space and create new ones. Just click anywhere on the timbre Space and play the synth. Click on another point to get a new preset. Close points in the space will result in similar sounding presets.
 
 J.F. Sebastian also includes a *CS80-like tone selector* that allows you to use the original presetting system of the CS80 in the DDRM. Simply click on the buttons of the upper row and lower row to configure slider positions for channel I and II respectively.
+
+Check out the video below for an introduction to J.F. Sebastian and its features:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cHdO393UwKI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Help
