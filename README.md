@@ -12,7 +12,7 @@ J.F. Sebastian also includes a *CS80-like tone selector* that allows you to use 
 
 Check out the video below for an introduction to J.F. Sebastian and its features:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cHdO393UwKI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Introduction to J.F. Sebastian video](docs/video_img.png)](https://www.youtube.com/watch?v=cHdO393UwKI)
 
 
 ## Help
