@@ -4,7 +4,9 @@
 ## Table of contents
 
 
-  * [1. Overview](#1-overview)
+  * [Overview](#overview)
+  * [1. Installation](#1-installation)
+     * [1.1 Compatibility notes](#11-compatibility-notes)
   * [2. Using J.F. Sebastian](#2-using-jf-sebastian)
      * [2.1 Loading J.F. Sebastian as an audio plugin](#21-loading-jf-sebastian-as-an-audio-plugin)
      * [2.2 MIDI configuration](#22-midi-configuration)
@@ -23,7 +25,7 @@
   * [5. Credits and acknowledgements](#5-credits-and-acknowledgements)
 
 
-## 1. Overview
+## Overview
 
 J. F. Sebastian, named after a former [genetic designer](https://bladerunner.fandom.com/wiki/J.F._Sebastian) of the [Tyrell Corporation](https://bladerunner.fandom.com/wiki/Tyrell_Corporation), provides new ways to control and explore the sonic possibilities of the [Deckard's Dream](https://www.deckardsdream.com) synthesiser (DDRM). It works both as a **stand-alone app** and as an **audio plug-in**.
 
@@ -36,6 +38,42 @@ Here is a screenshot of J.F. Sebastian with the different parts of the interface
 <p align="center">
 <img src="docs/screenshot_highlighted.png"  width="700px" />
 </p>
+
+## 1. Installation
+
+Installation of J.F. Sebastian should be straight-forward as we provide installer packages which should place all the files in the corresponding locations. Here are the steps to follow:
+
+ 1. Go to the [J.F. Sebastian download page](http://github.com/ritaandaurora/ddrm-jfsebastian/releases) and get the **macOS** or **windows** installer (depending on your platform).
+ 2. Run the installer and click `next`/`continue` buttons until installation finishes. We recommend you to use the default installation options. The installer will copy files in the following locations:
+
+ *macOS*
+ 
+  * Stand-alone app: `/Applications/`
+  * VST3: `/Library/Audio/Plug-Ins/VST3/`
+  * AU: `/Library/Audio/Plug-Ins/Components/`
+
+ *windows*
+ 
+  * Stand-alone app: `c:\Program Files (x86)\JFSebastian\`
+  * VST3: `c:\Program Files (x86)\Common Files\VST3\`
+
+ 3. Run the stand-aloone app from the directory it has been installed or either open your favorite DAW. J.F. Sebastian should appear in the list of available plugins. If that is not the casem you might need to trigger a *re-scanning* of the plugins folder by the DAW. If after doing that J.F. Sebastian still does not appear, make sure your DAW is looking for plugins in the default locations listed above.
+
+
+### 1.1 Compatibility notes
+
+ * J.F. Sebastian should be compatibale with all major DAWs supporting either Audio Units (**AU**) or **VST3** plugins. 
+ * Note that J.F. Sebastian is **64-bit** so it might not work with old versions of DAWs. 
+ * We did not compile an **AAX** version of the plugin, but if users request it (please use our [issue tracker](https://github.com/ritaandaurora/ddrm-jfsebastian/issues)) we will consider adding it. 
+ * We did not compile **VST2** version of the plugin as this format has been deprecated for years. In practice this could be a problem for windows users using versions of Ableton Live without support for VST3.
+ * We have successfully tested J.F. Sebastian in the setups listed below. Other setups should work as well but we have not tested them.
+   * macOS / Stand-alone
+   * macOS / Bitwig Studio 		
+   * macOS / Logic Pro X
+   * macOS / Live 10
+   * windows / Stand-alone
+   * windows / Bitwig Studio 		
+
 
 ## 2. Using J.F. Sebastian
 
