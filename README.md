@@ -43,7 +43,7 @@ J.F. Sebastian uses some fonts released under open licenses as well:
  
 ## Support J.F. Sebastian development
 
-You want to support the development of J.F. Sebastian and similar tools? I'll be very happy to receive a [donation](https://ritaandaurora.github.io/ddrm-jfsebastian/donate) :)
+If you want to support the development of J.F. Sebastian and similar tools you can consider [making a donation](https://ritaandaurora.github.io/ddrm-jfsebastian/donate). That will make me very happy :)
 
 
 ## Credits and acknowledgements

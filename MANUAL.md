@@ -248,6 +248,13 @@ J.F. Sebastian has been ideated and developed by [Rita & Aurora](https://ritaand
 
 Enormous thanks to Paul Shilling for creating the great CS80 presets bank that has been used for the tone selector. Also thanks to Black Corporation for making such a great synth!
 
+
+## 6. Support J.F. Sebastian development
+
+If you want to support the development of J.F. Sebastian and similar tools you can consider [making a donation](https://ritaandaurora.github.io/ddrm-jfsebastian/donate). That will make me very happy :)
+
+<br>
+<br>
 <p align="center">
 <img src="docs/Rita&AuroraAudioLogo-square.png" width="250" />
 </p>
