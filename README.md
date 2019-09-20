@@ -10,6 +10,8 @@ With J.F. Sebastian you can import DDRM bank files, edit patches and export them
 
 J.F. Sebastian also includes a *CS80-like tone selector* that allows you to use the original presetting system of the CS80 in the DDRM. Simply click on the buttons of the upper row and lower row to configure slider positions for channel I and II respectively.
 
+Check out [J.F. Sebatian's website](https://ritaandaurora.github.io/ddrm-jfsebastian/donate) for more information.
+
 Check out the video below for an introduction to J.F. Sebastian and its features:
 
 [![Introduction to J.F. Sebastian video](docs/video_img.png)](https://www.youtube.com/watch?v=cHdO393UwKI)
@@ -38,6 +40,10 @@ J.F. Sebastian uses some fonts released under open licenses as well:
  * [roboto](https://fonts.google.com/specimen/Roboto), available under Apache 2 license
  * [modenine](https://www.dafont.com/modenine.font), available under custom "freely distributable" license (see license file in `Resources/fonts`)
  * [blade runner](https://www.dafont.com/blade-runner-movie-font.font), tagged as "100% free" font
+ 
+## Support J.F. Sebastian development
+
+You want to support the development of J.F. Sebastian and similar tools? I'll be very happy to receive a [donation](https://ritaandaurora.github.io/ddrm-jfsebastian/donate) :)
 
 
 ## Credits and acknowledgements
