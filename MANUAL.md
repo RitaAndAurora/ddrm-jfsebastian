@@ -67,12 +67,12 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
  * We did not compile an **AAX** version of the plugin, but if users request it (please use our [issue tracker](https://github.com/ritaandaurora/ddrm-jfsebastian/issues)) we will consider adding it. 
  * We did not compile **VST2** version of the plugin as this format has been deprecated for years. In practice this could be a problem for windows users using versions of Ableton Live without support for VST3.
  * We have successfully tested J.F. Sebastian in the setups listed below. Other setups should work as well but we have not tested them.
-   * macOS / Stand-alone
-   * macOS / Bitwig Studio 		
-   * macOS / Logic Pro X
-   * macOS / Live 10
-   * windows / Stand-alone
-   * windows / Bitwig Studio 		
+   * macOS (10.14) / Stand-alone
+   * macOS (10.14) / Bitwig Studio 2/3
+   * macOS (10.14) / Logic Pro X
+   * macOS (10.14) / Live 10
+   * windows 10 / Stand-alone
+   * windows 10 / Bitwig Studio 3
 
 
 ## 2. Using J.F. Sebastian
