@@ -26,6 +26,8 @@ Please check the [user manual](MANUAL.md) for an explanation of the different fe
 
 J.F. Sebastian uses the JUCE library and can be built following standard JUCE-building workflows. This repository includes project files for *XCode* (macOS) and *Visual Studio 2019* (windows) under the `Builds` folder. You can open the Projcer file `JFSebastian.jucer` to create exporters for other platforms or edit the configuration of current project files.
 
+Note that before compiling you'll need to update the `Header Search Paths` parameter in the Projucer project settings and replace (or add) your own absolute path to the `ddrm-jfsebastian/Includes/` folder. This is because apparently Projucer does not allow to define `Header Search Paths` relative to, e.g., the Projucer file and these need to be listed as absolute paths.
+
 
 ## Licensing
 
