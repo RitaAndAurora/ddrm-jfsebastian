@@ -16,6 +16,10 @@ Check out the video below for an introduction to J.F. Sebastian and its features
 
 [![Introduction to J.F. Sebastian video](docs/video_img.png)](https://www.youtube.com/watch?v=cHdO393UwKI)
 
+Also check out this video that demonstrates the power of J.F. Sebastian in combination with [Bitwig Studio](https://bitwig.com)'s modulators:
+
+[![Deckard's Dream + J.F. Sebastian + Bitwig Studio modulators](docs/video2_img.png)](https://www.youtube.com/watch?v=bIjgPHNWfHA)
+
 
 ## Help
 
