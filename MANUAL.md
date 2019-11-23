@@ -67,12 +67,12 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
  * We did not compile an **AAX** version of the plugin, but if users request it (please use our [issue tracker](https://github.com/ritaandaurora/ddrm-jfsebastian/issues)) we will consider adding it. 
  * We did not compile **VST2** version of the plugin as this format has been deprecated for years. In practice this could be a problem for windows users using versions of Ableton Live without support for VST3.
  * We have successfully tested J.F. Sebastian in the setups listed below. Other setups should work as well but we have not tested them.
-   * macOS / Stand-alone
-   * macOS / Bitwig Studio 		
-   * macOS / Logic Pro X
-   * macOS / Live 10
-   * windows / Stand-alone
-   * windows / Bitwig Studio 		
+   * macOS (10.14) / Stand-alone
+   * macOS (10.14) / Bitwig Studio 2/3
+   * macOS (10.14) / Logic Pro X
+   * macOS (10.14) / Live 10
+   * windows 10 / Stand-alone
+   * windows 10 / Bitwig Studio 3
 
 
 ## 2. Using J.F. Sebastian
@@ -178,7 +178,7 @@ J.F. Sebastian has a *virtual* representation of DDRM's hardware controls in the
 
 If MIDI output is properly configured, moving the sliders in J.F. Sebastian will control the corresponding sliders in the DDRM hardware unit. Similarly, if MIDI input is properly configured, moving the sliders in the hardware unit will cause the sliders in J.F. Sebastian interface to move.
 
-All sliders and buttons are exposed as **audio parameters** to the DAW, meaning that their movement can be **recorded**, **automated** and **modulated** if the DAW has such capabilities. Here is a [video example of parameter modulation and automation](https://youtu.be/cHdO393UwKI?t=170) usig J.F. Sebastian and [Bitwig Studio](https://www.bitwig.com) (a great DAW you shoudl check out!).
+All sliders and buttons are exposed as **audio parameters** to the DAW, meaning that their movement can be **recorded**, **automated** and **modulated** if the DAW has such capabilities. Here is a [video example of parameter modulation and automation](https://youtu.be/cHdO393UwKI?t=170) usig J.F. Sebastian and [Bitwig Studio](https://www.bitwig.com) (a great DAW you shoudl check out!). **Warning**: it is possible to record/automate the position in the timbre space using the parameters `Space X` and `Space Y`; when doing that take into account that these will make all other audio parameters to change therefore it is not advised to record/automate timbre space position plus other parameters at the same time.
 
 Double-clicking the sliders will set them to the center position.
 
