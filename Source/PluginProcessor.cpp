@@ -460,6 +460,8 @@ DdrmtimbreSpaceAudioProcessor::DdrmtimbreSpaceAudioProcessor()
     
     // Trigger load default state in processor
     setDefaultState();
+    
+    setUIScaleFactor(0.75); // DEBUGGING Set scacle factor to less than 1.0 (will be removed at release time)
 }
 
 DdrmtimbreSpaceAudioProcessor::~DdrmtimbreSpaceAudioProcessor()
@@ -627,6 +629,9 @@ void DdrmtimbreSpaceAudioProcessor::getStateInformation (MemoryBlock& destData)
     state.setProperty(STATE_MIDI_INPUT_CHANNEL, midiInputChannel, nullptr);
     state.setProperty(STATE_MIDI_OUTPUT_CHANNEL, midiOutputChannel, nullptr);
     
+    // Add UI scale factor to state
+    state.setProperty(STATE_UI_SCALE_FACTOR, uiScaleFactor, nullptr);
+    
     // Add audio parameters to state
     ValueTree audioParametersState = parameters.copyState();
     state.appendChild(audioParametersState, nullptr);
@@ -707,6 +712,12 @@ void DdrmtimbreSpaceAudioProcessor::setStateFromXml (XmlElement* xmlState)
     if (xmlState->hasAttribute (STATE_MIDI_OUTPUT_CHANNEL)){
         int channel = xmlState->getStringAttribute(STATE_MIDI_OUTPUT_CHANNEL).getIntValue();
         setMidiOutputChannel(channel);
+    }
+    
+    // Load ui scale factor
+    if (xmlState->hasAttribute (STATE_UI_SCALE_FACTOR)){
+        float newUIScaleFactor = xmlState->getStringAttribute(STATE_UI_SCALE_FACTOR).getFloatValue();
+        setUIScaleFactor(newUIScaleFactor);
     }
     
     // Preset loader
@@ -1314,6 +1325,11 @@ File DdrmtimbreSpaceAudioProcessor::getDirectoryForFileSaveLoad ()
 void DdrmtimbreSpaceAudioProcessor::setLastUserDirectoryForFileSaveLoad (File file)
 {
     lastUsedDirectoryForFileIO = file.getParentDirectory();
+}
+
+void DdrmtimbreSpaceAudioProcessor::setUIScaleFactor(float newUIScaleFactor){
+    uiScaleFactor = newUIScaleFactor;
+    sendActionMessage(ACTION_UPDATE_UI_SCALE_FACTOR);
 }
 
 

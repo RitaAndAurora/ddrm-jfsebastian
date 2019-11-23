@@ -90,10 +90,13 @@ void DdrmtimbreSpaceAudioProcessorEditor::paint (Graphics& g)
 
 void DdrmtimbreSpaceAudioProcessorEditor::resized()
 {
-    float unitMargin = 10;
-    float unitRowHeight = 20;
-    float fullWidth = 800;
-    float footerWidth = 150;
+    float scale = processor.uiScaleFactor;
+    std::cout << "SCALE " << processor.uiScaleFactor << std::endl;
+    
+    float unitMargin = 10 * scale;
+    float unitRowHeight = 20 * scale;
+    float fullWidth = 800 * scale;
+    float footerWidth = 150 * scale;
     
     float headerHeight = 1.5 * unitRowHeight;
     float midiSettingsHeight = 1 * unitRowHeight;
@@ -155,6 +158,8 @@ void DdrmtimbreSpaceAudioProcessorEditor::actionListenerCallback (const String &
 {
     if (message.startsWith(String(ACTION_LOG_PREFIX))){
         logMessageInUI(message.substring(String(ACTION_LOG_PREFIX).length()));
+    } else if (message.startsWith(String(ACTION_UPDATE_UI_SCALE_FACTOR))){
+        resized();  // No need to update any local member here as scale factor is stored in processor
     }
 }
 

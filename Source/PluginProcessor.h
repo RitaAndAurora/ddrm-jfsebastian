@@ -85,6 +85,10 @@ public:
     void setMidiOutputChannel (int channel);
     bool isReceivingFromMidiInput = false;  // To distinguish when a parameter is changed from the onscren Slider or from MIDI input
     
+    // UI Scale factor
+    float uiScaleFactor = 1.0;
+    void setUIScaleFactor(float newUIScaleFactor);
+    
     // Presetting
     void loadBankFile (File* bankFile);
     int currentPreset;
