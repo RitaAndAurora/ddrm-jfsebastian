@@ -49,12 +49,14 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
  *macOS*
  
   * Stand-alone app: `/Applications/`
+  * VST2: `/Library/Audio/Plug-Ins/VST/`
   * VST3: `/Library/Audio/Plug-Ins/VST3/`
   * AU: `/Library/Audio/Plug-Ins/Components/`
 
  *windows*
  
   * Stand-alone app: `c:\Program Files (x86)\JFSebastian\`
+  * VST2: `c:\Program Files (x86)\Common Files\VST\`
   * VST3: `c:\Program Files (x86)\Common Files\VST3\`
 
  3. Run the stand-aloone app from the directory it has been installed or either open your favorite DAW. J.F. Sebastian should appear in the list of available plugins. If that is not the casem you might need to trigger a *re-scanning* of the plugins folder by the DAW. If after doing that J.F. Sebastian still does not appear, make sure your DAW is looking for plugins in the default locations listed above.
@@ -62,10 +64,9 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
 
 ### 1.1 Compatibility notes
 
- * J.F. Sebastian should be compatibale with all major DAWs supporting either Audio Units (**AU**) or **VST3** plugins. 
+ * J.F. Sebastian should be compatibale with all major DAWs supporting either Audio Units (**AU**) or **VST2/VST3** plugins. 
  * Note that J.F. Sebastian is **64-bit** so it might not work with old versions of DAWs. 
- * We did not compile an **AAX** version of the plugin, but if users request it (please use our [issue tracker](https://github.com/ritaandaurora/ddrm-jfsebastian/issues)) we will consider adding it. 
- * We did not compile **VST2** version of the plugin as this format has been deprecated for years. In practice this could be a problem for windows users using versions of Ableton Live without support for VST3.
+ * We did not compile an **AAX** version of the plugin, but if users request it (please use our [issue tracker](https://github.com/ritaandaurora/ddrm-jfsebastian/issues)) we will consider adding it.
  * We have successfully tested J.F. Sebastian in the setups listed below. Other setups should work as well but we have not tested them.
    * macOS (10.14) / Stand-alone
    * macOS (10.14) / Bitwig Studio 2/3
@@ -73,6 +74,15 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
    * macOS (10.14) / Live 10
    * windows 10 / Stand-alone
    * windows 10 / Bitwig Studio 3
+
+### 1.2 Release notes
+
+**Version 1.1**
+
+ * Improved labeling of some controls so A, D, S, R don't get confused in the plugin parameter list shown by plugin hosts.
+ * Corrected value shown of inverted controls in the performance section so these show 0.0 when set at the top and 10.0 when set at the bottom.
+ * Added VST2 compatibility.
+
 
 
 ## 2. Using J.F. Sebastian
@@ -103,6 +113,8 @@ MIDI output is used to send MIDI data to the DDRM and control its sliders *remot
 To configure MIDI output please select the device from the dropdown menu that will send messages to DDRM. If your DDRM is connected over USB, you should see a device named **Deckard's Dream**. You also need to select the MIDI channel where DDRM is listening.
 
 Note that J.F. Sebastian only sends MIDI *control change* messages to the DDRM and does not handle any other kind of MIDI data. To send *note on/off* messages to the DDRM you need to configure the routing independently of J.F. Sebastian.
+
+Note also that for J.F. Sebastian to work, **DDRM needs to have "CC receive" option enabled**. You'll find that option in the MIDI settings menu of DDRM.
 
 
 ### 2.3 Bank file loader
