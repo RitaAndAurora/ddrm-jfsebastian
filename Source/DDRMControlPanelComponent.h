@@ -152,7 +152,7 @@ public:
         addAndMakeVisible (&sliderDDRM_IL_VCF_1);
         sliderAttachmentDDRM_IL_VCF_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_IL_VCF_1", sliderDDRM_IL_VCF_1));
         sliderDDRM_IL_VCF_1.textFromValueFunction = [](double value) {
-            return String::formatted("IL: %.2f%", -5.0 * value / 127.0);
+            return String::formatted("VCF IL: %.2f%", -5.0 * value / 127.0);
         };
         // Slider DDRM_AL_VCF_1
         sliderDDRM_AL_VCF_1.setSliderStyle (Slider::LinearVertical);
@@ -162,7 +162,7 @@ public:
         addAndMakeVisible (&sliderDDRM_AL_VCF_1);
         sliderAttachmentDDRM_AL_VCF_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_AL_VCF_1", sliderDDRM_AL_VCF_1));
         sliderDDRM_AL_VCF_1.textFromValueFunction = [](double value) {
-            return String::formatted("AL: %.2f%", 5.0 * value / 127.0);
+            return String::formatted("VCF AL: %.2f%", 5.0 * value / 127.0);
         };
         // Slider DDRM_A_VCF_1
         sliderDDRM_A_VCF_1.setSliderStyle (Slider::LinearVertical);
@@ -172,7 +172,7 @@ public:
         addAndMakeVisible (&sliderDDRM_A_VCF_1);
         sliderAttachmentDDRM_A_VCF_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_A_VCF_1", sliderDDRM_A_VCF_1));
         sliderDDRM_A_VCF_1.textFromValueFunction = [](double value) {
-            return String::formatted("A: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCF A: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_D_VCF_1
         sliderDDRM_D_VCF_1.setSliderStyle (Slider::LinearVertical);
@@ -182,7 +182,7 @@ public:
         addAndMakeVisible (&sliderDDRM_D_VCF_1);
         sliderAttachmentDDRM_D_VCF_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_D_VCF_1", sliderDDRM_D_VCF_1));
         sliderDDRM_D_VCF_1.textFromValueFunction = [](double value) {
-            return String::formatted("D: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCF D: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_R_VCF_1
         sliderDDRM_R_VCF_1.setSliderStyle (Slider::LinearVertical);
@@ -192,7 +192,7 @@ public:
         addAndMakeVisible (&sliderDDRM_R_VCF_1);
         sliderAttachmentDDRM_R_VCF_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_R_VCF_1", sliderDDRM_R_VCF_1));
         sliderDDRM_R_VCF_1.textFromValueFunction = [](double value) {
-            return String::formatted("R: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCF R: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_VCF_VCA_1
         sliderDDRM_VCF_VCA_1.setSliderStyle (Slider::LinearVertical);
@@ -222,7 +222,7 @@ public:
         addAndMakeVisible (&sliderDDRM_A_VCA_1);
         sliderAttachmentDDRM_A_VCA_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_A_VCA_1", sliderDDRM_A_VCA_1));
         sliderDDRM_A_VCA_1.textFromValueFunction = [](double value) {
-            return String::formatted("A: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCA A: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_D_VCA_1
         sliderDDRM_D_VCA_1.setSliderStyle (Slider::LinearVertical);
@@ -232,7 +232,7 @@ public:
         addAndMakeVisible (&sliderDDRM_D_VCA_1);
         sliderAttachmentDDRM_D_VCA_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_D_VCA_1", sliderDDRM_D_VCA_1));
         sliderDDRM_D_VCA_1.textFromValueFunction = [](double value) {
-            return String::formatted("D: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCA D: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_S_VCA_1
         sliderDDRM_S_VCA_1.setSliderStyle (Slider::LinearVertical);
@@ -242,7 +242,7 @@ public:
         addAndMakeVisible (&sliderDDRM_S_VCA_1);
         sliderAttachmentDDRM_S_VCA_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_S_VCA_1", sliderDDRM_S_VCA_1));
         sliderDDRM_S_VCA_1.textFromValueFunction = [](double value) {
-            return String::formatted("S: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCA S: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_R_VCA_1
         sliderDDRM_R_VCA_1.setSliderStyle (Slider::LinearVertical);
@@ -252,7 +252,7 @@ public:
         addAndMakeVisible (&sliderDDRM_R_VCA_1);
         sliderAttachmentDDRM_R_VCA_1.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_R_VCA_1", sliderDDRM_R_VCA_1));
         sliderDDRM_R_VCA_1.textFromValueFunction = [](double value) {
-            return String::formatted("R: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCA R: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_LEVEL_VCA_1
         sliderDDRM_LEVEL_VCA_1.setSliderStyle (Slider::LinearVertical);
@@ -414,7 +414,7 @@ public:
         addAndMakeVisible (&sliderDDRM_IL_VCF_2);
         sliderAttachmentDDRM_IL_VCF_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_IL_VCF_2", sliderDDRM_IL_VCF_2));
         sliderDDRM_IL_VCF_2.textFromValueFunction = [](double value) {
-            return String::formatted("IL: %.2f%", -5.0 * value / 127.0);
+            return String::formatted("VCF IL: %.2f%", -5.0 * value / 127.0);
         };
         // Slider DDRM_AL_VCF_2
         sliderDDRM_AL_VCF_2.setSliderStyle (Slider::LinearVertical);
@@ -424,7 +424,7 @@ public:
         addAndMakeVisible (&sliderDDRM_AL_VCF_2);
         sliderAttachmentDDRM_AL_VCF_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_AL_VCF_2", sliderDDRM_AL_VCF_2));
         sliderDDRM_AL_VCF_2.textFromValueFunction = [](double value) {
-            return String::formatted("AL: %.2f%", 5.0 * value / 127.0);
+            return String::formatted("VCF AL: %.2f%", 5.0 * value / 127.0);
         };
         // Slider DDRM_A_VCF_2
         sliderDDRM_A_VCF_2.setSliderStyle (Slider::LinearVertical);
@@ -434,7 +434,7 @@ public:
         addAndMakeVisible (&sliderDDRM_A_VCF_2);
         sliderAttachmentDDRM_A_VCF_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_A_VCF_2", sliderDDRM_A_VCF_2));
         sliderDDRM_A_VCF_2.textFromValueFunction = [](double value) {
-            return String::formatted("A: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCF A: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_D_VCF_2
         sliderDDRM_D_VCF_2.setSliderStyle (Slider::LinearVertical);
@@ -444,7 +444,7 @@ public:
         addAndMakeVisible (&sliderDDRM_D_VCF_2);
         sliderAttachmentDDRM_D_VCF_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_D_VCF_2", sliderDDRM_D_VCF_2));
         sliderDDRM_D_VCF_2.textFromValueFunction = [](double value) {
-            return String::formatted("D: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCF D: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_R_VCF_2
         sliderDDRM_R_VCF_2.setSliderStyle (Slider::LinearVertical);
@@ -454,7 +454,7 @@ public:
         addAndMakeVisible (&sliderDDRM_R_VCF_2);
         sliderAttachmentDDRM_R_VCF_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_R_VCF_2", sliderDDRM_R_VCF_2));
         sliderDDRM_R_VCF_2.textFromValueFunction = [](double value) {
-            return String::formatted("R: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCF R: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_VCF_VCA_2
         sliderDDRM_VCF_VCA_2.setSliderStyle (Slider::LinearVertical);
@@ -484,7 +484,7 @@ public:
         addAndMakeVisible (&sliderDDRM_A_VCA_2);
         sliderAttachmentDDRM_A_VCA_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_A_VCA_2", sliderDDRM_A_VCA_2));
         sliderDDRM_A_VCA_2.textFromValueFunction = [](double value) {
-            return String::formatted("A: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCA A: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_D_VCA_2
         sliderDDRM_D_VCA_2.setSliderStyle (Slider::LinearVertical);
@@ -494,7 +494,7 @@ public:
         addAndMakeVisible (&sliderDDRM_D_VCA_2);
         sliderAttachmentDDRM_D_VCA_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_D_VCA_2", sliderDDRM_D_VCA_2));
         sliderDDRM_D_VCA_2.textFromValueFunction = [](double value) {
-            return String::formatted("D: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCA D: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_S_VCA_2
         sliderDDRM_S_VCA_2.setSliderStyle (Slider::LinearVertical);
@@ -504,7 +504,7 @@ public:
         addAndMakeVisible (&sliderDDRM_S_VCA_2);
         sliderAttachmentDDRM_S_VCA_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_S_VCA_2", sliderDDRM_S_VCA_2));
         sliderDDRM_S_VCA_2.textFromValueFunction = [](double value) {
-            return String::formatted("S: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCA S: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_R_VCA_2
         sliderDDRM_R_VCA_2.setSliderStyle (Slider::LinearVertical);
@@ -514,7 +514,7 @@ public:
         addAndMakeVisible (&sliderDDRM_R_VCA_2);
         sliderAttachmentDDRM_R_VCA_2.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_R_VCA_2", sliderDDRM_R_VCA_2));
         sliderDDRM_R_VCA_2.textFromValueFunction = [](double value) {
-            return String::formatted("R: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("VCA R: %.1f", 10.0 * (value / 127.0));
         };
         // Slider DDRM_LEVEL_VCA_2
         sliderDDRM_LEVEL_VCA_2.setSliderStyle (Slider::LinearVertical);
@@ -676,7 +676,7 @@ public:
         addAndMakeVisible (&sliderDDRM_SPEED_SUB_OSC);
         sliderAttachmentDDRM_SPEED_SUB_OSC.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_SPEED_SUB_OSC", sliderDDRM_SPEED_SUB_OSC));
         sliderDDRM_SPEED_SUB_OSC.textFromValueFunction = [](double value) {
-            return String::formatted("Sub Osc Speed: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Sub Osc Speed: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_VCO_SUB_OSC
         sliderDDRM_VCO_SUB_OSC.setSliderStyle (Slider::LinearVertical);
@@ -686,7 +686,7 @@ public:
         addAndMakeVisible (&sliderDDRM_VCO_SUB_OSC);
         sliderAttachmentDDRM_VCO_SUB_OSC.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_VCO_SUB_OSC", sliderDDRM_VCO_SUB_OSC));
         sliderDDRM_VCO_SUB_OSC.textFromValueFunction = [](double value) {
-            return String::formatted("Sub Osc VCO Amount: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Sub Osc VCO Amount: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_VCF_SUB_OSC
         sliderDDRM_VCF_SUB_OSC.setSliderStyle (Slider::LinearVertical);
@@ -696,7 +696,7 @@ public:
         addAndMakeVisible (&sliderDDRM_VCF_SUB_OSC);
         sliderAttachmentDDRM_VCF_SUB_OSC.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_VCF_SUB_OSC", sliderDDRM_VCF_SUB_OSC));
         sliderDDRM_VCF_SUB_OSC.textFromValueFunction = [](double value) {
-            return String::formatted("Sub Osc VCF Amount: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Sub Osc VCF Amount: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_VCA_SUB_OSC
         sliderDDRM_VCA_SUB_OSC.setSliderStyle (Slider::LinearVertical);
@@ -706,7 +706,7 @@ public:
         addAndMakeVisible (&sliderDDRM_VCA_SUB_OSC);
         sliderAttachmentDDRM_VCA_SUB_OSC.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_VCA_SUB_OSC", sliderDDRM_VCA_SUB_OSC));
         sliderDDRM_VCA_SUB_OSC.textFromValueFunction = [](double value) {
-            return String::formatted("Sub Osc VCA Amount: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Sub Osc VCA Amount: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_MIX
         sliderDDRM_MIX.setSliderStyle (Slider::LinearVertical);
@@ -728,7 +728,7 @@ public:
         addAndMakeVisible (&sliderDDRM_BRILL);
         sliderAttachmentDDRM_BRILL.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_BRILL", sliderDDRM_BRILL));
         sliderDDRM_BRILL.textFromValueFunction = [](double value) {
-            return String::formatted("Brilliance: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Brilliance: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_RESSO
         sliderDDRM_RESSO.setSliderStyle (Slider::LinearVertical);
@@ -738,7 +738,7 @@ public:
         addAndMakeVisible (&sliderDDRM_RESSO);
         sliderAttachmentDDRM_RESSO.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_RESSO", sliderDDRM_RESSO));
         sliderDDRM_RESSO.textFromValueFunction = [](double value) {
-            return String::formatted("Ressonance: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Ressonance: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_INITIAL_TOUCH
         sliderDDRM_INITIAL_TOUCH.setSliderStyle (Slider::LinearVertical);
@@ -748,7 +748,7 @@ public:
         addAndMakeVisible (&sliderDDRM_INITIAL_TOUCH);
         sliderAttachmentDDRM_INITIAL_TOUCH.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_INITIAL_TOUCH", sliderDDRM_INITIAL_TOUCH));
         sliderDDRM_INITIAL_TOUCH.textFromValueFunction = [](double value) {
-            return String::formatted("Initial Pitch Bend: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Initial Pitch Bend: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_SPEED_TOUCH
         sliderDDRM_SPEED_TOUCH.setSliderStyle (Slider::LinearVertical);
@@ -758,7 +758,7 @@ public:
         addAndMakeVisible (&sliderDDRM_SPEED_TOUCH);
         sliderAttachmentDDRM_SPEED_TOUCH.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_SPEED_TOUCH", sliderDDRM_SPEED_TOUCH));
         sliderDDRM_SPEED_TOUCH.textFromValueFunction = [](double value) {
-            return String::formatted("Touch Response Sub Osc Speed: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Touch Response Sub Osc Speed: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_VCO_TOUCH
         sliderDDRM_VCO_TOUCH.setSliderStyle (Slider::LinearVertical);
@@ -768,7 +768,7 @@ public:
         addAndMakeVisible (&sliderDDRM_VCO_TOUCH);
         sliderAttachmentDDRM_VCO_TOUCH.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_VCO_TOUCH", sliderDDRM_VCO_TOUCH));
         sliderDDRM_VCO_TOUCH.textFromValueFunction = [](double value) {
-            return String::formatted("Touch Response Sub Osc VCO Amount: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Touch Response Sub Osc VCO Amount: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_VCF_TOUCH
         sliderDDRM_VCF_TOUCH.setSliderStyle (Slider::LinearVertical);
@@ -778,7 +778,7 @@ public:
         addAndMakeVisible (&sliderDDRM_VCF_TOUCH);
         sliderAttachmentDDRM_VCF_TOUCH.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_VCF_TOUCH", sliderDDRM_VCF_TOUCH));
         sliderDDRM_VCF_TOUCH.textFromValueFunction = [](double value) {
-            return String::formatted("Touch Response Sub Osc VCF Amount: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Touch Response Sub Osc VCF Amount: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_BR_LOW_KBRD
         sliderDDRM_BR_LOW_KBRD.setSliderStyle (Slider::LinearVertical);
@@ -788,7 +788,7 @@ public:
         addAndMakeVisible (&sliderDDRM_BR_LOW_KBRD);
         sliderAttachmentDDRM_BR_LOW_KBRD.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_BR_LOW_KBRD", sliderDDRM_BR_LOW_KBRD));
         sliderDDRM_BR_LOW_KBRD.textFromValueFunction = [](double value) {
-            return String::formatted("Brilliance Low: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Brilliance Low: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_BR_HIGH_KBRD
         sliderDDRM_BR_HIGH_KBRD.setSliderStyle (Slider::LinearVertical);
@@ -798,7 +798,7 @@ public:
         addAndMakeVisible (&sliderDDRM_BR_HIGH_KBRD);
         sliderAttachmentDDRM_BR_HIGH_KBRD.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_BR_HIGH_KBRD", sliderDDRM_BR_HIGH_KBRD));
         sliderDDRM_BR_HIGH_KBRD.textFromValueFunction = [](double value) {
-            return String::formatted("Brilliance High: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Brilliance High: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_LEV_LOW_KBRD
         sliderDDRM_LEV_LOW_KBRD.setSliderStyle (Slider::LinearVertical);
@@ -808,7 +808,7 @@ public:
         addAndMakeVisible (&sliderDDRM_LEV_LOW_KBRD);
         sliderAttachmentDDRM_LEV_LOW_KBRD.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_LEV_LOW_KBRD", sliderDDRM_LEV_LOW_KBRD));
         sliderDDRM_LEV_LOW_KBRD.textFromValueFunction = [](double value) {
-            return String::formatted("Level Low: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Level Low: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_LEV_HIGH_KBRD
         sliderDDRM_LEV_HIGH_KBRD.setSliderStyle (Slider::LinearVertical);
@@ -818,7 +818,7 @@ public:
         addAndMakeVisible (&sliderDDRM_LEV_HIGH_KBRD);
         sliderAttachmentDDRM_LEV_HIGH_KBRD.reset(new AudioProcessorValueTreeState::SliderAttachment (processor->parameters, "DDRM_LEV_HIGH_KBRD", sliderDDRM_LEV_HIGH_KBRD));
         sliderDDRM_LEV_HIGH_KBRD.textFromValueFunction = [](double value) {
-            return String::formatted("Level High: %.1f", 10.0 * (value / 127.0));
+            return String::formatted("Level High: %.1f", 10.0 - 10.0 * (value / 127.0));
         };
         // Slider DDRM_GLIDE_MODE_GLIDE
         sliderDDRM_GLIDE_MODE_GLIDE.setSliderStyle (Slider::LinearHorizontal);

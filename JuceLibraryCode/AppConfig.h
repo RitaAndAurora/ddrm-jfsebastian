@@ -47,6 +47,8 @@
 
 #define JUCE_USE_DARK_SPLASH_SCREEN 1
 
+#define JUCE_PROJUCER_VERSION 0x50405
+
 //==============================================================================
 #define JUCE_MODULE_AVAILABLE_juce_audio_basics             1
 #define JUCE_MODULE_AVAILABLE_juce_audio_devices            1
@@ -311,7 +313,7 @@
 // Audio plugin settings..
 
 #ifndef  JucePlugin_Build_VST
- #define JucePlugin_Build_VST              0
+ #define JucePlugin_Build_VST              1
 #endif
 #ifndef  JucePlugin_Build_VST3
  #define JucePlugin_Build_VST3             1
