@@ -83,6 +83,8 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
  * Corrected value shown of inverted controls in the performance section so these show 0.0 when set at the top and 10.0 when set at the bottom.
  * Added VST2 compatibility.
  * Added option to scale UI at 70%, 80%, 90% and 100% to better fit in smaller screens. Use the `Zoom...` button in the lower right corener of J.F. Sebastian's window.
+ * Compensate for bug in DDRM firmware which makes SQR and SAW buttons on channel II to send wrong MIDI CC numbers. This caused some problems when MIDI IN was enabled in J.F. Sebastian which now have been fixed.
+ * Fix memory leak in handling MIDI interfaces (nerd stuff, not very relevant for end users)
 
 
 
