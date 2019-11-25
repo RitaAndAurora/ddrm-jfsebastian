@@ -8,7 +8,7 @@
 
 #pragma once
 
-#define VERSION "1.0"  // If changing this, remember to change it on Projucer as well
+#define VERSION "1.1"  // If changing this, remember to change it on Projucer as well
 #define MORE_INFO_URL "https://ritaandaurora.github.io/ddrm-jfsebastian"
 #define DONATE_URL "https://ritaandaurora.github.io/ddrm-jfsebastian/donate"
 #define SOURCE_CODE_URL "https://github.com/ritaandaurora/ddrm-jfsebastian"
