@@ -880,8 +880,22 @@ void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source,
     {
         if (m.isController())
         {
-            uint8 ccNumber = m.getControllerNumber();
-            uint8 ccValue = m.getControllerValue();
+            int ccNumber = m.getControllerNumber();
+            int ccValue = m.getControllerValue();
+            
+            /* There is bug with MIDI implementation of SQR and SAW switches in DDRM.
+             The problem is that these controls react to MIDI CC 70 and 71 but send MIDI CC 71
+             and 70 (are inverted in MIDI in/out). The code below fixes this issue and should be
+             changed once this is fixed in DDRM firmware.
+             More details here: https://github.com/ffont/official-ddrm-issue-tracker/issues/39
+             
+             */
+            
+            if (ccNumber == 70){
+                ccNumber = 71;
+            } else if (ccNumber == 71){
+                ccNumber = 70;
+            }
             
             /* Only process MIDI input message if a certain amount of time has passed since
              last time a MIDI CC message was sent from this app to the same CC number. This
@@ -897,7 +911,7 @@ void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source,
              */
             
             int64 currentTime = Time::getCurrentTime().toMilliseconds();
-            int64 lastMessageSentToSameCCTime = timestampsLastCCSent[(int)ccNumber];
+            int64 lastMessageSentToSameCCTime = timestampsLastCCSent[ccNumber];
             if ((currentTime - lastMessageSentToSameCCTime) > MIDI_IN_SAME_CC_TIME_THRESHOLD_MS){
                 #if JUCE_DEBUG
                     if (LOG_MIDI_IN == 1){
