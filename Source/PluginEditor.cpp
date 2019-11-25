@@ -91,12 +91,11 @@ void DdrmtimbreSpaceAudioProcessorEditor::paint (Graphics& g)
 void DdrmtimbreSpaceAudioProcessorEditor::resized()
 {
     float scale = processor.uiScaleFactor;
-    std::cout << "SCALE " << processor.uiScaleFactor << std::endl;
     
     float unitMargin = 10 * scale;
     float unitRowHeight = 20 * scale;
     float fullWidth = 800 * scale;
-    float footerWidth = 150 * scale;
+    float footerWidth = 170 * scale;
     
     float headerHeight = 1.5 * unitRowHeight;
     float midiSettingsHeight = 1 * unitRowHeight;

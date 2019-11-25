@@ -56,10 +56,13 @@ public:
     
     void resized () override
     {
-        float deviceSelectorWidth = 150;
-        float channelSelectorWidth = 60;
-        float unitMargin = 10;
-        float inOutSeparator = 30;
+        float deviceSelectorWidth = getWidth() * 150/800;
+        float channelSelectorWidth = getWidth() * 60/800;
+        if (processor->uiScaleFactor < 0.85){
+             channelSelectorWidth = getWidth() * 80/800;  // For small ui scale, make selector wider in proportion
+        }
+        float unitMargin = getWidth() * 10/800;
+        float inOutSeparator = getWidth() * 30/800;
         midiInputList.setBounds (0, 0, deviceSelectorWidth, getHeight());
         midiInputChannelList.setBounds (deviceSelectorWidth + unitMargin, 0, channelSelectorWidth, getHeight());
         midiOutputList.setBounds (deviceSelectorWidth + channelSelectorWidth + 2 * unitMargin + inOutSeparator, 0, deviceSelectorWidth, getHeight());

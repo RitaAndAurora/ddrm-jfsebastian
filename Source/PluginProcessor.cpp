@@ -460,8 +460,6 @@ DdrmtimbreSpaceAudioProcessor::DdrmtimbreSpaceAudioProcessor()
     
     // Trigger load default state in processor
     setDefaultState();
-    
-    setUIScaleFactor(0.75); // DEBUGGING Set scacle factor to less than 1.0 (will be removed at release time)
 }
 
 DdrmtimbreSpaceAudioProcessor::~DdrmtimbreSpaceAudioProcessor()

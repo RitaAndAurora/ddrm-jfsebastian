@@ -49,15 +49,19 @@ public:
         loadedFileLabel.setJustificationType (Justification::left);
         loadedFileLabel.setText("-", dontSendNotification);
         addAndMakeVisible (loadedFileLabel);
-        
+                
+        customLookAndFeelSmallerFont.defaultFontSize = 11.0;
+
         nextPresetButton.addListener (this);
         nextPresetButton.setButtonText(">");
         nextPresetButton.setEnabled(false);
+        nextPresetButton.setLookAndFeel(&customLookAndFeelSmallerFont);
         addAndMakeVisible (nextPresetButton);
         
         previousPresetButton.addListener (this);
         previousPresetButton.setButtonText("<");
         previousPresetButton.setEnabled(false);
+        previousPresetButton.setLookAndFeel(&customLookAndFeelSmallerFont);
         addAndMakeVisible (previousPresetButton);
         
         presetNameLabel.setJustificationType (Justification::centred);
@@ -111,12 +115,12 @@ public:
     
     void resized () override
     {
-        float unitMargin = 10;
-        float fileNameLabelWidth = 120;
-        float presetNameLabelWidth = 45;
-        float defaultButtonWidth = 110;
-        float nextPrevButtonWidth = 22;
-        float saveBankLocationButtonWidth = 150;
+        float unitMargin = getWidth() * 10/800;
+        float fileNameLabelWidth = getWidth() * 120/800;
+        float presetNameLabelWidth = getWidth() * 45/800;
+        float defaultButtonWidth = getWidth() * 110/800;
+        float nextPrevButtonWidth = getWidth() * 22/800;
+        float saveBankLocationButtonWidth = getWidth() * 150/800;
         
         loadFileButton.setBounds (0, 0, defaultButtonWidth, getHeight());
         loadedFileLabel.setBounds (defaultButtonWidth + unitMargin, 0, fileNameLabelWidth, getHeight());
@@ -252,6 +256,7 @@ private:
     DdrmtimbreSpaceAudioProcessor* processor;
     
     CustomLookAndFeel customLookAndFeel;
+    CustomLookAndFeel customLookAndFeelSmallerFont;  // Needed for the next/previous preset buttons to show properly on smaller scales
     
     TextButton loadFileButton;
     Label loadedFileLabel;

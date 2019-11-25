@@ -60,10 +60,10 @@ public:
     
     void resized () override
     {
-        float buttonWidthShort = 80.0;
-        float buttonWidthLong = 120.0;
-        float buttonHeight = 20.0;
-        float margin = 10.0;
+        float buttonWidthShort = getWidth() * 80/800;
+        float buttonWidthLong = getWidth() * 120/800;
+        float buttonHeight = getHeight();
+        float margin = getWidth() * 10/800;
         importButton.setBounds (0, 0, buttonWidthShort, buttonHeight);
         saveButton.setBounds (1 * (buttonWidthShort + margin), 0, buttonWidthShort, buttonHeight);
         copyButton.setBounds (2 * (buttonWidthShort + margin), 0, buttonWidthShort, buttonHeight);
