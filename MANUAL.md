@@ -82,6 +82,7 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
  * Improved labeling of some controls so A, D, S, R don't get confused in the plugin parameter list shown by plugin hosts.
  * Corrected value shown of inverted controls in the performance section so these show 0.0 when set at the top and 10.0 when set at the bottom.
  * Added VST2 compatibility.
+ * Added option to scale UI at 70%, 80%, 90% and 100% to better fit in smaller screens. Use the `Zoom...` button in the lower right corener of J.F. Sebastian's window.
 
 
 
