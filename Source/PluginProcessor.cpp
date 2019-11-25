@@ -468,6 +468,9 @@ DdrmtimbreSpaceAudioProcessor::~DdrmtimbreSpaceAudioProcessor()
         midiInput.get()->stop();
     }
     
+    midiInput.reset();
+    midiOutput.reset();
+
     // De-register action listeners
     timbreSpaceEngine->removeActionListener(this);
     ddrmInterface->removeActionListener(this);
@@ -916,17 +919,17 @@ void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source,
 
 //==============================================================================
 
-void DdrmtimbreSpaceAudioProcessor::setMidiInputDevice (int index)
+void DdrmtimbreSpaceAudioProcessor::setMidiInputDevice (const String& deviceIdentifier)
 {
     if (midiInput.get() != nullptr){
         midiInput.get()->stop();
     }
-    if (index == -1){
-        // If index is -1, disable midi input
-        midiInput.release();
+    if (deviceIdentifier == "-"){
+        // If identifier is "-", disable midi input
+        midiInput.reset();
     } else {
-        midiInput.release();
-        midiInput = MidiInput::openDevice(index, this);
+        midiInput.reset();
+        midiInput = MidiInput::openDevice(deviceIdentifier, this);
     }
     sendActionMessage(ACTION_UPDATED_MIDI_DEVICE_SETTINGS);
     if (midiInput.get() != nullptr){
@@ -934,40 +937,40 @@ void DdrmtimbreSpaceAudioProcessor::setMidiInputDevice (int index)
     }
 }
 
-void DdrmtimbreSpaceAudioProcessor::setMidiOutputDevice (int index)
+void DdrmtimbreSpaceAudioProcessor::setMidiOutputDevice (const String& deviceIdentifier)
 {
-    if (index == -1){
-        // If index is -1, disable midi output
-        midiOutput.release();
+    if (deviceIdentifier == "-"){
+        // If identifier is "-", disable midi output
+        midiOutput.reset();
     } else {
-        midiOutput.release();
-        midiOutput = MidiOutput::openDevice(index);
+        midiOutput.reset();
+        midiOutput = MidiOutput::openDevice(deviceIdentifier);
     }
     sendActionMessage(ACTION_UPDATED_MIDI_DEVICE_SETTINGS);
 }
 
 void DdrmtimbreSpaceAudioProcessor::setMidiInputDeviceByName (const String& deviceName)
 {
-    int deviceIdx = -1;
-    auto midiInputs = MidiInput::getDevices();
+    String deviceIdentifier = "-";
+    auto midiInputs = MidiInput::getAvailableDevices();
     for (int i=0; i<midiInputs.size(); i++){
-        if (midiInputs[i] == deviceName){
-            deviceIdx = i;
+        if (midiInputs[i].name == deviceName){
+            deviceIdentifier = midiInputs[i].identifier;
         }
     }
-    setMidiInputDevice(deviceIdx);
+    setMidiInputDevice(deviceIdentifier);
 }
 
 void DdrmtimbreSpaceAudioProcessor::setMidiOutputDeviceByName (const String& deviceName)
 {
-    int deviceIdx = -1;
-    auto midiOutputs = MidiOutput::getDevices();
+    String deviceIdentifier = "-";
+    auto midiOutputs = MidiOutput::getAvailableDevices();
     for (int i=0; i<midiOutputs.size(); i++){
-        if (midiOutputs[i] == deviceName){
-            deviceIdx = i;
+        if (midiOutputs[i].name == deviceName){
+            deviceIdentifier = midiOutputs[i].identifier;
         }
     }
-    setMidiOutputDevice(deviceIdx);
+    setMidiOutputDevice(deviceIdentifier);
 }
 
 void DdrmtimbreSpaceAudioProcessor::setMidiInputChannel (int channel)

@@ -77,9 +77,9 @@ public:
     int midiOutputChannel;  // Range 1-16
     int midiInputChannel;  // Range 1-16
     void handleIncomingMidiMessage(MidiInput* source,const MidiMessage& m) override;
-    void setMidiInputDevice (int index);
+    void setMidiInputDevice (const String& deviceIdentifier);
     void setMidiInputDeviceByName (const String& deviceName);
-    void setMidiOutputDevice (int index);
+    void setMidiOutputDevice (const String& deviceIdentifier);
     void setMidiOutputDeviceByName (const String& deviceName);
     void setMidiInputChannel (int channel);
     void setMidiOutputChannel (int channel);

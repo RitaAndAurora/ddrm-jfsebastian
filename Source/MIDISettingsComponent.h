@@ -45,8 +45,6 @@ public:
         processor->addActionListener(this);  // Receive messages from processor
         
         // Build UI objects
-        currentMidiInDevices = StringArray("-");
-        currentMidiOutDevices = StringArray("-");
         buildMidiChannelLists();
         refreshMidiInputOutputLists();
         if (REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS > 0){
@@ -96,7 +94,7 @@ public:
     void refreshMidiInputOutputLists ()
     {
         // Update MIDI in list (if devices changed)
-        StringArray midiInDevices = MidiInput::getDevices();
+        Array<MidiDeviceInfo> midiInDevices = MidiInput::getAvailableDevices();
         bool midiInHasChanged = midiInDevices != currentMidiInDevices;
         if (midiInHasChanged){
             currentMidiInDevices = midiInDevices;
@@ -104,14 +102,18 @@ public:
             midiInputList.addItem ("No MIDI input", 1);
             midiInputList.addSeparator();
             
+            StringArray midiInDevicesNames = {};
+            for (int i=0; i<midiInDevices.size(); i++) {
+                midiInDevicesNames.add(midiInDevices[i].name);
+            }
             if (midiInDevices.size() > 0) {
-                midiInputList.addItemList (midiInDevices, 2);
+                midiInputList.addItemList (midiInDevicesNames, 2);
                 midiInputList.onChange = [this] {  processor->setMidiInputDeviceByName (midiInputList.getItemText(midiInputList.getSelectedItemIndex())); };
             }
         }
         
         // Update MIDI output list (if devices changed)
-        StringArray midiOutDevices = MidiOutput::getDevices();
+        Array<MidiDeviceInfo> midiOutDevices = MidiOutput::getAvailableDevices();
         bool midiOutHasChanged = midiOutDevices != currentMidiOutDevices;
         if (midiOutHasChanged){
             currentMidiOutDevices = midiOutDevices;
@@ -119,8 +121,12 @@ public:
             midiOutputList.addItem ("No MIDI output", 1);
             midiOutputList.addSeparator();
             
+            StringArray midiOutDevicesNames = {};
+            for (int i=0; i<midiOutDevices.size(); i++) {
+                midiOutDevicesNames.add(midiOutDevices[i].name);
+            }
             if (midiOutDevices.size() > 0){
-                midiOutputList.addItemList (midiOutDevices, 2);
+                midiOutputList.addItemList (midiOutDevicesNames, 2);
                 midiOutputList.onChange = [this] { processor->setMidiOutputDeviceByName (midiOutputList.getItemText(midiOutputList.getSelectedItemIndex())); };
             }
         }
@@ -191,8 +197,8 @@ private:
     ComboBox midiOutputList;
     ComboBox midiInputChannelList;
     ComboBox midiOutputChannelList;
-    StringArray currentMidiInDevices;
-    StringArray currentMidiOutDevices;
+    Array<MidiDeviceInfo> currentMidiInDevices;
+    Array<MidiDeviceInfo> currentMidiOutDevices;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MIDISettingsComponent);
 };
