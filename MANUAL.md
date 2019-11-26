@@ -56,7 +56,7 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
  *windows*
  
   * Stand-alone app: `c:\Program Files (x86)\JFSebastian\`
-  * VST2: `c:\Program Files (x86)\Common Files\VST\`
+  * VST2: `c:\Program Files (x86)\Common Files\VST2\`
   * VST3: `c:\Program Files (x86)\Common Files\VST3\`
 
  3. Run the stand-aloone app from the directory it has been installed or either open your favorite DAW. J.F. Sebastian should appear in the list of available plugins. If that is not the casem you might need to trigger a *re-scanning* of the plugins folder by the DAW. If after doing that J.F. Sebastian still does not appear, make sure your DAW is looking for plugins in the default locations listed above.
