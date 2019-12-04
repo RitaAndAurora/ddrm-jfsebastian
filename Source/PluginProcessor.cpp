@@ -629,6 +629,7 @@ void DdrmtimbreSpaceAudioProcessor::getStateInformation (MemoryBlock& destData)
     }
     state.setProperty(STATE_MIDI_INPUT_CHANNEL, midiInputChannel, nullptr);
     state.setProperty(STATE_MIDI_OUTPUT_CHANNEL, midiOutputChannel, nullptr);
+    state.setProperty(STATE_MIDI_AUTOSCAN_ENABLED, midiDevicesAutoScanEnabled, nullptr);
     
     // Add UI scale factor to state
     state.setProperty(STATE_UI_SCALE_FACTOR, uiScaleFactor, nullptr);
@@ -700,6 +701,7 @@ void DdrmtimbreSpaceAudioProcessor::setStateFromXml (XmlElement* xmlState)
         String midiInputDeviceName = xmlState->getStringAttribute(STATE_MIDI_INPUT_DEVICE_NAME);
         setMidiInputDeviceByName(midiInputDeviceName);
     }
+    
     if (xmlState->hasAttribute (STATE_MIDI_OUTPUT_DEVICE_NAME)){
         String midiOutputDeviceName = xmlState->getStringAttribute(STATE_MIDI_OUTPUT_DEVICE_NAME);
         setMidiOutputDeviceByName(midiOutputDeviceName);
@@ -713,6 +715,11 @@ void DdrmtimbreSpaceAudioProcessor::setStateFromXml (XmlElement* xmlState)
     if (xmlState->hasAttribute (STATE_MIDI_OUTPUT_CHANNEL)){
         int channel = xmlState->getStringAttribute(STATE_MIDI_OUTPUT_CHANNEL).getIntValue();
         setMidiOutputChannel(channel);
+    }
+    
+    if (xmlState->hasAttribute (STATE_MIDI_AUTOSCAN_ENABLED)){
+        bool savedMidiAutoScanEnabled = xmlState->getBoolAttribute(STATE_MIDI_AUTOSCAN_ENABLED);
+        setMidiDevicesAutoScan(savedMidiAutoScanEnabled);
     }
     
     // Load ui scale factor
@@ -872,6 +879,25 @@ void DdrmtimbreSpaceAudioProcessor::updateSpacePointAudioParametersFromMouseEven
     parameters.getParameter(SPACE_Y_PARAMETER_ID)->endChangeGesture();
     
     timbreSpaceEngine->selectPointInSpace(x, y);  // This will in its turn tell the processor to load new preset
+}
+
+void DdrmtimbreSpaceAudioProcessor::setMidiDevicesAutoScan (bool enabled)
+{
+    if (midiDevicesAutoScanEnabled != enabled){
+        midiDevicesAutoScanEnabled = enabled;
+        if (midiDevicesAutoScanEnabled){
+            // If it was just enabled, send action message that will enable timer in MIDISettingsComponent
+            sendActionMessage(ACTION_MIDI_ENABLE_AUTO_SCAN);
+        } else {
+            // If it was just disabled, send action message that will disable timer in MIDISettingsComponent
+            sendActionMessage(ACTION_MIDI_DISABLE_AUTO_SCAN);
+        }
+    };
+}
+
+void DdrmtimbreSpaceAudioProcessor::triggerMidiDevicesScan ()
+{
+    sendActionMessage(ACTION_MIDI_TRIGGER_DEVICE_SCAN);
 }
 
 void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source, const MidiMessage& m)

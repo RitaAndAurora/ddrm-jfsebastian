@@ -47,8 +47,12 @@ public:
         // Build UI objects
         buildMidiChannelLists();
         refreshMidiInputOutputLists();
-        if (REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS > 0){
-            startTimer(REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS); // Start timer to check for new MIDI devices
+        
+        // Start auto-scan timer
+        if (processor->midiDevicesAutoScanEnabled){
+            if (REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS > 0){
+                startTimer(REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS); // Start timer to check for new MIDI devices
+            }
         }
     }
     
@@ -74,6 +78,20 @@ public:
             updateSelectedMidiDevices();
         }
         else if (message.startsWith(String(ACTION_REFRESH_MIDI_DEVICE_LISTS)))
+        {
+            refreshMidiInputOutputLists();
+        }
+        else if (message.startsWith(String(ACTION_MIDI_ENABLE_AUTO_SCAN)))
+        {
+            if (REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS > 0){
+                startTimer(REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS);
+            }
+        }
+        else if (message.startsWith(String(ACTION_MIDI_DISABLE_AUTO_SCAN)))
+        {
+            stopTimer();
+        }
+        else if (message.startsWith(String(ACTION_MIDI_TRIGGER_DEVICE_SCAN)))
         {
             refreshMidiInputOutputLists();
         }

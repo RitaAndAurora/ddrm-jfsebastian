@@ -72,6 +72,9 @@ public:
     AudioProcessorValueTreeState parameters;
     
     // MIDI input/output
+    bool midiDevicesAutoScanEnabled = true;
+    void setMidiDevicesAutoScan (bool enabled);
+    void triggerMidiDevicesScan ();
     std::unique_ptr<MidiOutput> midiOutput;
     std::unique_ptr<MidiInput> midiInput;
     int midiOutputChannel;  // Range 1-16

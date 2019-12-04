@@ -28,9 +28,9 @@ public:
         aboutButton.setButtonText("About");
         addAndMakeVisible (aboutButton);
         
-        zoomButton.addListener (this);
-        zoomButton.setButtonText("Zoom...");
-        addAndMakeVisible (zoomButton);
+        settingsButton.addListener (this);
+        settingsButton.setButtonText("Settings...");
+        addAndMakeVisible (settingsButton);
     }
     
     ~FooterComponent ()
@@ -54,7 +54,7 @@ public:
         aboutButton.setBounds (getWidth() - buttonWidth, 0, buttonWidth, buttonHeight);
         about.setBounds (0, 0, 400, 300);
         
-        zoomButton.setBounds (getWidth() - 2.05 * buttonWidth, 0, buttonWidth, buttonHeight);
+        settingsButton.setBounds (getWidth() - 2.05 * buttonWidth, 0, buttonWidth, buttonHeight);
     }
     
     void actionListenerCallback (const String &message) override
@@ -87,15 +87,28 @@ public:
                 URL(DONATE_URL).launchInDefaultBrowser();
             }
         }
-        else if (button == &zoomButton)
+        else if (button == &settingsButton)
         {
+            
+            PopupMenu zoomSubMenu;
+            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_70, "70%");
+            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_80, "80%");
+            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_90, "90%");
+            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_100, "100%");
+            
+            PopupMenu midiDevicesSubMenu;
+            bool autoScanTicked = processor->midiDevicesAutoScanEnabled;
+            int autoScanMenuOptionID = processor->midiDevicesAutoScanEnabled ? MENU_OPTION_MIDI_SET_AUTOSCAN_OFF : MENU_OPTION_MIDI_SET_AUTOSCAN_ON;
+            bool scanNowEnabled = !processor->midiDevicesAutoScanEnabled;
+            midiDevicesSubMenu.addItem (autoScanMenuOptionID, "Auto-scan MIDI devices", true, autoScanTicked);
+            midiDevicesSubMenu.addItem (MENU_OPTION_MIDI_SCAN_NOW, "Scan devices now", scanNowEnabled, false);
+            
             PopupMenu m;
             m.setLookAndFeel(&customLookAndFeel);
-            m.addItem (MENU_OPTION_ID_ZOOM_70, "70%");
-            m.addItem (MENU_OPTION_ID_ZOOM_80, "80%");
-            m.addItem (MENU_OPTION_ID_ZOOM_90, "90%");
-            m.addItem (MENU_OPTION_ID_ZOOM_100, "100%");
+            m.addSubMenu ("Zoom", zoomSubMenu);
+            m.addSubMenu ("MIDI device scan", midiDevicesSubMenu);
             selectedActionID = m.showAt(button);
+            
         }
         
         if (selectedActionID > 0){
@@ -117,6 +130,12 @@ public:
             processor->setUIScaleFactor(1.0);
         } else if (actionID == MENU_OPTION_ID_ZOOM_75){
             processor->setUIScaleFactor(0.75);
+        } else if (actionID == MENU_OPTION_MIDI_SET_AUTOSCAN_OFF){
+            processor->setMidiDevicesAutoScan(false);
+        } else if (actionID == MENU_OPTION_MIDI_SET_AUTOSCAN_ON){
+            processor->setMidiDevicesAutoScan(true);
+        } else if (actionID == MENU_OPTION_MIDI_SCAN_NOW){
+            processor->triggerMidiDevicesScan();
         }
     }
     
@@ -127,7 +146,7 @@ private:
     
     AboutComponent about;
     TextButton aboutButton;
-    TextButton zoomButton;
+    TextButton settingsButton;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FooterComponent);
 };
