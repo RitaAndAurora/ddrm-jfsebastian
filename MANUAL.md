@@ -81,10 +81,11 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
 
  * Improved labeling of some controls so A, D, S, R don't get confused in the plugin parameter list shown by plugin hosts.
  * Corrected value shown of inverted controls in the performance section so these show 0.0 when set at the top and 10.0 when set at the bottom.
- * Added VST2 compatibility.
+ * Added VST2 compatibility for Windows and macOS.
  * Added option to scale UI at 70%, 80%, 90% and 100% to better fit in smaller screens. Use the `Zoom...` button in the lower right corener of J.F. Sebastian's window.
+ * Added option to turn on and off auto-scanning of MIDI devices. Auto-scanning of MIDI devices seemed to be problematic in some setups and would automatically diconnect DDRM USB device when selected in MIDI OUT. Now this feature can be disabled so that device does not get disconnected.
  * Compensate for bug in DDRM firmware which makes SQR and SAW buttons on channel II to send wrong MIDI CC numbers. This caused some problems when MIDI IN was enabled in J.F. Sebastian which now have been fixed.
- * Fix memory leak in handling MIDI interfaces (nerd stuff, not very relevant for end users)
+ * Fix memory leak in handling MIDI interfaces (nerd stuff, not very relevant for end users).
 
 
 
@@ -118,6 +119,13 @@ To configure MIDI output please select the device from the dropdown menu that wi
 Note that J.F. Sebastian only sends MIDI *control change* messages to the DDRM and does not handle any other kind of MIDI data. To send *note on/off* messages to the DDRM you need to configure the routing independently of J.F. Sebastian.
 
 Note also that for J.F. Sebastian to work, **DDRM needs to have "CC receive" option enabled**. You'll find that option in the MIDI settings menu of DDRM.
+
+
+#### 2.2.3 Automatic scanning of MIDI devices
+
+J.F. Sebastian will continuously check if new MIDI devices are connected or disconnected from your computer to updated the options of the lists of available devices for MIDI input and output. This allows to connect MIDI devices while J.F. Sebastian is already runnning and have them avialalbe in the menus. However, it has been reported that in some situations this feature causes devices to disconnect and not work properly with J.F. Sebastian. For this reason, as of version 1.1 we introduced a new feature that will allow to **enable or disable the automatic scanning of MIDI devices**.
+
+To enable or disable automatic scanning of midi devices click on the `Settings...` button on the lower-right corner of J.F. Sebastian, and choose the `MIDI device scan` option. An option named `Auto-scan MIDI devices` will appear ticked (&#10003;) if automatic scanning is enabled. Click on that option to toggle it. Additionally, only when `Auto-scan MIDI devices` is disabled, an extra option named `Scan devices now` will appear enabled. Click on that to trigger a *one-time* update of the currently available MIDI devices.
 
 
 ### 2.3 Bank file loader
@@ -226,6 +234,11 @@ J.F. Sebastian incorporates a number of features to **edit and manage the slider
    *  `Channel I/II`: send only the values of the selected channel.
 
 
+### 2.8 UI size
+
+As of version 1.1, J.F. Sebastian incorporates an option to adjust the size of the UI to match smaller screens. You can adjust the size clicking in the `Settings...` button in the lower-right corner of J.F. Sebastian and selecting the `Zoom` sub-menu. Available options are 70%, 80%, 90% and 100% of the original size. The zoom preference is stored togeether with other J.F. Sebastian properties to the preference is remembered in different runs of the app both running as stand-alone or as a plugin.
+
+
 ## 3. Known bugs and limitations
 
 What follows is a list of known J.F. Sebastian bugs and limitations of the software. Please, for **bug reports** and **feature requests** visit [https://github.com/ritaandaurora/ddrm-jfsebastian/issues](https://github.com/ritaandaurora/ddrm-jfsebastian/issues).
@@ -238,7 +251,9 @@ What follows is a list of known J.F. Sebastian bugs and limitations of the softw
 
  * DDRM is very sensitive to MIDI in-out loops and MIDI control might not work properly if the messages that DDRM sends are put back into its input. J.F. Sebastian avoid creating such loops when both MIDI input and MIDI output are configured, but it can easily happen (it indeed happened to me!) that a feedback loop is created by mistake in the DAW. If you observe strange behaviour in J.F. Sebastian controlling DDRM (specially if some buttons in the tone selector section do not seem to work), **make sure you have not accidentally created a MIDI feedback loop**.   
 
- * When using J.F. Sebastian in stand-alone mode, it could happen that a **warning is displayed about potential audio feedback loops**. This is can be solved by clicking on the `Settings...` button that will appear in the warning and unticking the *Mute audio input* checkbox. J.F. Sebastian will remember this choice so the warning is not displayed again. This is a bug that will be addressed in future updates of J.F. Sebastian as J.F. Sebastian uses no audio and the warning should never appear.
+ * When using J.F. Sebastian in stand-alone mode, it could happen that a **warning is displayed about potential audio feedback loops**. This is can be solved by clicking on the `Settings...` button that will appear next to the warning and unticking the *Mute audio input* checkbox. J.F. Sebastian will remember this choice so the warning is not displayed again. This is a bug that will be addressed in future updates of J.F. Sebastian as J.F. Sebastian uses no audio and the warning should never appear.
+
+ * In some particular setups, **Deckard's Dream USB interface can't be selected in MIDI IN/OUT settings**. The device is correctly listed but when selected it gets unselected again. This is because of the automatic scanning of MIDI devices not working properly in some setups. As of version 1.1, you can turn of automatic scanning of MIDI devices to avoid this problem. To enable/disable automatic scanning of MIDI devices, click on the `Settings...` button on the lower-right corner of J.F. Sebastian.
 
 
 ## 4. Licensing
