@@ -260,7 +260,7 @@ What follows is a list of known J.F. Sebastian bugs and limitations of the softw
  * Some users reported **issues using J.F. Sebastian as a plugin in Reaper and under Windows**. This is because MIDI devices are "locked" by the Reaper process and J.F. Sebastian can't talk directly to DDRM. This can be fixed by configuring J.F. Sebastian to `Run as > Separate process` as in the screenshot below. Many thanks to David Berndsen for the tip (and the screenshot)!
  
 <p align="center">
-<img src="docs/jf_settings_reaper_windows.png" width="500px" />
+<img src="docs/jf_settings_reaper_windows.png" width="800px" />
 </p>
 
 
