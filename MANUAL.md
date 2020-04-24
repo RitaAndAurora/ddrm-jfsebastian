@@ -256,6 +256,12 @@ What follows is a list of known J.F. Sebastian bugs and limitations of the softw
  * When using J.F. Sebastian in stand-alone mode, it could happen that a **warning is displayed about potential audio feedback loops**. This is can be solved by clicking on the `Settings...` button that will appear next to the warning and unticking the *Mute audio input* checkbox. J.F. Sebastian will remember this choice so the warning is not displayed again. This is a bug that will be addressed in future updates of J.F. Sebastian as J.F. Sebastian uses no audio and the warning should never appear.
 
  * In some particular setups, **Deckard's Dream USB interface can't be selected in MIDI IN/OUT settings**. The device is correctly listed but when selected it gets unselected again. This is because of the automatic scanning of MIDI devices not working properly in some setups. As of version 1.1, you can turn of automatic scanning of MIDI devices to avoid this problem. To enable/disable automatic scanning of MIDI devices, click on the `Settings...` button on the lower-right corner of J.F. Sebastian.
+ 
+ * Some users reported **issues using J.F. Sebastian as a plugin in Reaper and under Windows**. This is because MIDI devices are "locked" by the Reaper process and J.F. Sebastian can't talk directly to DDRM. This can be fixed by configuring J.F. Sebastian to `Run as > Separate process` as in the screenshot below. Many thanks to David Berndsen for the tip (and the screenshot)!
+ 
+<p align="center">
+<img src="docs/jf_settings_reaper_windows.png" width="500px" />
+</p>
 
 
 ## 4. Licensing
