@@ -989,6 +989,7 @@ void DdrmtimbreSpaceAudioProcessor::setMidiOutputDevice (const String& deviceIde
     sendActionMessage(ACTION_UPDATED_MIDI_DEVICE_SETTINGS);
 }
 
+
 void DdrmtimbreSpaceAudioProcessor::setMidiInputDeviceByName (const String& deviceName)
 {
     String deviceIdentifier = "-";
@@ -1000,6 +1001,7 @@ void DdrmtimbreSpaceAudioProcessor::setMidiInputDeviceByName (const String& devi
     }
     setMidiInputDevice(deviceIdentifier);
 }
+
 
 void DdrmtimbreSpaceAudioProcessor::setMidiOutputDeviceByName (const String& deviceName)
 {
@@ -1013,6 +1015,7 @@ void DdrmtimbreSpaceAudioProcessor::setMidiOutputDeviceByName (const String& dev
     setMidiOutputDevice(deviceIdentifier);
 }
 
+
 void DdrmtimbreSpaceAudioProcessor::setMidiInputChannel (int channel)
 {
     if (channel < 1){
@@ -1023,6 +1026,7 @@ void DdrmtimbreSpaceAudioProcessor::setMidiInputChannel (int channel)
     midiInputChannel = channel;
     sendActionMessage(ACTION_UPDATED_MIDI_DEVICE_SETTINGS);
 }
+
 
 void DdrmtimbreSpaceAudioProcessor::setMidiOutputChannel (int channel)
 {

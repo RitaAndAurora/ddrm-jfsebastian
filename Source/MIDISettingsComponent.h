@@ -109,6 +109,26 @@ public:
         midiOutputChannelList.onChange = [this] {  processor->setMidiOutputChannel(midiOutputChannelList.getSelectedItemIndex() + 1); };
     }
     
+    void setMidiOutputDeviceHelper(int midiOutputListSelectedIndex)
+    {
+        if (midiOutputListSelectedIndex <= 0){
+            processor->setMidiOutputDevice ("-");
+        } else{
+            String deviceID = currentMidiOutDevices[midiOutputList.getSelectedItemIndex() - 1].identifier;
+            processor->setMidiOutputDevice (deviceID);
+        }
+    }
+    
+    void setMidiInputDeviceHelper(int midiInputListSelectedIndex)
+    {
+        if (midiInputListSelectedIndex <= 0){
+            processor->setMidiInputDevice ("-");
+        } else{
+            String deviceID = currentMidiInDevices[midiInputList.getSelectedItemIndex() - 1].identifier;
+            processor->setMidiInputDevice (deviceID);
+        }
+    }
+    
     void refreshMidiInputOutputLists ()
     {
         // Update MIDI in list (if devices changed)
@@ -126,7 +146,7 @@ public:
             }
             if (midiInDevices.size() > 0) {
                 midiInputList.addItemList (midiInDevicesNames, 2);
-                midiInputList.onChange = [this] {  processor->setMidiInputDeviceByName (midiInputList.getItemText(midiInputList.getSelectedItemIndex())); };
+                midiInputList.onChange = [this] {setMidiInputDeviceHelper(midiInputList.getSelectedItemIndex()); };
             }
         }
         
@@ -145,7 +165,7 @@ public:
             }
             if (midiOutDevices.size() > 0){
                 midiOutputList.addItemList (midiOutDevicesNames, 2);
-                midiOutputList.onChange = [this] { processor->setMidiOutputDeviceByName (midiOutputList.getItemText(midiOutputList.getSelectedItemIndex())); };
+                midiOutputList.onChange = [this] {setMidiOutputDeviceHelper(midiOutputList.getSelectedItemIndex()); };
             }
         }
         
