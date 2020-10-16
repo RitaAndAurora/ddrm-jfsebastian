@@ -10,7 +10,7 @@ With J.F. Sebastian you can import DDRM bank files, edit patches and export them
 
 J.F. Sebastian also includes a *CS80-like tone selector* that allows you to use the original presetting system of the CS80 in the DDRM. Simply click on the buttons of the upper row and lower row to configure slider positions for channel I and II respectively.
 
-Check out [J.F. Sebatian's website](https://ritaandaurora.github.io/ddrm-jfsebastian/donate) for more information.
+Check out [J.F. Sebatian's website](https://ritaandaurora.github.io/ddrm-jfsebastian/) for more information.
 
 Check out the video below for an introduction to J.F. Sebastian and its features:
 
