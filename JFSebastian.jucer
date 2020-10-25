@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="ONyb0V" name="JFSebastian" projectType="audioplug" jucerVersion="5.4.7"
-              version="1.1" companyName="Rita &amp; Aurora" companyEmail="frederic.font@gmail.com"
+              version="1.2" companyName="Rita &amp; Aurora" companyEmail="frederic.font@gmail.com"
               pluginName="J.F. Sebastian" pluginManufacturerCode="RaAu" pluginCode="DDRA"
               pluginDesc="Explore the sonic possibilities of Deckard's Dream synthetizer in completely new ways"
               pluginVST3Category="Fx" bundleIdentifier="com.RaA.JFSebastian"
