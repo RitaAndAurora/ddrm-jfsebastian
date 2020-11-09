@@ -1,0 +1,3 @@
+[submodule "3rdParty/JUCE"]
+	path = 3rdParty/JUCE
+	url = https://github.com/juce-framework/JUCE
