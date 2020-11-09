@@ -21,19 +21,35 @@ Also check out this video that demonstrates the power of J.F. Sebastian in combi
 [![Deckard's Dream + J.F. Sebastian + Bitwig Studio modulators](docs/video2_img.png)](https://www.youtube.com/watch?v=bIjgPHNWfHA)
 
 
+## Download
+
+You'll find download links in the [J.F. Sebastian website](https://ritaandaurora.github.io/ddrm-jfsebastian/) and also in the [Releases](https://github.com/RitaAndAurora/ddrm-jfsebastian/releases) section of this code repository. Don't hesitate to report bugs or make suggestions using the tools in the [issues section](https://github.com/RitaAndAurora/ddrm-jfsebastian/issues).
+
+
+
 ## Help
 
-Please check the [user manual](MANUAL.md) for an explanation of the different features of J.F. Sebastian and how to use them.
+Please check the [user manual](MANUAL.md) for an explanation of the different features of J.F. Sebastian  and how to use it.
 
 
-## Building J.F. Sebastian
+## Build instructions (for developers)
 
-J.F. Sebastian uses the JUCE library and can be built following standard JUCE-building workflows. This repository includes project files for *XCode* (macOS) and *Visual Studio 2019* (windows) under the `Builds` folder. You can open the Projcer file `JFSebastian.jucer` to create exporters for other platforms or edit the configuration of current project files.
+J.F. Sebastian is implemented as a JUCE audio plug-in/standalone app and can be edited and built using standard JUCE workflows. To build J.F. Sebastian you need to
 
-Note that before compiling you'll need to update the `Header Search Paths` parameter in the Projucer project settings and replace (or add) your own absolute path to the `ddrm-jfsebastian/Includes/` folder. This is because apparently Projucer does not allow to define `Header Search Paths` relative to, e.g., the Projucer file and these need to be listed as absolute paths.
+1) checktout the code repository including submodules;
+
+```
+git clone https://github.com/RitaAndAurora/kijimi-babu-frik.git && cd kijimi-babu-frik.git && git submodule update --init
+```
+
+2) open the project files  for *XCode* (macOS) and *Visual Studio 2019* (windows) you'll find in the `Builds/` folder and compile the projects there.
+
+For advanced development options you'll need to open the `JFSebastian.jucer` using JUCE's Projucer, but this is not needed for basic edits and/or building J.F. Sebastian. Note that if you go that way you'll need a Projucer version which is compatible with J.F. Sebastian. The best way to go is to compile Projucer from the JUCE submodule in the code repository (i.e. use project files in `3rdParty/JUCE/extras/Projucer/Builds/`). 
+
+Note that to build VST2 version of the J.F. Sebastian wou'll need to have the VST2 SDK files and you'll need to edit `JFSebastian.jucer` with the location of your VST2 SDK.
 
 
-## Licensing
+## License
 
 J.F. Sebastian is released under the **GPLv3** open source software license (see [LICENSE](https://github.com/ritaandaurora/ddrm-jfsebastian/blob/master/LICENSE) file) with the code being available at  [https://github.com/ritaandaurora/ddrm-jfsebastian](https://github.com/ritaandaurora/ddrm-jfsebastian). J.F. Sebastian uses the following open source software libraries: 
 
