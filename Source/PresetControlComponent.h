@@ -168,16 +168,9 @@ public:
             loadBankFile();
         } else if (button == &saveToCurrentBankLocationButton)
         {
-            #if JUCE_WINDOWS
-                AlertWindow w ("Plase choose the location where the preset should be saved",
-                               "",
-                               AlertWindow::NoIcon);
-            #else
-                AlertWindow w ("",
-                               "Plase choose the location where the preset should be saved",
-                               AlertWindow::NoIcon);
-            #endif
-            
+            AlertWindow w ("Plase choose the location where the preset should be saved",
+                           "",
+                           AlertWindow::NoIcon);   
             w.setLookAndFeel(&customLookAndFeel);
             w.addTextEditor ("bankLocation", "", "");
             w.getTextEditor ("bankLocation")->setInputRestrictions(3, "0123456789");  // Make it numbers only

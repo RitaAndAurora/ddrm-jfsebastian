@@ -71,7 +71,6 @@ public:
             AlertWindow w ("J.F. Sebastian",
                            "a Dekcard's Dream companion tool made by Rita & Aurora, v" + String(VERSION),
                            AlertWindow::NoIcon);
-            
             w.setLookAndFeel(&customLookAndFeel);
             w.addCustomComponent(&about);
             w.addButton ("Ok", 0, KeyPress (KeyPress::returnKey, 0, 0));
