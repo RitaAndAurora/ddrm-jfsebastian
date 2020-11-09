@@ -240,31 +240,28 @@ public:
     
     SynthControlIdValuePairs getSynthControlIdValuePairsForInterpolatedPresets(PresetDistancePairsToInterpolate interpolationData)
     {
-        // Returns a list of pairs of DDRMSynthControl and the value they should take to load a new preset which is
-        // created after the interpolation of N presets and distances.
-        // Interpolation is done by computing a weight for each preset (based on distance) and linearly summing the
-        // each synth control vlaue of the preset multiplied by the weight.
+        // Returns a list of pairs of DDRMSynthControl and the value they should take to load a new preset which is created after the interpolation of N presets and distances.
+        // TODO: explain all this bit better. New implementation uses maths from https://codeplea.com/triangular-interpolation
         
-        // Calculate total distance and pre-fetch preset bytes
-        float totalDistance = 0.0;
+        // Pre-fetch preset bytes
         std::vector<DDRMPresetBytes> presetsBytes;
         for (int i=0;i<interpolationData.size(); i++){
-            totalDistance += interpolationData[i].presetDist;
             presetsBytes.push_back(presetBank.getPresetBytesAtIndex(interpolationData[i].presetIdx));
         }
         
-        // Interpolate synth control values
+        // Interpolate synth control values using the weights above
         SynthControlIdValuePairs idValuePairs;
         std::vector<String> controlIDs = getDDRMSynthControlIDsForTimbreSpace();
         for (int i=0; i < controlIDs.size(); i++){
             DDRMSynthControl* synthControl = getDDRMSynthControlWithID(controlIDs[i]);
             double newValue = 0.0;
             for (int j=0;j<interpolationData.size(); j++){
-                double normValuePreset = (double)synthControl->getNormValueFromPresetByteArray(presetsBytes[j]);
-                newValue += normValuePreset * (double)(interpolationData[j].presetDist/totalDistance);
+                double value = (double)synthControl->getNormValueFromPresetByteArray(presetsBytes[j]);
+                newValue += value * interpolationData[j].presetWeight;
             }
             idValuePairs.emplace_back(synthControl->getID(), newValue);
         }
+        
         return idValuePairs;
     }
     

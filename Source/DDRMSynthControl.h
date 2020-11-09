@@ -110,6 +110,18 @@ public:
         return -1.0;
     }
     
+    int getValueFromPresetByteArray(DDRMPresetBytes& bytes)
+    {
+        // This is to be used for getting the "unormalized" parameter value prepared for setting an audio parameter value
+        // or directly sending via MIDI message (either CC or sysex) to DDRM
+        // NOTE: this was ported directly from Babu Frik, might need to be revised
+        
+        if ((byteNumber > -1) && (byteNumber < DDRM_PRESET_NUM_BYTES)){
+            return (int)std::round(getNormValueFromPresetByteArray(bytes) * 255);
+        }
+        return 0;
+    }
+    
     double getNormValueFromVoiceByteArray(DDRMVoiceBytes& bytes)
     {
         // Return parameter value normalized [0.0-1.0] taking it from corresponding spot in DDRMPresetBytes array

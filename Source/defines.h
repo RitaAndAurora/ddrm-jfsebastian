@@ -26,6 +26,7 @@
 #define DDRM_VOICE_NUM_BYTES 26
 
 #define EMPTY_PRESET_SUM_THRESHOLD 5.0
+#define EMPTY_PRESET_SUM_UPPER_THRESHOLD 999999.0  // Not really used in JF Sebast
 
 #define ACTION_LOAD_TS_SOLUTION "ACTION_LOAD_TS_SOLUTION:"
 #define ACTION_SET_IS_COMPUTING_TS_SOLUTION "ACTION_SET_IS_COMPUTING_TS_SOLUTION:"
@@ -62,7 +63,7 @@
 #define SPACE_X_PARAMETER_NAME "Space X"
 #define SPACE_Y_PARAMETER_ID "space_y"
 #define SPACE_Y_PARAMETER_NAME "Space Y"
-#define MIN_MILLISECONDS_FOR_AUTOMATION_TIMBRE_SPACE_UPDATE 10
+#define MIN_MILLISECONDS_BETWEEN_TIMBRE_SPACE_UPDATES 10
 #define MIN_MILLISECONDS_FOR_MOUSE_DRAG_UPDATE 0
 
 #define CS80COLOR_YELLOW 0xFFfffa0c
@@ -168,6 +169,7 @@ typedef std::vector<std::vector<float>> timbreSpaceInputDataMatrix;
 struct PresetDistanceStruct {
     int presetIdx;
     float presetDist;
+    float presetWeight;  // Number that will be multiplied to the preset value to do the interpolation
 };
 typedef std::vector<PresetDistanceStruct> PresetDistancePairsToInterpolate;
 
