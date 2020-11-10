@@ -69,7 +69,7 @@ public:
         if (button == &aboutButton)
         {
             AlertWindow w ("J.F. Sebastian",
-                           "a Dekcard's Dream companion tool made by Rita & Aurora, v" + String(VERSION),
+                           "a Dekcard's Dream companion tool made by Rita & Aurora, v" + String(JucePlugin_VersionString),
                            AlertWindow::NoIcon);
             w.setLookAndFeel(&customLookAndFeel);
             w.addCustomComponent(&about);
