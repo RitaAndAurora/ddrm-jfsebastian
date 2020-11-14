@@ -15,8 +15,11 @@
 DdrmtimbreSpaceAudioProcessorEditor::DdrmtimbreSpaceAudioProcessorEditor (DdrmtimbreSpaceAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
+    customLookAndFeel.scaleFactor = processor.uiScaleFactor;
+    LookAndFeel::setDefaultLookAndFeel(&customLookAndFeel);
+    
+    // bg image
     bgImage = ImageCache::getFromMemory (BinaryData::UIBackground_png, BinaryData::UIBackground_pngSize);
-    setLookAndFeel(&customLookAndFeel);
     
     // Init header and footer components
     header.initialize(&processor);
@@ -158,6 +161,7 @@ void DdrmtimbreSpaceAudioProcessorEditor::actionListenerCallback (const String &
     if (message.startsWith(String(ACTION_LOG_PREFIX))){
         logMessageInUI(message.substring(String(ACTION_LOG_PREFIX).length()));
     } else if (message.startsWith(String(ACTION_UPDATE_UI_SCALE_FACTOR))){
+        customLookAndFeel.scaleFactor = processor.uiScaleFactor;
         resized();  // No need to update any local member here as scale factor is stored in processor
     }
 }

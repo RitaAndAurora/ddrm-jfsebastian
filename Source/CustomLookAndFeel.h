@@ -39,14 +39,14 @@ public:
     Font getTextButtonFont (TextButton&, int buttonHeight) override
     {
         Font font = Font(defaultFont);
-        font.setHeight(defaultFontSize);
+        font.setHeight(defaultFontSize * scaleFactor);
         return font;
     }
     
     Font getLabelFont (Label&) override
     {
         Font font = Font(defaultFont);
-        font.setHeight(defaultFontSize);
+        font.setHeight(defaultFontSize * scaleFactor);
         return font;
     }
     
@@ -72,6 +72,37 @@ public:
         return font;
     }
     
+    void drawComboBox (Graphics& g, int width, int height, bool,
+                       int, int, int, int, ComboBox& box) override
+    {
+        auto cornerSize = box.findParentComponentOfClass<ChoicePropertyComponent>() != nullptr ? 0.0f : 3.0f;
+        Rectangle<int> boxBounds (0, 0, width, height);
+
+        g.setColour (box.findColour (ComboBox::backgroundColourId));
+        g.fillRoundedRectangle (boxBounds.toFloat(), cornerSize);
+
+        g.setColour (box.findColour (ComboBox::outlineColourId));
+        g.drawRoundedRectangle (boxBounds.toFloat().reduced (0.5f, 0.5f), cornerSize, 1.0f);
+
+        Rectangle<int> arrowZone (width - 15, 0, 10, height - 2);
+        Path path;
+        path.startNewSubPath (arrowZone.getX() + 3.0f, arrowZone.getCentreY() - 2.0f);
+        path.lineTo (static_cast<float> (arrowZone.getCentreX()), arrowZone.getCentreY() + 3.0f);
+        path.lineTo (arrowZone.getRight() - 3.0f, arrowZone.getCentreY() - 2.0f);
+
+        g.setColour (box.findColour (ComboBox::arrowColourId).withAlpha ((box.isEnabled() ? 0.9f : 0.2f)));
+        g.strokePath (path, PathStrokeType (2.0f));
+    }
+    
+    void positionComboBoxText (ComboBox& box, Label& label) override
+    {
+        label.setBounds (1, 1,
+                         box.getWidth() - 15,
+                         box.getHeight() - 2);
+
+        label.setFont (getComboBoxFont (box));
+    }
+    
     // Defaults
     float defaultFontSize = 14.0;
     
@@ -79,4 +110,7 @@ public:
     Typeface::Ptr cs80Font;
     Typeface::Ptr tsHudFont;
     Typeface::Ptr defaultFont;
+    
+    // Scale factor (used to improve font rendering)
+    float scaleFactor = 1.0;
 };

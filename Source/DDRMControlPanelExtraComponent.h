@@ -83,7 +83,6 @@ public:
         if (button == &importButton)
         {
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addItem (MENU_OPTION_ID_IMPORT_FROM_PATCH_FILE, "From patch file");
             m.addItem (MENU_OPTION_ID_IMPORT_FROM_VOICE_FILE_TO_VOICE_1, "From voice file to channel I");
             m.addItem (MENU_OPTION_ID_IMPORT_FROM_VOICE_FILE_TO_VOICE_2, "From voice file to channel II");
@@ -92,7 +91,6 @@ public:
         else if (button == &saveButton)
         {
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addItem (MENU_OPTION_ID_SAVE_PATCH_TO_PATCH_FILE, "To patch file");
             m.addItem (MENU_OPTION_ID_SAVE_VOICE_1_TO_VOICE_FILE, "Channel I to voice file");
             m.addItem (MENU_OPTION_ID_SAVE_VOICE_2_TO_VOICE_FILE, "Channel II to voice file");
@@ -101,7 +99,6 @@ public:
         else if (button == &copyButton)
         {
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addItem (MENU_OPTION_ID_COPY_VOICE_1_TO_VOICE_2, "From channel I to channel II");
             m.addItem (MENU_OPTION_ID_COPY_VOICE_2_TO_VOICE_1, "From channel II to channel I");
             m.addItem (MENU_OPTION_ID_SWAP_VOICES, "Swap channels");
@@ -131,7 +128,6 @@ public:
             subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_100_ID, "100%");
             
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addSubMenu ("Patch", subMenuPatch);
             m.addSubMenu ("Channel I", subMenuVoice1);
             m.addSubMenu ("Channel II", subMenuVoice2);
@@ -140,7 +136,6 @@ public:
         else if (button == &sendButton)
         {
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addItem (MENU_OPTION_ID_SEND_PATCH_TO_SYNTH, "Patch");
             m.addItem (MENU_OPTION_ID_SEND_VOICE_1_TO_SYNTH, "Channel I");
             m.addItem (MENU_OPTION_ID_SEND_VOICE_2_TO_SYNTH, "Channel II");

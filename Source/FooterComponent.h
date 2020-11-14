@@ -71,7 +71,6 @@ public:
             AlertWindow w ("J.F. Sebastian",
                            "a Dekcard's Dream companion tool made by Rita & Aurora, v" + String(JucePlugin_VersionString),
                            AlertWindow::NoIcon);
-            w.setLookAndFeel(&customLookAndFeel);
             w.addCustomComponent(&about);
             w.addButton ("Ok", 0, KeyPress (KeyPress::returnKey, 0, 0));
             w.addButton ("More info", 1, KeyPress (KeyPress::returnKey, 0, 0));
@@ -103,7 +102,6 @@ public:
             midiDevicesSubMenu.addItem (MENU_OPTION_MIDI_SCAN_NOW, "Scan devices now", scanNowEnabled, false);
             
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addSubMenu ("Zoom", zoomSubMenu);
             m.addSubMenu ("MIDI device scan", midiDevicesSubMenu);
             selectedActionID = m.showAt(button);
