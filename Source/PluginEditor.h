@@ -28,7 +28,8 @@
 /**
 */
 class DdrmtimbreSpaceAudioProcessorEditor  : public AudioProcessorEditor,
-                                             public ActionListener
+                                             public ActionListener,
+                                             public Button::Listener
 {
 public:
     DdrmtimbreSpaceAudioProcessorEditor (DdrmtimbreSpaceAudioProcessor&);
@@ -37,6 +38,8 @@ public:
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
+    void buttonClicked (Button* button) override;
+    void processMenuAction(int actionID);
 
 private:
     // This reference is provided as a quick way for your editor to
@@ -51,6 +54,7 @@ private:
     HeaderComponent header;
     LogoComponent logo;
     FooterComponent footer;
+    TextButton viewButton;
     
     // MIDI Settings component
     MIDISettingsComponent midiSettingsPanel;

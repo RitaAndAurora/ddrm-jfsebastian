@@ -87,13 +87,6 @@ public:
         }
         else if (button == &settingsButton)
         {
-            
-            PopupMenu zoomSubMenu;
-            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_70, "70%");
-            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_80, "80%");
-            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_90, "90%");
-            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_100, "100%");
-            
             PopupMenu midiDevicesSubMenu;
             bool autoScanTicked = processor->midiDevicesAutoScanEnabled;
             int autoScanMenuOptionID = processor->midiDevicesAutoScanEnabled ? MENU_OPTION_MIDI_SET_AUTOSCAN_OFF : MENU_OPTION_MIDI_SET_AUTOSCAN_ON;
@@ -102,7 +95,6 @@ public:
             midiDevicesSubMenu.addItem (MENU_OPTION_MIDI_SCAN_NOW, "Scan devices now", scanNowEnabled, false);
             
             PopupMenu m;
-            m.addSubMenu ("Zoom", zoomSubMenu);
             m.addSubMenu ("MIDI device scan", midiDevicesSubMenu);
             selectedActionID = m.showAt(button);
             
@@ -115,19 +107,7 @@ public:
     
     void processMenuAction(int actionID)
     {
-        if (actionID == MENU_OPTION_ID_ZOOM_60){
-            processor->setUIScaleFactor(0.6);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_70){
-            processor->setUIScaleFactor(0.7);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_80){
-            processor->setUIScaleFactor(0.8);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_90){
-            processor->setUIScaleFactor(0.9);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_100){
-            processor->setUIScaleFactor(1.0);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_75){
-            processor->setUIScaleFactor(0.75);
-        } else if (actionID == MENU_OPTION_MIDI_SET_AUTOSCAN_OFF){
+        if (actionID == MENU_OPTION_MIDI_SET_AUTOSCAN_OFF){
             processor->setMidiDevicesAutoScan(false);
         } else if (actionID == MENU_OPTION_MIDI_SET_AUTOSCAN_ON){
             processor->setMidiDevicesAutoScan(true);

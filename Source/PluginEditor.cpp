@@ -38,6 +38,11 @@ DdrmtimbreSpaceAudioProcessorEditor::DdrmtimbreSpaceAudioProcessorEditor (Ddrmti
     presetControlPanel.initialize(&processor);
     addAndMakeVisible (presetControlPanel);
     
+    // Add view button (after preset controls to be on top)
+    viewButton.addListener (this);
+    viewButton.setButtonText("View...");
+    addAndMakeVisible (viewButton);
+    
     // Init DDRM contorl panel component
     ddrmControlPanel.initialize(&processor);
     addAndMakeVisible (ddrmControlPanel);
@@ -126,6 +131,7 @@ void DdrmtimbreSpaceAudioProcessorEditor::resized()
     accumulatedHeight += unitMargin + midiSettingsHeight;
     
     presetControlPanel.setBounds (unitMargin, accumulatedHeight + unitMargin, fullWidth, presetLoaderHeight);
+    viewButton.setBounds(fullWidth - (unitRowHeight * 3 - unitMargin), accumulatedHeight + unitMargin, unitRowHeight * 3, unitRowHeight);
     accumulatedHeight += unitMargin + presetLoaderHeight;
     
     if (_showTimbreSpace){
@@ -164,6 +170,53 @@ void DdrmtimbreSpaceAudioProcessorEditor::actionListenerCallback (const String &
         customLookAndFeel.scaleFactor = processor.uiScaleFactor;
         resized();  // No need to update any local member here as scale factor is stored in processor
     }
+}
+
+void DdrmtimbreSpaceAudioProcessorEditor::buttonClicked (Button* button)
+{
+    int selectedActionID = -1;
+    
+    if (button == &viewButton)
+    {
+        PopupMenu zoomSubMenu;
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_60, "60%");
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_70, "70%");
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_80, "80%");
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_90, "90%");
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_100, "100%");
+        
+        PopupMenu m;
+        m.addSubMenu ("Zoom", zoomSubMenu);
+        
+        //int neverShowScrollbarsTicked = processor->neverShowScrollbars;
+        //m.addItem (MENU_OPTION_TOGGLE_NEVER_SHOW_SCROLLBARS, "Hide scrollbars", true, neverShowScrollbarsTicked);
+                    
+        selectedActionID = m.showAt(button);
+    }
+    
+    if (selectedActionID > 0){
+        processMenuAction(selectedActionID);
+    }
+}
+
+void DdrmtimbreSpaceAudioProcessorEditor::processMenuAction(int actionID)
+{
+    if (actionID == MENU_OPTION_ID_ZOOM_60){
+        processor.setUIScaleFactor(0.6);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_70){
+        processor.setUIScaleFactor(0.7);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_80){
+        processor.setUIScaleFactor(0.8);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_90){
+        processor.setUIScaleFactor(0.9);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_100){
+        processor.setUIScaleFactor(1.0);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_75){
+        processor.setUIScaleFactor(0.75);
+    } /*else if (actionID == MENU_OPTION_TOGGLE_NEVER_SHOW_SCROLLBARS){
+        processor->neverShowScrollbars = !processor->neverShowScrollbars;
+        resized();
+    }*/
 }
 
 void DdrmtimbreSpaceAudioProcessorEditor::logMessageInUI (const String& message)
