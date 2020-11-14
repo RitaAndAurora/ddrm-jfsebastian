@@ -2152,6 +2152,13 @@
 			path = ../../Includes/Eigen/src/SparseCore/SparseFuzzy.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		9353EAE9A58BFB6B6034DF53 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = JucePluginDefines.h;
+			path = ../../JuceLibraryCode/JucePluginDefines.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		939BF24123FCC7A1EA513B36 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -4427,6 +4434,7 @@
 				CC4673820E82731D0C2C7979,
 				ADC483903A0DEAD6963FA76F,
 				02281249E95019841C256939,
+				9353EAE9A58BFB6B6034DF53,
 			);
 			name = "JUCE Library Code";
 			sourceTree = "<group>";
@@ -4492,6 +4500,42 @@
 			name = Source;
 			sourceTree = "<group>";
 		};
+		7F98C60A34C5131807B50E4E = {
+			isa = PBXTargetDependency;
+			target = 10AE6635CA746F331AE2236B;
+		};
+		F4F6CC5680B6B1B0AB21745C = {
+			isa = PBXTargetDependency;
+			target = 0042D61913E33803E963AA81;
+		};
+		CC52120BDFE5754AAF54515A = {
+			isa = PBXTargetDependency;
+			target = 4AD3A99259BED0621EEAAA8C;
+		};
+		977A03E49DB1FA1D17EE0E48 = {
+			isa = PBXTargetDependency;
+			target = B00E03BBFE36AD0E5576D3A3;
+		};
+		262562153BACA4CF6939544C = {
+			isa = PBXTargetDependency;
+			target = AA031F80E320692CCCD0D3D3;
+		};
+		B74FAFE3039A7484E24F86CD = {
+			isa = PBXTargetDependency;
+			target = AA031F80E320692CCCD0D3D3;
+		};
+		694BC9076EF2FA0943E45072 = {
+			isa = PBXTargetDependency;
+			target = AA031F80E320692CCCD0D3D3;
+		};
+		8094890E0C12E72F4C89226A = {
+			isa = PBXTargetDependency;
+			target = AA031F80E320692CCCD0D3D3;
+		};
+		90FDB2C3466EF3768DE5EDE8 = {
+			isa = PBXTargetDependency;
+			target = AA031F80E320692CCCD0D3D3;
+		};
 		82EF772C5FDB7FB3426BE258 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4553,10 +4597,19 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lJFSebastian";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = vst;
 			};
 			name = Debug;
@@ -4607,10 +4660,19 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lJFSebastian";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = vst;
 			};
 			name = Release;
@@ -4660,10 +4722,19 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lJFSebastian";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = vst3;
 			};
 			name = Debug;
@@ -4714,10 +4785,19 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lJFSebastian";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = vst3;
 			};
 			name = Release;
@@ -4767,11 +4847,20 @@
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lJFSebastian";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = component;
 			};
 			name = Debug;
@@ -4822,11 +4911,20 @@
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-bundle -lJFSebastian";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 				WRAPPER_EXTENSION = component;
 			};
 			name = Release;
@@ -4871,10 +4969,19 @@
 				INFOPLIST_FILE = Info-Standalone_Plugin.plist;
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-lJFSebastian";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
 			name = Debug;
 		};
@@ -4919,10 +5026,19 @@
 				INFOPLIST_PREPROCESS = NO;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				OTHER_LDFLAGS = "-lJFSebastian";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
 			name = Release;
 		};
@@ -4966,10 +5082,19 @@
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
 			name = Debug;
 		};
@@ -5014,10 +5139,19 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_HEADER_SEARCH_PATHS = (
+					"../../3rdParty/JUCE/modules/juce_audio_processors/format_types/VST3_SDK",
+					"../../../VST_SDK/VST2_SDK",
+					"../../JuceLibraryCode",
+					"../../3rdParty/JUCE/modules",
+					"../../Includes",
+					"../../3rdParty/JUCE/modules/juce_audio_plugin_client",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.RaA.JFSebastian;
 				PRODUCT_NAME = "JFSebastian";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
 			};
 			name = Release;
 		};
@@ -5118,26 +5252,6 @@
 			};
 			name = Release;
 		};
-		5DBFB8802708DD242716C212 = {
-			isa = PBXTargetDependency;
-			target = 10AE6635CA746F331AE2236B;
-		};
-		A098E3DD704114F1A6321472 = {
-			isa = PBXTargetDependency;
-			target = 0042D61913E33803E963AA81;
-		};
-		80445FEEFFBFA2B8663D2790 = {
-			isa = PBXTargetDependency;
-			target = 4AD3A99259BED0621EEAAA8C;
-		};
-		A29F9D93626DC86995A895F7 = {
-			isa = PBXTargetDependency;
-			target = B00E03BBFE36AD0E5576D3A3;
-		};
-		1364012CF3CB497EE0B3E869 = {
-			isa = PBXTargetDependency;
-			target = AA031F80E320692CCCD0D3D3;
-		};
 		8D85090A40CEEC9FEE4D40F5 = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -5162,11 +5276,11 @@
 			buildPhases = ( );
 			buildRules = ( );
 			dependencies = (
-				5DBFB8802708DD242716C212,
-				A098E3DD704114F1A6321472,
-				80445FEEFFBFA2B8663D2790,
-				A29F9D93626DC86995A895F7,
-				1364012CF3CB497EE0B3E869,
+				7F98C60A34C5131807B50E4E,
+				F4F6CC5680B6B1B0AB21745C,
+				CC52120BDFE5754AAF54515A,
+				977A03E49DB1FA1D17EE0E48,
+				262562153BACA4CF6939544C,
 			);
 			name = "JFSebastian - All";
 			productName = JFSebastian;
@@ -5229,7 +5343,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				1364012CF3CB497EE0B3E869,
+				B74FAFE3039A7484E24F86CD,
 			);
 			name = "JFSebastian - VST";
 			productName = JFSebastian;
@@ -5294,7 +5408,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				1364012CF3CB497EE0B3E869,
+				694BC9076EF2FA0943E45072,
 			);
 			name = "JFSebastian - VST3";
 			productName = JFSebastian;
@@ -5370,7 +5484,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				1364012CF3CB497EE0B3E869,
+				8094890E0C12E72F4C89226A,
 			);
 			name = "JFSebastian - AU";
 			productName = JFSebastian;
@@ -5435,7 +5549,7 @@
 			);
 			buildRules = ( );
 			dependencies = (
-				1364012CF3CB497EE0B3E869,
+				90FDB2C3466EF3768DE5EDE8,
 			);
 			name = "JFSebastian - Standalone Plugin";
 			productName = JFSebastian;
@@ -5511,7 +5625,7 @@
 		0C1A8AB1EAB2E6E11A9D308C = {
 			isa = PBXProject;
 			buildConfigurationList = 8D85090A40CEEC9FEE4D40F5;
-			attributes = { LastUpgradeCheck = 1100; ORGANIZATIONNAME = "Rita & Aurora"; TargetAttributes = { E4798085DADFF1144D0372F9 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };10AE6635CA746F331AE2236B = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };0042D61913E33803E963AA81 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };4AD3A99259BED0621EEAAA8C = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };B00E03BBFE36AD0E5576D3A3 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };AA031F80E320692CCCD0D3D3 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
+			attributes = { LastUpgradeCheck = 1200; ORGANIZATIONNAME = "Rita & Aurora"; TargetAttributes = { E4798085DADFF1144D0372F9 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };10AE6635CA746F331AE2236B = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };0042D61913E33803E963AA81 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };4AD3A99259BED0621EEAAA8C = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };B00E03BBFE36AD0E5576D3A3 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };AA031F80E320692CCCD0D3D3 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
 			mainGroup = BC8702A9A3743950CD5D9BE3;
