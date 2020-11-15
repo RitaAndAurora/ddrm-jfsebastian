@@ -114,11 +114,14 @@ public:
     void copyDDRMChannel2ToChannel1 ();
     void swapDDRMChannels ();
     void sendControlsToSynth (int channelFilter);
-    void randomizeControlValues (int channelFilter, float amount);
+    void randomizeControlValues ();
     void importFromPatchFile ();
     void importFromVoiceFile (int channelTo);
     void saveToPatchFile ();
     void saveToVoiceFile (int channelFrom);
+    bool isChangingFromLoadingAVoiceFile = false;
+    bool isChangingFromLoadingAPatchFile = false;
+    bool isChangingFromRandomizer = false;
     
     // Timbre Space Engine
     void computeTimbreSpace ();
@@ -138,6 +141,7 @@ public:
     void setLastUserDirectoryForFileSaveLoad (File file);
     File lastUsedDirectoryForFileIO;
     TimestampsLastCCSent timestampsLastCCSent;
+    RandomizationConfigStruct randomizationSettings;
 
 private:    
     //==============================================================================

@@ -104,6 +104,11 @@
 #define STATE_MIDI_OUTPUT_CHANNEL "midiOutputChannel"
 #define STATE_MIDI_AUTOSCAN_ENABLED "midiDevicesAutoScanEnabled"
 
+#define STATE_RANDOMIZATION_AMOUNT "randomizationAmount"
+#define STATE_RANDOMIZATION_CHANNEL1_ENABLED "randomizationCh1"
+#define STATE_RANDOMIZATION_CHANNEL2_ENABLED "randomizationCh2"
+#define STATE_RANDOMIZATION_PERF_CONTROLS_ENABLED "randomizationPerfControls"
+
 #define TIMBRE_SPACE_SOLUTION_IDENTIFIER "TimbreSpaceSolution"
 #define TIMBRE_SPACE_SOLUTION_POINTS_IDENTIFIER "solutionPoints"
 #define TIMBRE_SPACE_SOLUTION_POINT_IDENTIFIER "solutionPoint"
@@ -142,6 +147,12 @@
 #define MENU_OPTION_ID_RANDOMIZE_VOICE_1_100_ID 26
 #define MENU_OPTION_ID_RANDOMIZE_VOICE_2_100_ID 27
 
+#define MENU_OPTION_ID_RANDOMIZE_CH1 150
+#define MENU_OPTION_ID_RANDOMIZE_CH2 151
+#define MENU_OPTION_ID_RANDOMIZE_PERF 152
+
+#define MENU_OPTION_ID_RANDOMIZE 160
+
 #define MENU_OPTION_ID_ZOOM_50 28
 #define MENU_OPTION_ID_ZOOM_75 29
 #define MENU_OPTION_ID_ZOOM_100 30
@@ -161,6 +172,13 @@
 #define DIMENSIONALITY_REDUCTION_METHOD_MDS "mds"
 #define DIMENSIONALITY_REDUCTION_METHOD_DEFAULT DIMENSIONALITY_REDUCTION_METHOD_MDS
 
+
+struct RandomizationConfigStruct {
+    int amount = 50;
+    bool channel1Controls = true;
+    bool channel2Controls = false;
+    bool performanceControls = false;
+};
 
 typedef std::array<uint8, DDRM_VOICE_NUM_BYTES> DDRMVoiceBytes;
 typedef std::array<uint8, DDRM_PRESET_NUM_BYTES> DDRMPresetBytes;

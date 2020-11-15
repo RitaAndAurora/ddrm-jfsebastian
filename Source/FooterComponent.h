@@ -87,15 +87,35 @@ public:
         }
         else if (button == &settingsButton)
         {
+            PopupMenu m;
+            
+            PopupMenu randomAmountOptionsSubmenu;
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_5_ID, "5%", true, processor->randomizationSettings.amount == 5);
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_10_ID, "10%", true, processor->randomizationSettings.amount == 10);
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_25_ID, "25%", true, processor->randomizationSettings.amount == 25);
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_50_ID, "50%", true, processor->randomizationSettings.amount == 50);
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_100_ID, "100%", true, processor->randomizationSettings.amount == 100);
+            
+            PopupMenu randomPanelOptionsSubmenu;
+            randomPanelOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_CH1, "Channel I", true, processor->randomizationSettings.channel1Controls == true);
+            randomPanelOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_CH2, "Channel II", true, processor->randomizationSettings.channel2Controls == true);
+            randomPanelOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PERF, "Performance controls", true, processor->randomizationSettings.performanceControls == true);
+            
+            PopupMenu randomOptionsSubmenu;
+            randomOptionsSubmenu.addSubMenu ("Affected controls", randomPanelOptionsSubmenu);
+            randomOptionsSubmenu.addSubMenu ("Amount", randomAmountOptionsSubmenu);
+            
+            m.addSubMenu ("Randomizer settings", randomOptionsSubmenu);
+            
+            
             PopupMenu midiDevicesSubMenu;
             bool autoScanTicked = processor->midiDevicesAutoScanEnabled;
             int autoScanMenuOptionID = processor->midiDevicesAutoScanEnabled ? MENU_OPTION_MIDI_SET_AUTOSCAN_OFF : MENU_OPTION_MIDI_SET_AUTOSCAN_ON;
             bool scanNowEnabled = !processor->midiDevicesAutoScanEnabled;
             midiDevicesSubMenu.addItem (autoScanMenuOptionID, "Auto-scan MIDI devices", true, autoScanTicked);
             midiDevicesSubMenu.addItem (MENU_OPTION_MIDI_SCAN_NOW, "Scan devices now", scanNowEnabled, false);
-            
-            PopupMenu m;
             m.addSubMenu ("MIDI device scan", midiDevicesSubMenu);
+            
             selectedActionID = m.showAt(button);
             
         }
@@ -113,6 +133,22 @@ public:
             processor->setMidiDevicesAutoScan(true);
         } else if (actionID == MENU_OPTION_MIDI_SCAN_NOW){
             processor->triggerMidiDevicesScan();
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_5_ID){
+            processor->randomizationSettings.amount = 5;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_10_ID){
+            processor->randomizationSettings.amount = 10;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_25_ID){
+            processor->randomizationSettings.amount = 25;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_50_ID){
+            processor->randomizationSettings.amount = 50;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_100_ID){
+            processor->randomizationSettings.amount = 100;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_CH1){
+            processor->randomizationSettings.channel1Controls = !processor->randomizationSettings.channel1Controls;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_CH2){
+            processor->randomizationSettings.channel2Controls = !processor->randomizationSettings.channel2Controls;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PERF){
+            processor->randomizationSettings.performanceControls = !processor->randomizationSettings.performanceControls;
         }
     }
     

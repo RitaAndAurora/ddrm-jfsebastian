@@ -36,7 +36,7 @@ public:
         addAndMakeVisible (copyButton);
         
         randomizeButton.addListener (this);
-        randomizeButton.setButtonText("Randomize...");
+        randomizeButton.setButtonText("Randomize!");
         addAndMakeVisible (randomizeButton);
         
         sendButton.addListener (this);
@@ -106,32 +106,7 @@ public:
         }
         else if (button == &randomizeButton)
         {
-            PopupMenu subMenuPatch;
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_5_ID, "5%");
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_10_ID, "10%");
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_25_ID, "25%");
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_50_ID, "50%");
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_100_ID, "100%");
-            
-            PopupMenu subMenuVoice1;
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_5_ID, "5%");
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_10_ID, "10%");
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_25_ID, "25%");
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_50_ID, "50%");
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_100_ID, "100%");
-            
-            PopupMenu subMenuVoice2;
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_5_ID, "5%");
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_10_ID, "10%");
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_25_ID, "25%");
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_50_ID, "50%");
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_100_ID, "100%");
-            
-            PopupMenu m;
-            m.addSubMenu ("Patch", subMenuPatch);
-            m.addSubMenu ("Channel I", subMenuVoice1);
-            m.addSubMenu ("Channel II", subMenuVoice2);
-            selectedActionID = m.showAt(button);
+            selectedActionID = MENU_OPTION_ID_RANDOMIZE;
         }
         else if (button == &sendButton)
         {
@@ -161,36 +136,8 @@ public:
             processor->sendControlsToSynth(1);
         } else if (actionID == MENU_OPTION_ID_SEND_VOICE_2_TO_SYNTH){
             processor->sendControlsToSynth(2);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_5_ID){
-            processor->randomizeControlValues(0, 0.05);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_10_ID){
-            processor->randomizeControlValues(0, 0.10);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_25_ID){
-            processor->randomizeControlValues(0, 0.25);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_50_ID){
-            processor->randomizeControlValues(0, 0.50);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_5_ID){
-            processor->randomizeControlValues(1, 0.05);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_10_ID){
-            processor->randomizeControlValues(1, 0.10);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_25_ID){
-            processor->randomizeControlValues(1, 0.25);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_50_ID){
-            processor->randomizeControlValues(1, 0.50);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_5_ID){
-            processor->randomizeControlValues(2, 0.05);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_10_ID){
-            processor->randomizeControlValues(2, 0.10);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_25_ID){
-            processor->randomizeControlValues(2, 0.25);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_50_ID){
-            processor->randomizeControlValues(2, 0.50);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_100_ID){
-            processor->randomizeControlValues(0, 1.0);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_100_ID){
-            processor->randomizeControlValues(1, 1.0);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_100_ID){
-            processor->randomizeControlValues(2, 1.0);
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE){
+            processor->randomizeControlValues();
         } else if (actionID == MENU_OPTION_ID_IMPORT_FROM_PATCH_FILE){
             processor->importFromPatchFile();
         } else if (actionID == MENU_OPTION_ID_IMPORT_FROM_VOICE_FILE_TO_VOICE_1){
