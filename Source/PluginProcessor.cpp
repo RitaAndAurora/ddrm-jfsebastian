@@ -597,9 +597,8 @@ AudioProcessorEditor* DdrmtimbreSpaceAudioProcessor::createEditor()
     // Hack https://forum.juce.com/t/styling-the-standalone-plugin-window/21872/2 to get native window
     if(wrapperType == wrapperType_Standalone)
     {
-        if(TopLevelWindow::getNumTopLevelWindows() == 1)
-        {
-            TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(0);
+        for (int i=0; i<TopLevelWindow::getNumTopLevelWindows(); i++){
+            TopLevelWindow* w = TopLevelWindow::getTopLevelWindow(i);
             w->setUsingNativeTitleBar(true);
         }
     }
@@ -633,6 +632,9 @@ void DdrmtimbreSpaceAudioProcessor::getStateInformation (MemoryBlock& destData)
     
     // Add UI scale factor to state
     state.setProperty(STATE_UI_SCALE_FACTOR, uiScaleFactor, nullptr);
+    
+    // Add scrollbars setting
+    state.setProperty(STATE_NEVER_SHOW_SCROLLBARS, neverShowScrollbars, nullptr);
     
     // Add audio parameters to state
     ValueTree audioParametersState = parameters.copyState();
@@ -726,6 +728,11 @@ void DdrmtimbreSpaceAudioProcessor::setStateFromXml (XmlElement* xmlState)
     if (xmlState->hasAttribute (STATE_UI_SCALE_FACTOR)){
         float newUIScaleFactor = xmlState->getStringAttribute(STATE_UI_SCALE_FACTOR).getFloatValue();
         setUIScaleFactor(newUIScaleFactor);
+    }
+    
+    // Load scrollbar settings
+    if (xmlState->hasAttribute (STATE_NEVER_SHOW_SCROLLBARS)){
+        neverShowScrollbars = xmlState->getBoolAttribute(STATE_NEVER_SHOW_SCROLLBARS);
     }
     
     // Preset loader

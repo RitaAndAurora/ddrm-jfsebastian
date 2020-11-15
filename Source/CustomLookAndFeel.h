@@ -23,6 +23,7 @@ public:
         
         // Specify custom colors
         setColour (ResizableWindow::backgroundColourId, Colour (0xff1C262A));
+        setColour (ScrollBar::thumbColourId, Colour(CS80COLOR_GREEN));
         setColour (PopupMenu::backgroundColourId, Colour (0xff1C262A));
         setColour (PopupMenu::highlightedBackgroundColourId, Colour (0xff3b5058));
         setColour (ComboBox::backgroundColourId, Colour (0xff1C262A));
@@ -30,6 +31,8 @@ public:
         setColour (BubbleComponent::backgroundColourId, Colour (0xff1C262A));
         setColour (AlertWindow::backgroundColourId, Colour (0xff1d303b));
         setColour (AlertWindow::outlineColourId, Colour (0xff3b5058));
+        setColour (ProgressBar::foregroundColourId, Colour(CS80COLOR_GREEN));
+        
     }
     
     ~CustomLookAndFeel()

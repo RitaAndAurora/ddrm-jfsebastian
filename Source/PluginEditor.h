@@ -27,27 +27,33 @@
 //==============================================================================
 /**
 */
-class DdrmtimbreSpaceAudioProcessorEditor  : public AudioProcessorEditor,
-                                             public ActionListener,
-                                             public Button::Listener
+
+class DdrmtimbreSpaceAudioProcessorEditor;
+
+
+class UIWrapperComponent: public Component,
+                          public ActionListener,
+                          public Button::Listener
 {
 public:
-    DdrmtimbreSpaceAudioProcessorEditor (DdrmtimbreSpaceAudioProcessor&);
-    ~DdrmtimbreSpaceAudioProcessorEditor();
-
-    //==============================================================================
+    UIWrapperComponent();
+    ~UIWrapperComponent();
+    
+    void initialize (DdrmtimbreSpaceAudioProcessor* p, DdrmtimbreSpaceAudioProcessorEditor* e);
     void paint (Graphics&) override;
     void resized() override;
     void buttonClicked (Button* button) override;
     void processMenuAction(int actionID);
-
-private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    DdrmtimbreSpaceAudioProcessor& processor;
     
-    // Look and feel
-    CustomLookAndFeel customLookAndFeel;
+    int sizeWidth = 0;
+    int sizeHeight = 0;
+    
+private:
+    DdrmtimbreSpaceAudioProcessor* processor;
+    DdrmtimbreSpaceAudioProcessorEditor* editor;
+    bool wasInitialized = false;
+    
+    // Bg image
     Image bgImage;
     
     // Header & footer components
@@ -76,6 +82,31 @@ private:
     void actionListenerCallback (const String &message) override;
     void logMessageInUI (const String& message);
     TextEditor logArea;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UIWrapperComponent)
+};
+
+
+class DdrmtimbreSpaceAudioProcessorEditor  : public AudioProcessorEditor
+{
+public:
+    DdrmtimbreSpaceAudioProcessorEditor (DdrmtimbreSpaceAudioProcessor&);
+    ~DdrmtimbreSpaceAudioProcessorEditor();
+
+    //==============================================================================
+    void paint (Graphics&) override;
+    void resized() override;
+    
+    CustomLookAndFeel customLookAndFeel;  // Make it public so UIWrapperComponent can access it
+
+private:
+    // This reference is provided as a quick way for your editor to
+    // access the processor object that created it.
+    DdrmtimbreSpaceAudioProcessor& processor;
+    UIWrapperComponent uiWrapper;
+    Viewport uiViewport;
+    
+    int screenHeight = 0;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DdrmtimbreSpaceAudioProcessorEditor)
 };

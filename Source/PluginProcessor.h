@@ -133,6 +133,7 @@ public:
     void actionListenerCallback (const String &message) override;
     
     // Other
+    bool neverShowScrollbars = false;
     File getDirectoryForFileSaveLoad ();
     void setLastUserDirectoryForFileSaveLoad (File file);
     File lastUsedDirectoryForFileIO;
