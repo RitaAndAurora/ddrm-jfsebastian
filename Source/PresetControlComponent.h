@@ -168,9 +168,8 @@ public:
             loadBankFile();
         } else if (button == &saveToCurrentBankLocationButton)
         {
-            AlertWindow w ("Plase choose the location where the preset should be saved",
-                           "",
-                           AlertWindow::NoIcon);   
+            AlertWindow w ("Please choose the location where to save the patch", "", AlertWindow::NoIcon);
+            w.addTextBlock ("NOTE: this will save the patch in the selected location of the bank loaded in J.F. Sebastian, but won't save the preset in DDRM itself nor send any information to it.");
             w.addTextEditor ("bankLocation", "", "");
             w.getTextEditor ("bankLocation")->setInputRestrictions(3, "0123456789");  // Make it numbers only
             w.addButton ("Cancel", 0, KeyPress (KeyPress::escapeKey, 0, 0));
