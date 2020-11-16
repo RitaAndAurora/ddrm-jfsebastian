@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <DDRMState midiInputDeviceName="-" midiOutputDeviceName="-" midiInputChannel="1"
-           midiOutputChannel="1" currentPresetIdx="0" currentPresetOutOfSyncWithSliders="0"
-           toneSelectorRow1="" toneSelectorRow2="">
+           midiOutputChannel="1" midiDevicesAutoScanEnabled="0" autoSyncWithSynth="1"
+           UISacleFactor="1.0" randomizationAmount="50" randomizationCh1="1"
+           randomizationCh2="1" randomizationPerfControls="1" neverShowScrollbars="0"
+           currentPresetIdx="0" currentPresetOutOfSyncWithSliders="1" toneSelectorRow1=""
+           toneSelectorRow2="">
   <DDRMAudioParameters>
     <PARAM id="DDRM_AL_VCF_1" value="0.00000000000000000000"/>
     <PARAM id="DDRM_AL_VCF_2" value="126.00000000000000000000"/>
@@ -54,7 +57,7 @@
     <PARAM id="DDRM_RESSO" value="127.00000000000000000000"/>
     <PARAM id="DDRM_RESh_VCF_1" value="5.00000000000000000000"/>
     <PARAM id="DDRM_RESh_VCF_2" value="0.00000000000000000000"/>
-    <PARAM id="DDRM_RESl_VCF_1" value="62.00000000000000000000"/>
+    <PARAM id="DDRM_RESl_VCF_1" value="64.0"/>
     <PARAM id="DDRM_RESl_VCF_2" value="16.00000000000000000000"/>
     <PARAM id="DDRM_R_VCA_1" value="0.00000000000000000000"/>
     <PARAM id="DDRM_R_VCA_2" value="52.00000000000000000000"/>
@@ -342,7 +345,7 @@
     <DDRMPreset bytes="0,25,0,254,56,44,81,254,0,0,67,157,254,255,0,0,203,254,19,219,113,118,69,114,254,181,208,255,0,0,0,0,0,250,204,255,68,254,0,106,159,254,206,193,150,177,0,132,254,209,161,39,207,0,255,135,104,77,112,0,0,0,132,223,251,173,0,255,255,0,255,254,254,254,255,255,254,0,133,134,255,1,0,3,70,7,45,7,1,15,1,0,0,0,11,1,0,0"
                 id="127"/>
   </DDRMPresetBank>
-  <TimbreSpace selectedPointX="0.49875000119209289551" selectedPointY="0.49444442987442016602"
+  <TimbreSpace selectedPointX="0.4987500011920929" selectedPointY="0.4944444298744202"
                selectedTriangleIdx="13" selectedPresetIdx="0" synthSlidersOutOfSync="1">
     <TimbreSpaceSolution>
       <solutionPoints>

@@ -78,7 +78,7 @@
 
 #define STATE_UI_SCALE_FACTOR "UISacleFactor"
 
-#deinfe STATE_TOGGLE_AUTO_SYNC_WITH_SYNTH "autoSyncWithSynth"
+#define STATE_TOGGLE_AUTO_SYNC_WITH_SYNTH "autoSyncWithSynth"
 
 #define STATE_PRESET_BANK_IDENTIFIER "DDRMPresetBank"
 #define STATE_PRESET_IDENTIFIER "DDRMPreset"
@@ -178,8 +178,8 @@
 struct RandomizationConfigStruct {
     int amount = 50;
     bool channel1Controls = true;
-    bool channel2Controls = false;
-    bool performanceControls = false;
+    bool channel2Controls = true;
+    bool performanceControls = true;
 };
 
 typedef std::array<uint8, DDRM_VOICE_NUM_BYTES> DDRMVoiceBytes;

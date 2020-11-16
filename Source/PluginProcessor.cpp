@@ -669,7 +669,10 @@ void DdrmtimbreSpaceAudioProcessor::getStateInformation (MemoryBlock& destData)
     std::unique_ptr<XmlElement> xml (state.createXml());
     copyXmlToBinary (*xml, destData);
     
-    // std::cout << xml->createDocument("") <<std::endl;
+    // Print state (for debugging purposes)
+    #if JUCE_DEBUG
+        std::cout << xml->createDocument("") <<std::endl;
+    #endif
 }
 
 void DdrmtimbreSpaceAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
