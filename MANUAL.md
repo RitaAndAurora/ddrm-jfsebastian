@@ -206,6 +206,8 @@ When a button is selected it will be highlighted. However, if any parameter is c
 
 Note that `Funky 4` button in the lower row does not work. Maybe there's some dust accumulated which should be cleaned...
 
+**IMPORTANT NOTE**: As in the original CS80, using the buttons of the CS80-like Tone Selector does not affect the state of the performance controls (the lower row of controls). These might need finer adjustments to get the desired tone when combining channel I/II presets form the CS80-like Tone Selector.
+
 
 ### 2.6 DDRM panel
 
@@ -251,7 +253,7 @@ J.F. Sebastian incorporates a number of features to **edit and manage the slider
 
 J.F. Sebastian incorporates a feature to create slight (or wild!) variations of the currently loaded patch. This is called the **Randomizer**. Clicking on the `Randomize!` button in the lower part of the interface will instantly create a variation of the current patch. Using the `Settings...` button on the lower right side of J.F. Sebastian and chosing the `Randomizer settings` menu you can set some options to decide how the Randomizer will change the patch:
 
-* `Affected controls`: using that menu option you can select which controls will be affected by the Randomizer when pressing the `Randomize!` button. You can enable or disable the controls of Channel I, Channel II and the performance controls section.
+* `Affected controls`: using that menu option you can select which controls will be affected by the Randomizer when pressing the `Randomize!` button. You can enable or disable the controls of channel I, channel II and the performance controls section.
 
 * `Amount`: using that menu you can choose how much will each parameter be randomized when pressing the `Randomize!` button. Range goes from 5% (small variation with respect to the current parameter value) to 100% (completely new random value). 
 
