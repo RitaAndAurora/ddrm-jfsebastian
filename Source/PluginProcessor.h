@@ -60,6 +60,7 @@ public:
     void changeProgramName (int index, const String& newName) override;
 
     //==============================================================================
+    void sendControlToSynth (const String& parameterID, int value);
     void parameterChanged (const String& parameterID, float newValue) override;
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
@@ -122,6 +123,7 @@ public:
     bool isChangingFromLoadingAVoiceFile = false;
     bool isChangingFromLoadingAPatchFile = false;
     bool isChangingFromRandomizer = false;
+    bool isChangingFromCopyingChannels = false;
     
     // Timbre Space Engine
     void computeTimbreSpace ();
@@ -136,6 +138,8 @@ public:
     void actionListenerCallback (const String &message) override;
     
     // Other
+    bool automaticSyncWithSynthEnabled = true;  // We define this variable but don't currently use it in JF because DDRM does not support in depth integration (this is always set to true)
+    float getValueForAudioParameter(const String& parameterID);
     bool neverShowScrollbars = false;
     File getDirectoryForFileSaveLoad ();
     void setLastUserDirectoryForFileSaveLoad (File file);

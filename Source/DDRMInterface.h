@@ -492,7 +492,7 @@ public:
             }
             if (channelToControlID != ""){
                 AudioParameterFloat* audioParameter = (AudioParameterFloat*)currentParameters->getParameter(channelFromControlID);
-                double channelFromParameterValueNorm = (double)audioParameter->get() / 127.0;  // Needs normalized value to set
+                double channelFromParameterValueNorm = (double)audioParameter->convertTo0to1(audioParameter->get());  // Needs normalized value to set
                 idValuePairs.emplace_back(channelToControlID, channelFromParameterValueNorm);
             }
         }

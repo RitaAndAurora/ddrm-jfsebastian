@@ -131,7 +131,7 @@ public:
         } else if (actionID == MENU_OPTION_ID_SWAP_VOICES){
             processor->swapDDRMChannels();
         } else if (actionID == MENU_OPTION_ID_SEND_PATCH_TO_SYNTH){
-            processor->sendControlsToSynth(0);  // 0 menans no channel filter
+            processor->sendControlsToSynth(-1);  // -1 menans no channel filter (all controls)
         } else if (actionID == MENU_OPTION_ID_SEND_VOICE_1_TO_SYNTH){
             processor->sendControlsToSynth(1);
         } else if (actionID == MENU_OPTION_ID_SEND_VOICE_2_TO_SYNTH){
