@@ -139,6 +139,7 @@ public:
     
     // Other
     bool automaticSyncWithSynthEnabled = true;  // We define this variable but don't currently use it in JF because DDRM does not support in depth integration (this is always set to true)
+    void toggleAutomaticSyncWithSynth();
     float getValueForAudioParameter(const String& parameterID);
     bool neverShowScrollbars = false;
     File getDirectoryForFileSaveLoad ();

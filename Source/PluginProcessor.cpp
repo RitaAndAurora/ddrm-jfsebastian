@@ -998,7 +998,7 @@ void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source,
                 float newValue = (float)ccValue/127.0;
                 const String parameterID = ddrmInterface->getParameterIDFromCCNumber(ccNumber);
                 parameters.getParameter(parameterID)->beginChangeGesture();
-                parameters.getParameter(parameterID)->setValueNotifyingHost(newValue);
+                parameters.getParameter(parameterID)->setValueNotifyingHost(newValue);  // setValueNotifyingHost takes norm values from [0.0..1.0]
                 parameters.getParameter(parameterID)->endChangeGesture();
             }
         }
@@ -1184,7 +1184,7 @@ void DdrmtimbreSpaceAudioProcessor::savePresetToBankLocation (int bankLocation)
             AudioParameterFloat* audioParameter = (AudioParameterFloat*)parameters.getParameter(parameterID);
             DDRMSynthControl* synthControl = ddrmInterface->getDDRMSynthControlWithID(parameterID);
             float normParameterValue = audioParameter->convertTo0to1(getValueForAudioParameter(parameterID));
-            synthControl->updatePresetByteArray(normParameterValue, currentPresetBytes);
+            synthControl->updatePresetByteArrayFromNormValue(normParameterValue, currentPresetBytes);
         }
         ddrmInterface->saveCurrentPresetAtBankIndex(bankLocation, currentPresetBytes);
         currentPreset = bankLocation;
@@ -1225,7 +1225,7 @@ void DdrmtimbreSpaceAudioProcessor::setParametersFromSynthControlIdValuePairs (S
     for (int i=0; i<idValuePairs.size(); i++) {
         String parameterID = idValuePairs[i].first;
         double newValue = idValuePairs[i].second;
-        parameters.getParameter(parameterID)->setValueNotifyingHost(newValue);
+        parameters.getParameter(parameterID)->setValueNotifyingHost(newValue);  // setValueNotifyingHost takes norm values from [0.0..1.0]
     }
 }
 
@@ -1400,7 +1400,7 @@ void DdrmtimbreSpaceAudioProcessor::saveToPatchFile ()
             AudioParameterFloat* audioParameter = (AudioParameterFloat*)parameters.getParameter(parameterID);
             DDRMSynthControl* synthControl = ddrmInterface->getDDRMSynthControlWithID(parameterID);
             float normParameterValue = audioParameter->convertTo0to1(getValueForAudioParameter(parameterID));
-            synthControl->updatePresetByteArray(normParameterValue, currentPresetBytes);
+            synthControl->updatePresetByteArrayFromNormValue(normParameterValue, currentPresetBytes);
         }
         file.replaceWithData(&currentPresetBytes, DDRM_PRESET_NUM_BYTES);
     }
@@ -1422,7 +1422,7 @@ void DdrmtimbreSpaceAudioProcessor::saveToVoiceFile (int channelFrom)
             AudioParameterFloat* audioParameter = (AudioParameterFloat*)parameters.getParameter(parameterID);
             DDRMSynthControl* synthControl = ddrmInterface->getDDRMSynthControlWithID(parameterID);
             float normParameterValue = audioParameter->convertTo0to1(getValueForAudioParameter(parameterID));
-            synthControl->updateVoiceByteArray(normParameterValue, currentVoiceBytes);
+            synthControl->updateVoiceByteArrayFromNormValue(normParameterValue, currentVoiceBytes);
         }
         file.replaceWithData(&currentVoiceBytes, DDRM_VOICE_NUM_BYTES);
     }

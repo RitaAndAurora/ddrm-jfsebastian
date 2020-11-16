@@ -70,16 +70,6 @@ public:
         return includeOnTimbreSpace;
     }
     
-    int norm2midi (double normValue)
-    {
-        return jlimit(0, 127, (int) round(normValue * 127));
-    }
-    
-    double midi2norm (int midiValue)
-    {
-        return jlimit(0.0, 1.0, (double)midiValue / 127);
-    }
-    
     double getNormValueFromPresetByteArray(DDRMPresetBytes& bytes)
     {
         // Return parameter value normalized [0.0-1.0] taking it from corresponding spot in DDRMPresetBytes array
@@ -110,18 +100,6 @@ public:
         return -1.0;
     }
     
-    int getValueFromPresetByteArray(DDRMPresetBytes& bytes)
-    {
-        // This is to be used for getting the "unormalized" parameter value prepared for setting an audio parameter value
-        // or directly sending via MIDI message (either CC or sysex) to DDRM
-        // NOTE: this was ported directly from Babu Frik, might need to be revised
-        
-        if ((byteNumber > -1) && (byteNumber < DDRM_PRESET_NUM_BYTES)){
-            return (int)std::round(getNormValueFromPresetByteArray(bytes) * 255);
-        }
-        return 0;
-    }
-    
     double getNormValueFromVoiceByteArray(DDRMVoiceBytes& bytes)
     {
         // Return parameter value normalized [0.0-1.0] taking it from corresponding spot in DDRMPresetBytes array
@@ -132,9 +110,11 @@ public:
         return -1.0;
     }
     
-    void updatePresetByteArray (float normValue, DDRMPresetBytes& bytes)
+    void updatePresetByteArrayFromNormValue (float normValue, DDRMPresetBytes& bytes)
     {
         // Updates DDRMPresetBytes with the given normalized value of the synth control parameter
+        // Normalized value ranges from [0.0-1.0], bytes range from [0-255]
+        
         int byteValue = jlimit(0, 255, (int) round(normValue * 255));
         if ((byteNumber > -1) && (byteNumber < DDRM_PRESET_NUM_BYTES)){
             bytes[byteNumber] = byteValue;
@@ -145,7 +125,9 @@ public:
             // Note that some parameter info is hardcoded here and should be manually changed if needed
             // b72=255 & b80=0 -> portamento, b72=0 & b80=255 -> glissando, b72=0 & b80 = 0 -> none
             
-            int midiValue = norm2midi((double)normValue);
+            // Currently all parameters are in range 0-127 therefore to return the "midi" value (the real parameter value) we just need to multiply by 127.
+            // In the future there might be parameters outside the range 0-127 requiring special treatment
+            int midiValue = jlimit(0, 127, (int) round((double)normValue * 127));
             
             if (midiValue < 32) { // Follow DDRM MIDI spec
                 // Set to Portamento
@@ -163,9 +145,11 @@ public:
         }
     }
     
-    void updateVoiceByteArray (float normValue, DDRMVoiceBytes& bytes)
+    void updateVoiceByteArrayFromNormValue (float normValue, DDRMVoiceBytes& bytes)
     {
-        // Updates DDRMPresetBytes with the given normalized value of the synth control parameter
+        // Updates DDRMVoiceBytes with the given normalized value of the synth control parameter
+        // Normalized value ranges from [0.0-1.0], bytes range from [0-255]
+        
         int byteValue = jlimit(0, 255, (int) round(normValue * 255));
         if ((byteNumberVoiceFile > -1) && (byteNumberVoiceFile < DDRM_VOICE_NUM_BYTES)){
             bytes[byteNumberVoiceFile] = byteValue;
