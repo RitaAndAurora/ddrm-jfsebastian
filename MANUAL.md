@@ -86,6 +86,7 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
 **Version 1.2**
 
  * Improved the way patches are interpolated when using the Timbre Space. Now when you select points in the space which correspond to specific patches, these should sound much more similar to the patches themselves.
+ * Added feature to select which sets of parameters you want to be updated when navigating the Timbre Space.
  * Fix MIDI devices bug which would render some MIDI interfaces unselectable in some complex studio setups.
  * Add `View...` button to the lower-right corner of J.F. Sebastian.
  * Improved rendering of scaled UI sizes (including new 60% option).
@@ -190,7 +191,16 @@ The Timbre Space contains a triangle mesh in which each triangle edge correspond
 
 When selecting a point in the space, the patch numbers in which the new patch is based are displayed on screen (see picture above). If any of DDRM controls is changed after a specific point of the Timbre Space is loaded, the patch numbers on screen will disappear to indicate that the slider values are no longer *in sync* with the values of the selected Timbre Space position.
 
-The selected position in the Timbre Space is also exposed by J.F. Sebastian as two **audio parameters** named **Space X** and **Space Y**. These parameters can also be automated. 
+The selected position in the Timbre Space is also exposed by J.F. Sebastian as two **audio parameters** named **Space X** and **Space Y**. These parameters can also be automated.
+
+Using the `Settings...` button on the lower right side of J.F. Sebastian and chosing the `Timbre Space` menu you can set some options to decide how the Timbre Space creates new patches:
+
+* `Affected controls`: using this menu option you can select which controls will be affected by the Timbre Space when selecting different points in it. You can enable or disable the controls of channel I, channel II and the performance controls section. In this way you can have the Timbre Space only affecting the control sets you want.
+
+The Timbre Space settings are stored with J.F. Sebastian's internal state and will be remembered between J.F. Sebastian runs.
+
+**IMPORTANT NOTE**: note that to make the points in the Timbre Space sound the same (or very similar) to the bank patches corresponding to these points (the edges of the triangles), you'll need to configure the `Affected controls` option to affect all channel I, channel II and the performance controls.
+
 
 
 ### 2.5 CS80-like Tone Selector
@@ -206,7 +216,7 @@ When a button is selected it will be highlighted. However, if any parameter is c
 
 Note that `Funky 4` button in the lower row does not work. Maybe there's some dust accumulated which should be cleaned...
 
-**IMPORTANT NOTE**: As in the original CS80, using the buttons of the CS80-like Tone Selector does not affect the state of the performance controls (the lower row of controls). These might need finer adjustments to get the desired tone when combining channel I/II presets form the CS80-like Tone Selector.
+**IMPORTANT NOTE**: As in the original CS80, using the buttons of the CS80-like Tone Selector does not affect the state of the performance controls (the lower row of sliders). These might need finer adjustments to get the desired tone when combining channel I/II presets form the CS80-like Tone Selector.
 
 
 ### 2.6 DDRM panel
@@ -248,10 +258,11 @@ J.F. Sebastian incorporates a number of features to **edit and manage the slider
 * `Send to synth...`: use this button to synchronize the DDRM with the slider values of J.F. Sebastian. Note that when navigating patches, using the Timbre Space, the tone selector, or when moving sliders in J.F. Sebastian, DDRM is also updated accordingly and there is no need to *manually* send values to the synth. however, in some occasions it might be useful to re-send all control values to DDRM to make sure it is in sync.  Clicking the button will display a menu with the following options:
    *  `Patch`: send values corresponding to the full patch (both channels and performance section).
    *  `Channel I/II`: send only the values of the selected channel.
+   *  `Performance controls`: send only the values of the performance controls (the lower row of controls).
 
 ### 2.8 The Randomizer
 
-J.F. Sebastian incorporates a feature to create slight (or wild!) variations of the currently loaded patch. This is called the **Randomizer**. Clicking on the `Randomize!` button in the lower part of the interface will instantly create a variation of the current patch. Using the `Settings...` button on the lower right side of J.F. Sebastian and chosing the `Randomizer settings` menu you can set some options to decide how the Randomizer will change the patch:
+J.F. Sebastian incorporates a feature to create slight (or wild!) variations of the currently loaded patch. This is called the **Randomizer**. Clicking on the `Randomize!` button in the lower part of the interface will instantly create a variation of the current patch. Using the `Settings...` button on the lower right side of J.F. Sebastian and chosing the `Randomizer` menu you can set some options to decide how the Randomizer will change the patch:
 
 * `Affected controls`: using that menu option you can select which controls will be affected by the Randomizer when pressing the `Randomize!` button. You can enable or disable the controls of channel I, channel II and the performance controls section.
 

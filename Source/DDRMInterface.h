@@ -139,7 +139,7 @@ public:
     }
     
     std::vector<String> getDDRMSynthControlIDsForPerformanceControls (){
-        // Returns a vector with all synth control IDs for the performance controls section
+        // Returns a vector with all synth control IDs for the performance controls section (channel 0 == performance controls)
         std::vector<String> synthControlIDS;
         for (int i=0; i < synthControls.size(); i++){
             if (synthControls[i].getChannelNumber() == 0){
@@ -149,7 +149,7 @@ public:
         return synthControlIDS;
     }
     
-    std::vector<String> getDDRMSynthControlIDsForTimbreSpace (){
+    std::vector<String> getDDRMSynthControlIDsForTimbreSpaceMapComputation (){
         // Returns a vector with all synth control IDs to be included in the timbre space
         std::vector<String> synthControlIDS;
         for (int i=0; i < synthControls.size(); i++){
@@ -249,7 +249,7 @@ public:
         return getSynthControlIdValuePairsForPresetBytesArray(presetBytes);
     }
     
-    SynthControlIdValuePairs getSynthControlIdValuePairsForInterpolatedPresets(PresetDistancePairsToInterpolate interpolationData)
+    SynthControlIdValuePairs getSynthControlIdValuePairsForInterpolatedPresets(PresetDistancePairsToInterpolate interpolationData, TimbreSpaceConfigStruct timbreSpaceSettings)
     {
         // Returns a list of pairs of DDRMSynthControl and the value they should take to load a new preset which is created after the interpolation of N presets and distances.
         // TODO: explain all this bit better. New implementation uses maths from https://codeplea.com/triangular-interpolation
@@ -260,11 +260,31 @@ public:
             presetsBytes.push_back(presetBank.getPresetBytesAtIndex(interpolationData[i].presetIdx));
         }
         
+        // Select which controls should be used for the interpolation
+        std::vector<String> parameterIDs;
+        if (timbreSpaceSettings.channel1Controls){
+            std::vector<String> sectionParams =  getDDRMSynthControlIDsForChannel(1);
+            for (int i=0; i<sectionParams.size(); i++){
+                parameterIDs.push_back(sectionParams[i]);
+            }
+        }
+        if (timbreSpaceSettings.channel2Controls){
+            std::vector<String> sectionParams =  getDDRMSynthControlIDsForChannel(2);
+            for (int i=0; i<sectionParams.size(); i++){
+                parameterIDs.push_back(sectionParams[i]);
+            }
+        }
+        if (timbreSpaceSettings.performanceControls){
+            std::vector<String> sectionParams =  getDDRMSynthControlIDsForPerformanceControls();
+            for (int i=0; i<sectionParams.size(); i++){
+                parameterIDs.push_back(sectionParams[i]);
+            }
+        }
+        
         // Interpolate synth control values using the weights above
         SynthControlIdValuePairs idValuePairs;
-        std::vector<String> controlIDs = getDDRMSynthControlIDsForTimbreSpace();
-        for (int i=0; i < controlIDs.size(); i++){
-            DDRMSynthControl* synthControl = getDDRMSynthControlWithID(controlIDs[i]);
+        for (int i=0; i < parameterIDs.size(); i++){
+            DDRMSynthControl* synthControl = getDDRMSynthControlWithID(parameterIDs[i]);
             double newValue = 0.0;
             for (int j=0;j<interpolationData.size(); j++){
                 double value = (double)synthControl->getNormValueFromPresetByteArray(presetsBytes[j]);
@@ -361,7 +381,7 @@ public:
         // as input data for the timbre space. Each row in the matrix corresponds to one preset, each
         // column to the normalized value of one parameter.
         timbreSpaceInputDataMatrix data;
-        std::vector<String> controlIDs = getDDRMSynthControlIDsForTimbreSpace();
+        std::vector<String> controlIDs = getDDRMSynthControlIDsForTimbreSpaceMapComputation();
         for (int i=0; i < presetBank.getNumPresetsInBank(); i++){
             std::vector<float> presetValues;
             DDRMPresetBytes& presetBytes = presetBank.getPresetBytesAtIndex(i);

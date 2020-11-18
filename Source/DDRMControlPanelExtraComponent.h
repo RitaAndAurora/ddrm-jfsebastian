@@ -114,6 +114,7 @@ public:
             m.addItem (MENU_OPTION_ID_SEND_PATCH_TO_SYNTH, "Patch");
             m.addItem (MENU_OPTION_ID_SEND_VOICE_1_TO_SYNTH, "Channel I");
             m.addItem (MENU_OPTION_ID_SEND_VOICE_2_TO_SYNTH, "Channel II");
+            m.addItem (MENU_OPTION_ID_SEND_PERF_CONTROLS_TO_SYNTH, "Performance controls");
             selectedActionID = m.showAt(button);
         }
         
@@ -132,6 +133,8 @@ public:
             processor->swapDDRMChannels();
         } else if (actionID == MENU_OPTION_ID_SEND_PATCH_TO_SYNTH){
             processor->sendControlsToSynth(-1);  // -1 menans no channel filter (all controls)
+        } else if (actionID == MENU_OPTION_ID_SEND_PERF_CONTROLS_TO_SYNTH){
+            processor->sendControlsToSynth(0);
         } else if (actionID == MENU_OPTION_ID_SEND_VOICE_1_TO_SYNTH){
             processor->sendControlsToSynth(1);
         } else if (actionID == MENU_OPTION_ID_SEND_VOICE_2_TO_SYNTH){

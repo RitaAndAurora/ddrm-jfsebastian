@@ -642,6 +642,11 @@ void DdrmtimbreSpaceAudioProcessor::getStateInformation (MemoryBlock& destData)
     state.setProperty(STATE_RANDOMIZATION_CHANNEL2_ENABLED, randomizationSettings.channel2Controls, nullptr);
     state.setProperty(STATE_RANDOMIZATION_PERF_CONTROLS_ENABLED, randomizationSettings.performanceControls, nullptr);
     
+    // Add timbre space settings
+    state.setProperty(STATE_TIMBRE_SPACE_CHANNEL1_ENABLED, timbreSpaceSettings.channel1Controls, nullptr);
+    state.setProperty(STATE_TIMBRE_SPACE_CHANNEL2_ENABLED, timbreSpaceSettings.channel2Controls, nullptr);
+    state.setProperty(STATE_TIMBRE_SPACE_PERF_CONTROLS_ENABLED, timbreSpaceSettings.performanceControls, nullptr);
+    
     // Add scrollbars setting
     state.setProperty(STATE_NEVER_SHOW_SCROLLBARS, neverShowScrollbars, nullptr);
     
@@ -759,6 +764,17 @@ void DdrmtimbreSpaceAudioProcessor::setStateFromXml (XmlElement* xmlState)
     }
     if (xmlState->hasAttribute (STATE_RANDOMIZATION_PERF_CONTROLS_ENABLED)){
         randomizationSettings.performanceControls = xmlState->getBoolAttribute(STATE_RANDOMIZATION_PERF_CONTROLS_ENABLED);
+    }
+    
+    // Load timbre space settings
+    if (xmlState->hasAttribute (STATE_TIMBRE_SPACE_CHANNEL1_ENABLED)){
+        timbreSpaceSettings.channel1Controls = xmlState->getBoolAttribute(STATE_TIMBRE_SPACE_CHANNEL1_ENABLED);
+    }
+    if (xmlState->hasAttribute (STATE_TIMBRE_SPACE_CHANNEL2_ENABLED)){
+        timbreSpaceSettings.channel2Controls = xmlState->getBoolAttribute(STATE_TIMBRE_SPACE_CHANNEL2_ENABLED);
+    }
+    if (xmlState->hasAttribute (STATE_TIMBRE_SPACE_PERF_CONTROLS_ENABLED)){
+        timbreSpaceSettings.performanceControls = xmlState->getBoolAttribute(STATE_TIMBRE_SPACE_PERF_CONTROLS_ENABLED);
     }
     
     // Load scrollbar settings
@@ -1161,7 +1177,7 @@ void DdrmtimbreSpaceAudioProcessor::loadPresetAtIndex (int index)
         SynthControlIdValuePairs idValuePairs = ddrmInterface->getSynthControlIdValuePairsForPresetAtIndex(index);
         setParametersFromSynthControlIdValuePairs(idValuePairs);  // the "isChangingFromPresetLoader" will prevent from sending MIDI messages for the controls...
         if (automaticSyncWithSynthEnabled){
-            sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
+            sendControlsToSynth(-1); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
         }
         timbreSpaceEngine->setTimbreSpaceComponentXYToPresetNumber(index);
     }
@@ -1219,7 +1235,7 @@ void DdrmtimbreSpaceAudioProcessor::loadToneSelectorPreset (const String& toneSe
     SynthControlIdValuePairs idValuePairs = ddrmInterface->getSynthControlIdValuePairsForToneSelectorPreset(toneSelectorPresetName, ddrmChannel);
     setParametersFromSynthControlIdValuePairs(idValuePairs);  // the "isChangingFromToneSelector" will prevent from sending MIDI messages for the controls...
     if (automaticSyncWithSynthEnabled){
-        sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
+        sendControlsToSynth(ddrmChannel); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
     }
 }
 
@@ -1242,7 +1258,7 @@ void DdrmtimbreSpaceAudioProcessor::copyDDRMChannel1ToChannel2 ()
     SynthControlIdValuePairs idValuePairs = ddrmInterface->getSynthControlIdValuePairsForCopyingChannelFromToChannelTo(&parameters, 1, 2);
     setParametersFromSynthControlIdValuePairs(idValuePairs);  // the "isChangingFromCopyingChannels" will prevent from sending MIDI messages for the controls...
     if (automaticSyncWithSynthEnabled){
-        sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
+        sendControlsToSynth(2); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
     }
 }
 
@@ -1252,7 +1268,7 @@ void DdrmtimbreSpaceAudioProcessor::copyDDRMChannel2ToChannel1 ()
     SynthControlIdValuePairs idValuePairs = ddrmInterface->getSynthControlIdValuePairsForCopyingChannelFromToChannelTo(&parameters, 2, 1);
     setParametersFromSynthControlIdValuePairs(idValuePairs);  // the "isChangingFromCopyingChannels" will prevent from sending MIDI messages for the controls...
     if (automaticSyncWithSynthEnabled){
-        sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
+        sendControlsToSynth(1); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
     }
 }
 
@@ -1264,7 +1280,7 @@ void DdrmtimbreSpaceAudioProcessor::swapDDRMChannels ()
     setParametersFromSynthControlIdValuePairs(idValuePairs1to2);  // the "isChangingFromCopyingChannels" will prevent from sending MIDI messages for the controls...
     setParametersFromSynthControlIdValuePairs(idValuePairs2to1);  // the "isChangingFromCopyingChannels" will prevent from sending MIDI messages for the controls...
     if (automaticSyncWithSynthEnabled){
-        sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
+        sendControlsToSynth(-1); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in the app but did change in DDRM and state was not synced. In these cases, "parameterChanged" is not called for all controls)
     }
 }
 
@@ -1280,16 +1296,16 @@ void DdrmtimbreSpaceAudioProcessor::sendControlsToSynth (int channelFilter)
     if (midiOutput.get() != nullptr) {
         std::vector<String> parameterIDs;
         
-        if (isChangingFromTimbreSpace){
-            // Get only the parameter IDs enabled for timbre space
-            parameterIDs = ddrmInterface->getDDRMSynthControlIDsForTimbreSpace();
+        // If channelFilter == 1, send only first channel
+        // If channelFilter == 2, send only second channel
+        // If channelFilter == 0, send performance controls
+        // otherwise send all controls
+        if ((channelFilter == 1) || (channelFilter == 2)){
+            parameterIDs = ddrmInterface->getDDRMSynthControlIDsForChannel(channelFilter);
+        } else if (channelFilter == 0) {
+            parameterIDs = ddrmInterface->getDDRMSynthControlIDsForPerformanceControls();
         } else {
-            // Gell all parameter IDs, filter by channel if indicated
-            if ((channelFilter == 1) || (channelFilter == 2)){
-                parameterIDs = ddrmInterface->getDDRMSynthControlIDsForChannel(channelFilter);
-            } else {
-                parameterIDs = ddrmInterface->getDDRMSynthControlIDs();
-            }
+            parameterIDs = ddrmInterface->getDDRMSynthControlIDs();
         }
         
         for (int i=0; i<parameterIDs.size(); i++){
@@ -1341,7 +1357,16 @@ void DdrmtimbreSpaceAudioProcessor::randomizeControlValues ()
         audioParameter->setValueNotifyingHost(newValue); // parameter needs to be set in normalized range
     }
     if (automaticSyncWithSynthEnabled){
-        sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in app but did change in DDRM and state was not synced, and also to avoid issues sending too many MIDI messages and these not being all received properly)
+        // ...and now we send all control messages (we do this to avoid issues in which controls did not change internally in app but did change in DDRM and state was not synced, and also to avoid issues sending too many MIDI messages and these not being all received properly)
+        if (randomizationSettings.channel1Controls){
+            sendControlsToSynth(1);
+        }
+        if (randomizationSettings.channel2Controls){
+            sendControlsToSynth(2);
+        }
+        if (randomizationSettings.performanceControls){
+            sendControlsToSynth(0);
+        }
     }
     
     delete random;
@@ -1362,7 +1387,7 @@ void DdrmtimbreSpaceAudioProcessor::importFromPatchFile ()
         const ScopedValueSetter<bool> scopedInputFlag (isChangingFromLoadingAPatchFile, true);
         setParametersFromSynthControlIdValuePairs(idValuePairs);  // the "isChangingFromLoadingAPatchFile" will prevent from sending MIDI messages for the controls...
         if (automaticSyncWithSynthEnabled){
-            sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in app but did change in DDRM and state was not synced, and also to avoid issues sending too many MIDI messages and these not being all received properly)
+            sendControlsToSynth(-1); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in app but did change in DDRM and state was not synced, and also to avoid issues sending too many MIDI messages and these not being all received properly)
         }
     }
 }
@@ -1382,7 +1407,7 @@ void DdrmtimbreSpaceAudioProcessor::importFromVoiceFile (int channelTo)
         const ScopedValueSetter<bool> scopedInputFlag (isChangingFromLoadingAVoiceFile, true);
         setParametersFromSynthControlIdValuePairs(idValuePairs);  // the "isChangingFromLoadingAVoiceFile" will prevent from sending MIDI messages for the controls...
         if (automaticSyncWithSynthEnabled){
-            sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in app but did change in DDRM and state was not synced, and also to avoid issues sending too many MIDI messages and these not being all received properly)
+            sendControlsToSynth(channelTo); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in app but did change in DDRM and state was not synced, and also to avoid issues sending too many MIDI messages and these not being all received properly)
         }
     }
 }
@@ -1461,11 +1486,20 @@ void DdrmtimbreSpaceAudioProcessor::actionListenerCallback (const String &messag
 {
     if (message.startsWith(String(ACTION_LOAD_INTERPOLATED_PRESET))){
         const ScopedValueSetter<bool> scopedInputFlag (isChangingFromTimbreSpace, true);
-        setParametersFromSynthControlIdValuePairs(
-            ddrmInterface->getSynthControlIdValuePairsForInterpolatedPresets(timbreSpaceEngine->getSelectedPointInterpolationData())
+        setParametersFromSynthControlIdValuePairs(  // using isChangingFromTimbreSpace == true because this will prevent setParametersFromSynthControlIdValuePairs to actually send midi messages
+            ddrmInterface->getSynthControlIdValuePairsForInterpolatedPresets(timbreSpaceEngine->getSelectedPointInterpolationData(), timbreSpaceSettings)
         );
+        //...and now we send all control messages (we do this to avoid issues in which controls did not change internally in app but did change in DDRM and state was not synced, and also to avoid issues sending too many MIDI messages and these not being all received properly)
         if (automaticSyncWithSynthEnabled){
-            sendControlsToSynth(true); // ...and now we send them all (we do this to avoid issues in which controls did not change internally in app but did change in DDRM and state was not synced, and also to avoid issues sending too many MIDI messages and these not being all received properly)
+            if (timbreSpaceSettings.channel1Controls){
+                sendControlsToSynth(1);
+            }
+            if (timbreSpaceSettings.channel2Controls){
+                sendControlsToSynth(2);
+            }
+            if (timbreSpaceSettings.performanceControls){
+                sendControlsToSynth(0);
+            }
         }
     } else if (message.startsWith(String(ACTION_LOG_PREFIX))){
         #if JUCE_DEBUG

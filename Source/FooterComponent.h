@@ -104,9 +104,15 @@ public:
             PopupMenu randomOptionsSubmenu;
             randomOptionsSubmenu.addSubMenu ("Affected controls", randomPanelOptionsSubmenu);
             randomOptionsSubmenu.addSubMenu ("Amount", randomAmountOptionsSubmenu);
+            m.addSubMenu ("Randomizer", randomOptionsSubmenu);
             
-            m.addSubMenu ("Randomizer settings", randomOptionsSubmenu);
-            
+            PopupMenu timbreSpaceInterpolationControlsSubMenu;
+            timbreSpaceInterpolationControlsSubMenu.addItem (MENU_OPTION_ID_TIMBRE_SPACE_CH1, "Channel I", true, processor->timbreSpaceSettings.channel1Controls == true);
+            timbreSpaceInterpolationControlsSubMenu.addItem (MENU_OPTION_ID_TIMBRE_SPACE_CH2, "Channel II", true, processor->timbreSpaceSettings.channel2Controls == true);
+            timbreSpaceInterpolationControlsSubMenu.addItem (MENU_OPTION_ID_TIMBRE_SPACE_PERF, "Performance controls", true, processor->timbreSpaceSettings.performanceControls == true);
+            PopupMenu timbreSpaceSubMenu;
+            timbreSpaceSubMenu.addSubMenu ("Affected controls", timbreSpaceInterpolationControlsSubMenu);
+            m.addSubMenu ("Timbre Space", timbreSpaceSubMenu);
             
             PopupMenu midiDevicesSubMenu;
             bool autoScanTicked = processor->midiDevicesAutoScanEnabled;
@@ -149,6 +155,12 @@ public:
             processor->randomizationSettings.channel2Controls = !processor->randomizationSettings.channel2Controls;
         } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PERF){
             processor->randomizationSettings.performanceControls = !processor->randomizationSettings.performanceControls;
+        } else if (actionID == MENU_OPTION_ID_TIMBRE_SPACE_CH1){
+            processor->timbreSpaceSettings.channel1Controls = !processor->timbreSpaceSettings.channel1Controls;
+        } else if (actionID == MENU_OPTION_ID_TIMBRE_SPACE_CH2){
+            processor->timbreSpaceSettings.channel2Controls = !processor->timbreSpaceSettings.channel2Controls;
+        } else if (actionID == MENU_OPTION_ID_TIMBRE_SPACE_PERF){
+            processor->timbreSpaceSettings.performanceControls = !processor->timbreSpaceSettings.performanceControls;
         }
     }
     

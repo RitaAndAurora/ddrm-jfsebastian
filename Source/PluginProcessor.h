@@ -130,6 +130,7 @@ public:
     TimbreSpaceEngine* timbreSpaceEngine;
     void updateSpacePointAudioParametersFromMouseEvent(float x, float y);
     bool isChangingFromTimbreSpace = false;  // To distinguish when a parameter is changed from the onscren Slider or from MIDI input
+    TimbreSpaceConfigStruct timbreSpaceSettings;
     
     // Logging code
     void logMessage (const String& message);
