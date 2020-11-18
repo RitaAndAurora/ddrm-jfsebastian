@@ -87,6 +87,7 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
 
  * Improved the way patches are interpolated when using the Timbre Space. Now when you select points in the space which correspond to specific patches, these should sound much more similar to the patches themselves.
  * Added feature to select which sets of parameters you want to be updated when navigating the Timbre Space.
+ * Improved the way in which slider values are sent to DDRM. In previous versions, it could happen that some parameters were not updated correctly if they had been changed in DDRM.
  * Fix MIDI devices bug which would render some MIDI interfaces unselectable in some complex studio setups.
  * Add `View...` button to the lower-right corner of J.F. Sebastian.
  * Improved rendering of scaled UI sizes (including new 60% option).
