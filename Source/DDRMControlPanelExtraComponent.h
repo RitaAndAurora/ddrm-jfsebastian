@@ -106,7 +106,13 @@ public:
         }
         else if (button == &randomizeButton)
         {
-            selectedActionID = MENU_OPTION_ID_RANDOMIZE;
+            {
+                int64 currentTime = Time::getCurrentTime().toMilliseconds();
+                if ((currentTime - lastTimeRandomizeButtonPressed) > MIN_TIME_BETWEEN_NEXT_PREV_RAND_PATCH_BUTTON_PRESSED){
+                    selectedActionID = MENU_OPTION_ID_RANDOMIZE;
+                    lastTimeRandomizeButtonPressed = currentTime;
+                }
+            }
         }
         else if (button == &sendButton)
         {
@@ -167,6 +173,7 @@ private:
     TextButton saveButton;
     TextButton copyButton;
     TextButton randomizeButton;
+    int64 lastTimeRandomizeButtonPressed = 0;
     TextButton sendButton;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DDRMControlPanelExtraComponent);

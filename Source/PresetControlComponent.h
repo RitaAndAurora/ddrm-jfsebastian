@@ -157,11 +157,19 @@ public:
     {
         if (button == &nextPresetButton)
         {
-            processor->nextPreset();
+            int64 currentTime = Time::getCurrentTime().toMilliseconds();
+            if ((currentTime - lastTimeNextButtonPressed) > MIN_TIME_BETWEEN_NEXT_PREV_RAND_PATCH_BUTTON_PRESSED){
+                processor->nextPreset();
+                lastTimeNextButtonPressed = currentTime;
+            }
         }
         else if (button == &previousPresetButton)
         {
-            processor->previousPreset();
+            int64 currentTime = Time::getCurrentTime().toMilliseconds();
+            if ((currentTime - lastTimePreviousButtonPressed) > MIN_TIME_BETWEEN_NEXT_PREV_RAND_PATCH_BUTTON_PRESSED){
+                processor->previousPreset();
+                lastTimePreviousButtonPressed = currentTime;
+            }
         }
         else if (button == &loadFileButton)
         {
@@ -252,7 +260,9 @@ private:
     TextButton loadFileButton;
     Label loadedFileLabel;
     TextButton nextPresetButton;
+    int64 lastTimeNextButtonPressed = 0;
     TextButton previousPresetButton;
+    int64 lastTimePreviousButtonPressed = 0;
     NumericEditorLabel presetNameLabel;
     TextButton saveToCurrentBankLocationButton;
     TextButton saveBankFileButton;
