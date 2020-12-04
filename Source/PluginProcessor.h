@@ -139,6 +139,7 @@ public:
     void actionListenerCallback (const String &message) override;
     
     // Other
+    void requestFirmwareVersion();
     bool automaticSyncWithSynthEnabled = true;  // We define this variable but don't currently use it in JF because DDRM does not support in depth integration (this is always set to true)
     void toggleAutomaticSyncWithSynth();
     float getValueForAudioParameter(const String& parameterID);
@@ -148,6 +149,9 @@ public:
     File lastUsedDirectoryForFileIO;
     TimestampsLastCCSent timestampsLastCCSent;
     RandomizationConfigStruct randomizationSettings;
+    
+    String currentFirmwareLabel = "0.0.0";
+    String requiredFirmwareLabel = "0.0.0";
 
 private:    
     //==============================================================================

@@ -63,8 +63,8 @@ public:
         synthControls.push_back(DDRMSynthControl("DDRM_SPEED_VCO_2", "Ch II: PWM Speed", 67, 30, 0, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_PWM_VCO_2", "Ch II: PWM Amount", 68, 31, 1, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_PW_VCO_2", "Ch II: PW", 69, 32, 2, 2, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_SQR_VCO_2", "Ch II: Square", 70, 76, 24, 2, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_SAW_VCO_2", "Ch II: Sawtooth", 71, 75, 25, 2, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_SQR_VCO_2", "Ch II: Square", 71, 76, 24, 2, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_SAW_VCO_2", "Ch II: Sawtooth", 70, 75, 25, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_NOISE_VCO_2", "Ch II: Noise", 72, 33, 3, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_HPF_VCF_2", "Ch II: HPF", 73, 34, 4, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_RESh_VCF_2", "Ch II: RESh", 119, 35, 5, 2, true));

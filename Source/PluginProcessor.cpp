@@ -28,313 +28,313 @@ DdrmtimbreSpaceAudioProcessor::DdrmtimbreSpaceAudioProcessor()
                 // Add all audio parameters to plugin
                 // --> Start auto-generated code A
                 std:: make_unique < AudioParameterFloat > ("DDRM_SPEED_VCO_1", // parameter ID
-                                                            "Ch I: PWM Speed", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: PWM Speed", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_PWM_VCO_1", // parameter ID
-                                                            "Ch I: PWM Amount", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: PWM Amount", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_PW_VCO_1", // parameter ID
-                                                            "Ch I: PW", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: PW", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SQR_VCO_1", // parameter ID
-                                                            "Ch I: Square", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: Square", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SAW_VCO_1", // parameter ID
-                                                            "Ch I: Sawtooth", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: Sawtooth", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_NOISE_VCO_1", // parameter ID
-                                                            "Ch I: Noise", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: Noise", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_HPF_VCF_1", // parameter ID
-                                                            "Ch I: HPF", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: HPF", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_RESh_VCF_1", // parameter ID
-                                                            "Ch I: RESh", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: RESh", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_LPF_VCF_1", // parameter ID
-                                                            "Ch I: LPF", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: LPF", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_RESl_VCF_1", // parameter ID
-                                                            "Ch I: RESl", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: RESl", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_IL_VCF_1", // parameter ID
-                                                            "Ch I: VCF IL", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCF IL", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_AL_VCF_1", // parameter ID
-                                                            "Ch I: VCF AL", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCF AL", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_A_VCF_1", // parameter ID
-                                                            "Ch I: VCF A", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCF A", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_D_VCF_1", // parameter ID
-                                                            "Ch I: VCF D", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCF D", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_R_VCF_1", // parameter ID
-                                                            "Ch I: VCF R", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCF R", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_VCF_VCA_1", // parameter ID
-                                                            "Ch I: VCF Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCF Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SINE__VCA_1", // parameter ID
-                                                            "Ch I: Sine Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: Sine Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_A_VCA_1", // parameter ID
-                                                            "Ch I: VCA A", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCA A", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_D_VCA_1", // parameter ID
-                                                            "Ch I: VCA D", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCA D", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_S_VCA_1", // parameter ID
-                                                            "Ch I: VCA S", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCA S", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_R_VCA_1", // parameter ID
-                                                            "Ch I: VCA R", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: VCA R", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_LEVEL_VCA_1", // parameter ID
-                                                            "Ch I: Channel Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: Channel Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_INIT_BR_TOUCH_1", // parameter ID
-                                                            "Ch I: Initial Brilliance", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: Initial Brilliance", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_INIT_LEV_TOUCH_1", // parameter ID
-                                                            "Ch I: Initial Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: Initial Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_AT_BR_TOUCH_1", // parameter ID
-                                                            "Ch I: After Brilliance", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: After Brilliance", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_AT_LEV_TOUCH_1", // parameter ID
-                                                            "Ch I: After Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch I: After Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SPEED_VCO_2", // parameter ID
-                                                            "Ch II: PWM Speed", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: PWM Speed", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_PWM_VCO_2", // parameter ID
-                                                            "Ch II: PWM Amount", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: PWM Amount", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_PW_VCO_2", // parameter ID
-                                                            "Ch II: PW", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: PW", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SQR_VCO_2", // parameter ID
-                                                            "Ch II: Square", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: Square", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SAW_VCO_2", // parameter ID
-                                                            "Ch II: Sawtooth", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: Sawtooth", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_NOISE_VCO_2", // parameter ID
-                                                            "Ch II: Noise", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: Noise", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_HPF_VCF_2", // parameter ID
-                                                            "Ch II: HPF", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: HPF", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_RESh_VCF_2", // parameter ID
-                                                            "Ch II: RESh", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: RESh", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_LPF_VCF_2", // parameter ID
-                                                            "Ch II: LPF", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: LPF", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_RESl_VCF_2", // parameter ID
-                                                            "Ch II: RESl", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: RESl", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_IL_VCF_2", // parameter ID
-                                                            "Ch II: VCF IL", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCF IL", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_AL_VCF_2", // parameter ID
-                                                            "Ch II: VCF AL", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCF AL", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_A_VCF_2", // parameter ID
-                                                            "Ch II: VCF A", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCF A", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_D_VCF_2", // parameter ID
-                                                            "Ch II: VCF D", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCF D", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_R_VCF_2", // parameter ID
-                                                            "Ch II: VCF R", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCF R", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_VCF_VCA_2", // parameter ID
-                                                            "Ch II: VCF Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCF Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SINE__VCA_2", // parameter ID
-                                                            "Ch II: Sine Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: Sine Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_A_VCA_2", // parameter ID
-                                                            "Ch II: VCA A", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCA A", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_D_VCA_2", // parameter ID
-                                                            "Ch II: VCA D", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCA D", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_S_VCA_2", // parameter ID
-                                                            "Ch II: VCA S", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCA S", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_R_VCA_2", // parameter ID
-                                                            "Ch II: VCA R", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: VCA R", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_LEVEL_VCA_2", // parameter ID
-                                                            "Ch II: Channel Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: Channel Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_INIT_BR_TOUCH_2", // parameter ID
-                                                            "Ch II: Initial Brilliance", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: Initial Brilliance", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_INIT_LEV_TOUCH_2", // parameter ID
-                                                            "Ch II: Initial Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: Initial Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_AT_BR_TOUCH_2", // parameter ID
-                                                            "Ch II: After Brilliance", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: After Brilliance", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_AT_LEV_TOUCH_2", // parameter ID
-                                                            "Ch II: After Level", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch II: After Level", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_COARSE_PITCH", // parameter ID
-                                                            "Ch : Pitch Coarse", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Pitch Coarse", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_FINE_PITCH", // parameter ID
-                                                            "Ch : Pitch Fine", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Pitch Fine", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_DETUNE_CH2_PITCH", // parameter ID
-                                                            "Ch : Detune Ch II", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Detune Ch II", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_FEET_1_FEET", // parameter ID
-                                                            "Ch : Feet I", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Feet I", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_FEET_2_FEET", // parameter ID
-                                                            "Ch : Feet II", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Feet II", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_FUNCTION_SUB_OSC", // parameter ID
-                                                            "Ch : Sub Osc Function", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Sub Osc Function", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SPEED_SUB_OSC", // parameter ID
-                                                            "Ch : Sub Osc Speed", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Sub Osc Speed", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_VCO_SUB_OSC", // parameter ID
-                                                            "Ch : Sub Osc VCO Amount", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Sub Osc VCO Amount", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_VCF_SUB_OSC", // parameter ID
-                                                            "Ch : Sub Osc VCF Amount", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Sub Osc VCF Amount", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_VCA_SUB_OSC", // parameter ID
-                                                            "Ch : Sub Osc VCA Amount", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Sub Osc VCA Amount", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_MIX", // parameter ID
-                                                            "Ch : Mix", // parameter name
-                                                            NormalisableRange < float > (0.0f, 126.0f, 1.0f), // parameter range
-                                                            63.0f),
+                                                        "Ch : Mix", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_BRILL", // parameter ID
-                                                            "Ch : Brilliance", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Brilliance", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_RESSO", // parameter ID
-                                                            "Ch : Ressonance", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Ressonance", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_INITIAL_TOUCH", // parameter ID
-                                                            "Ch : Initial Pitch Bend", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Initial Pitch Bend", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SPEED_TOUCH", // parameter ID
-                                                            "Ch : Touch Response Sub Osc Speed", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Touch Response Sub Osc Speed", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_VCO_TOUCH", // parameter ID
-                                                            "Ch : Touch Response Sub Osc VCO Amount", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Touch Response Sub Osc VCO Amount", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_VCF_TOUCH", // parameter ID
-                                                            "Ch : Touch Response Sub Osc VCF Amount", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Touch Response Sub Osc VCF Amount", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_BR_LOW_KBRD", // parameter ID
-                                                            "Ch : Brilliance Low", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Brilliance Low", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_BR_HIGH_KBRD", // parameter ID
-                                                            "Ch : Brilliance High", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Brilliance High", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_LEV_LOW_KBRD", // parameter ID
-                                                            "Ch : Level Low", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Level Low", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_LEV_HIGH_KBRD", // parameter ID
-                                                            "Ch : Level High", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Level High", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_GLIDE_MODE_GLIDE", // parameter ID
-                                                            "Ch : Glide Mode", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Glide Mode", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_GLIDE_TIME_GLIDE", // parameter ID
-                                                            "Ch : Glide Time", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Glide Time", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SUSTAIN_MODE", // parameter ID
-                                                            "Ch : Sustain Mode", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Sustain Mode", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 std:: make_unique < AudioParameterFloat > ("DDRM_SUSTAIN_TIME", // parameter ID
-                                                            "Ch : Sustain Time", // parameter name
-                                                            NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
-                                                            64.0f),
+                                                        "Ch : Sustain Time", // parameter name
+                                                        NormalisableRange < float > (0.0f, 127.0f, 1.0f), // parameter range
+                                                        64.0f),
                 // --> End auto-generated code A
                 std:: make_unique < AudioParameterFloat > (String(SPACE_X_PARAMETER_ID), // parameter ID
                                                            String(SPACE_X_PARAMETER_NAME), // parameter name
@@ -460,6 +460,8 @@ DdrmtimbreSpaceAudioProcessor::DdrmtimbreSpaceAudioProcessor()
     
     // Trigger load default state in processor
     setDefaultState();
+    
+    requiredFirmwareLabel = String(REQUIRED_FW_FIRST) + "." + String(REQUIRED_FW_SECOND) + "." + String(REQUIRED_FW_THIRD);
 }
 
 DdrmtimbreSpaceAudioProcessor::~DdrmtimbreSpaceAudioProcessor()
@@ -545,8 +547,7 @@ void DdrmtimbreSpaceAudioProcessor::changeProgramName (int index, const String& 
 //==============================================================================
 void DdrmtimbreSpaceAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    requestFirmwareVersion();
 }
 
 void DdrmtimbreSpaceAudioProcessor::releaseResources()
@@ -969,56 +970,68 @@ void DdrmtimbreSpaceAudioProcessor::triggerMidiDevicesScan ()
 
 void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source, const MidiMessage& m)
 {
-    if ((midiInputChannel == -1) || (m.getChannel() == midiInputChannel))
-    {
-        if (m.isController())
-        {
-            int ccNumber = m.getControllerNumber();
-            int ccValue = m.getControllerValue();
+    if (m.isSysEx()){
+        // If message is sysex, check the size and code to know what it is about
+        if (m.getSysExDataSize() == 5){
+            const uint8 *buf = m.getSysExData();
             
-            /* There is bug with MIDI implementation of SQR and SAW switches in DDRM.
-             The problem is that these controls react to MIDI CC 70 and 71 but send MIDI CC 71
-             and 70 (are inverted in MIDI in/out). The code below fixes this issue and should be
-             changed once this is fixed in DDRM firmware.
-             More details here: https://github.com/ffont/official-ddrm-issue-tracker/issues/39
-             
-             */
-            
-            if (ccNumber == 70){
-                ccNumber = 71;
-            } else if (ccNumber == 71){
-                ccNumber = 70;
-            }
-            
-            /* Only process MIDI input message if a certain amount of time has passed since
-             last time a MIDI CC message was sent from this app to the same CC number. This
-             is to avoid a problem in DDRM which will replicate every MIDI message it receives
-             and forward it to its output. If the message came from this app we want to ignore the
-             replica sent by DDRM. The amount of time that should pass is defined in
-             MIDI_IN_SAME_CC_TIME_THRESHOLD_MS.
-             
-             To implement that check, everytime we send a MIDI CC message we store a timestamp
-             in timestampsLastCCSent array. timestampsLastCCSent has 128 positions and each position
-             stores the timestamp for the last time a MIDI message was sent to the corresponding CC
-             value (per the position). E.g.: position 1 = MIDI CC #1.
-             */
-            
-            int64 currentTime = Time::getCurrentTime().toMilliseconds();
-            int64 lastMessageSentToSameCCTime = timestampsLastCCSent[ccNumber];
-            if ((currentTime - lastMessageSentToSameCCTime) > MIDI_IN_SAME_CC_TIME_THRESHOLD_MS){
-                #if JUCE_DEBUG
-                    if (LOG_MIDI_IN == 1){
-                        logMessage("Received MIDI CC from " + source->getName() + String::formatted(": %i %i", ccNumber, ccValue));
-                    }
-                #endif
+            if (((int)buf[0] == SYSEX_DDRM_ID) && ((int)buf[1] == SYSEX_FW_VERSION_COMMAND)){
+                // Firmware version (check if supported, otherwise show alert)
+                int first = (int)buf[2];
+                int second = (int)buf[3];
+                int third = (int)buf[4];
+                int combined = first * 1000 + second * 100 + third;
+                int combinedRequired = REQUIRED_FW_FIRST * 1000 + REQUIRED_FW_SECOND * 100 + REQUIRED_FW_THIRD;
                 
-                // Set parameter value from MIDI message
-                const ScopedValueSetter<bool> scopedInputFlag (isReceivingFromMidiInput, true);
-                float newValue = (float)ccValue/127.0;
-                const String parameterID = ddrmInterface->getParameterIDFromCCNumber(ccNumber);
-                parameters.getParameter(parameterID)->beginChangeGesture();
-                parameters.getParameter(parameterID)->setValueNotifyingHost(newValue);  // setValueNotifyingHost takes norm values from [0.0..1.0]
-                parameters.getParameter(parameterID)->endChangeGesture();
+                if (combined < combinedRequired){
+                    currentFirmwareLabel = (String)first + "." + (String)second + "." + (String)third;
+                    logMessage("Old firmware detected: " + currentFirmwareLabel + ", should be " + requiredFirmwareLabel);
+                    sendActionMessage(ACTION_FIRMWARE_UPDATE_REQUIRED);
+                }
+            }
+        }
+    } else {
+        if ((midiInputChannel == -1) || (m.getChannel() == midiInputChannel))
+        {
+            if (m.isController())
+            {
+                int ccNumber = m.getControllerNumber();
+                int ccValue = m.getControllerValue();
+                
+                /* Only process MIDI input message if a certain amount of time has passed since
+                 last time a MIDI CC message was sent from this app to the same CC number. This
+                 is to avoid a problem in DDRM which will replicate every MIDI message it receives
+                 and forward it to its output. If the message came from this app we want to ignore the
+                 replica sent by DDRM. The amount of time that should pass is defined in
+                 MIDI_IN_SAME_CC_TIME_THRESHOLD_MS.
+                 
+                 To implement that check, everytime we send a MIDI CC message we store a timestamp
+                 in timestampsLastCCSent array. timestampsLastCCSent has 128 positions and each position
+                 stores the timestamp for the last time a MIDI message was sent to the corresponding CC
+                 value (per the position). E.g.: position 1 = MIDI CC #1.
+                 
+                 UPDATE: since 1.4.0 (or maybe before) this no longer seems to be an issue, but we leave the
+                 code in case this is useful in the future. We set MIDI_IN_SAME_CC_TIME_THRESHOLD_MS to 0
+                 so this has no effect.
+                 */
+                
+                int64 currentTime = Time::getCurrentTime().toMilliseconds();
+                int64 lastMessageSentToSameCCTime = timestampsLastCCSent[ccNumber];
+                if ((currentTime - lastMessageSentToSameCCTime) > MIDI_IN_SAME_CC_TIME_THRESHOLD_MS){
+                    #if JUCE_DEBUG
+                        if (LOG_MIDI_IN == 1){
+                            logMessage("Received MIDI CC from " + source->getName() + String::formatted(": %i %i", ccNumber, ccValue));
+                        }
+                    #endif
+                    
+                    // Set parameter value from MIDI message
+                    const ScopedValueSetter<bool> scopedInputFlag (isReceivingFromMidiInput, true);
+                    float newValue = (float)ccValue/127.0;
+                    const String parameterID = ddrmInterface->getParameterIDFromCCNumber(ccNumber);
+                    parameters.getParameter(parameterID)->beginChangeGesture();
+                    parameters.getParameter(parameterID)->setValueNotifyingHost(newValue);  // setValueNotifyingHost takes norm values from [0.0..1.0]
+                    parameters.getParameter(parameterID)->endChangeGesture();
+                }
             }
         }
     }
@@ -1531,6 +1544,14 @@ void DdrmtimbreSpaceAudioProcessor::toggleAutomaticSyncWithSynth(){
         // If we just enalbed this setting, request current state to KIJIMI
         // TODO: current DDRM does not support that yet
         // loadControlsStateFromSynth();
+    }
+}
+
+void DdrmtimbreSpaceAudioProcessor::requestFirmwareVersion(){
+    if (midiInput.get() != nullptr){
+        uint8 sysexdata[] = { SYSEX_DDRM_ID, SYSEX_FW_VERSION_COMMAND}; // Get version command
+        MidiMessage msg = MidiMessage::createSysExMessage(sysexdata, 2);
+        midiOutput.get()->sendMessageNow(msg);
     }
 }
 

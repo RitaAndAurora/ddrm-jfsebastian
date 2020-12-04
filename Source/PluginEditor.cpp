@@ -32,6 +32,9 @@ DdrmtimbreSpaceAudioProcessorEditor::DdrmtimbreSpaceAudioProcessorEditor (Ddrmti
     // Disable resize
     setResizable(false, false);
     
+    // Now that editor is ready, ask for firmware version and show alert message if firmware is not ok
+    processor.requestFirmwareVersion();
+    
     resized();
 }
 
@@ -236,6 +239,11 @@ void UIWrapperComponent::actionListenerCallback (const String &message)
     } else if (message.startsWith(String(ACTION_UPDATE_UI_SCALE_FACTOR))){
         editor->customLookAndFeel.scaleFactor = processor->uiScaleFactor;
         resized();  // No need to update any local member here as scale factor is stored in processor
+    } else if (message.startsWith(String(ACTION_FIRMWARE_UPDATE_REQUIRED))){
+        AlertWindow w ("Firmware out of date", "", AlertWindow::NoIcon);
+        w.addTextBlock ("Your Deckard's Dream has firmware version " + processor->currentFirmwareLabel + ", but J.F. Sebastian requires firmware " + processor->requiredFirmwareLabel + ". You can still use J.F. Sebastian but some things might not work as expected. You can download the new firmware from the J.F. Sebastian download page :)");
+        w.addButton ("Ok", 0, KeyPress (KeyPress::returnKey, 0, 0));
+        w.runModalLoop();
     }
 }
 

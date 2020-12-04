@@ -12,6 +12,13 @@
 #define DONATE_URL "https://ritaandaurora.github.io/ddrm-jfsebastian/donate"
 #define SOURCE_CODE_URL "https://github.com/ritaandaurora/ddrm-jfsebastian"
 
+#define REQUIRED_FW_FIRST 1
+#define REQUIRED_FW_SECOND 4
+#define REQUIRED_FW_THIRD 0
+
+#define SYSEX_DDRM_ID 0x01
+#define SYSEX_FW_VERSION_COMMAND 0x15
+
 #define ACTION_LOG_PREFIX "LOG:"
 #define LOG_IN_UI 0
 #define LOG_IN_CONSOLE 0
@@ -19,7 +26,7 @@
 #define LOG_MIDI_IN 0
 
 #define REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS 1000  // Set to 0 to disable the timer
-#define MIDI_IN_SAME_CC_TIME_THRESHOLD_MS 25
+#define MIDI_IN_SAME_CC_TIME_THRESHOLD_MS 0
 #define MIN_TIME_BETWEEN_NEXT_PREV_RAND_PATCH_BUTTON_PRESSED 50  // Don't allow next/previous/randomize buttons to be pressed faster than once every 100 ms
 
 #define DDRM_PRESET_NUM_BYTES 98
@@ -28,6 +35,7 @@
 #define EMPTY_PRESET_SUM_THRESHOLD 5.0
 #define EMPTY_PRESET_SUM_UPPER_THRESHOLD 999999.0  // Not really used in JF Sebast
 
+#define ACTION_FIRMWARE_UPDATE_REQUIRED "ACTION_FIRMWARE_UPDATE_REQUIRED"
 #define ACTION_LOAD_TS_SOLUTION "ACTION_LOAD_TS_SOLUTION:"
 #define ACTION_SET_IS_COMPUTING_TS_SOLUTION "ACTION_SET_IS_COMPUTING_TS_SOLUTION:"
 #define ACTION_LOAD_SELECTED_POINT_DATA "ACTION_LOAD_SELECTED_POINT_DATA:"
