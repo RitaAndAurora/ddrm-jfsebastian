@@ -61,9 +61,9 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
 
  *windows*
  
-  * Stand-alone app: `c:\Program Files (x86)\JFSebastian\`
-  * VST2: `c:\Program Files (x86)\Common Files\VST2\`
-  * VST3: `c:\Program Files (x86)\Common Files\VST3\`
+  * Stand-alone app: `c:\Program Files\JFSebastian\`
+  * VST2: `c:\Program Files\Common Files\VST2\`
+  * VST3: `c:\Program Files\Common Files\VST3\`
 
  3. Run the stand-aloone app from the directory it has been installed or either open your favorite DAW. J.F. Sebastian should appear in the list of available plugins. If that is not the casem you might need to trigger a *re-scanning* of the plugins folder by the DAW. If after doing that J.F. Sebastian still does not appear, make sure your DAW is looking for plugins in the default locations listed above.
 
@@ -82,6 +82,13 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
    * windows 10 / Bitwig Studio 3
 
 ### 1.2 Release notes
+
+**Version 1.2.1**
+
+ * Fixed default installation paths for Windows installer
+ * Support for DDRM firmware 1.4.0, which includes some bug fixes
+ * J.F. Sebastian now check for DDRM's firmware version and shows a messages if DDRM firmware is out of date
+
 
 **Version 1.2**
 
