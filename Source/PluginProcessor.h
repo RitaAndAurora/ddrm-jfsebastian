@@ -60,6 +60,7 @@ public:
     void changeProgramName (int index, const String& newName) override;
 
     //==============================================================================
+    void sendControlToSynth (const String& parameterID, int value);
     void parameterChanged (const String& parameterID, float newValue) override;
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
@@ -114,17 +115,22 @@ public:
     void copyDDRMChannel2ToChannel1 ();
     void swapDDRMChannels ();
     void sendControlsToSynth (int channelFilter);
-    void randomizeControlValues (int channelFilter, float amount);
+    void randomizeControlValues ();
     void importFromPatchFile ();
     void importFromVoiceFile (int channelTo);
     void saveToPatchFile ();
     void saveToVoiceFile (int channelFrom);
+    bool isChangingFromLoadingAVoiceFile = false;
+    bool isChangingFromLoadingAPatchFile = false;
+    bool isChangingFromRandomizer = false;
+    bool isChangingFromCopyingChannels = false;
     
     // Timbre Space Engine
     void computeTimbreSpace ();
     TimbreSpaceEngine* timbreSpaceEngine;
     void updateSpacePointAudioParametersFromMouseEvent(float x, float y);
     bool isChangingFromTimbreSpace = false;  // To distinguish when a parameter is changed from the onscren Slider or from MIDI input
+    TimbreSpaceConfigStruct timbreSpaceSettings;
     
     // Logging code
     void logMessage (const String& message);
@@ -133,10 +139,19 @@ public:
     void actionListenerCallback (const String &message) override;
     
     // Other
+    void requestFirmwareVersion();
+    bool automaticSyncWithSynthEnabled = true;  // We define this variable but don't currently use it in JF because DDRM does not support in depth integration (this is always set to true)
+    void toggleAutomaticSyncWithSynth();
+    float getValueForAudioParameter(const String& parameterID);
+    bool neverShowScrollbars = false;
     File getDirectoryForFileSaveLoad ();
     void setLastUserDirectoryForFileSaveLoad (File file);
     File lastUsedDirectoryForFileIO;
     TimestampsLastCCSent timestampsLastCCSent;
+    RandomizationConfigStruct randomizationSettings;
+    
+    String currentFirmwareLabel = "0.0.0";
+    String requiredFirmwareLabel = "0.0.0";
 
 private:    
     //==============================================================================

@@ -11,42 +11,123 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+
 //==============================================================================
 DdrmtimbreSpaceAudioProcessorEditor::DdrmtimbreSpaceAudioProcessorEditor (DdrmtimbreSpaceAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
+    customLookAndFeel.scaleFactor = processor.uiScaleFactor;
+    LookAndFeel::setDefaultLookAndFeel(&customLookAndFeel);
+    
+    uiWrapper.initialize(&processor, this);
+    
+    addAndMakeVisible (uiViewport);
+    uiViewport.setViewedComponent(static_cast<Component*>(&uiWrapper), false);
+    setSize (10, 10); // this is re-set later
+    
+    // Get screen height
+    Rectangle<int> r = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+    screenHeight = r.getHeight();
+    
+    // Disable resize
+    setResizable(false, false);
+    
+    // Now that editor is ready, ask for firmware version and show alert message if firmware is not ok
+    processor.requestFirmwareVersion();
+    
+    resized();
+}
+
+DdrmtimbreSpaceAudioProcessorEditor::~DdrmtimbreSpaceAudioProcessorEditor()
+{
+    uiViewport.setViewedComponent(nullptr);
+}
+
+void DdrmtimbreSpaceAudioProcessorEditor::paint (Graphics& g)
+{
+    g.fillAll (Colours::black);
+}
+
+void DdrmtimbreSpaceAudioProcessorEditor::resized ()
+{
+    uiViewport.setScrollBarsShown(!processor.neverShowScrollbars, !processor.neverShowScrollbars, true, true);  // configure scroll bars
+    
+    uiViewport.setBounds(getBounds());
+
+    int maxHeight = (int)(screenHeight * 0.95);  // take maximum of 90% of the height of the screen
+    if (maxHeight == 0){
+        maxHeight = 100; // This can happen when not everything is initialised (?), make sure we don't set a size of 0 or JUCE will complain
+    }
+    
+    int width = uiWrapper.sizeWidth;
+    if (!processor.neverShowScrollbars) {
+        if (uiWrapper.sizeHeight > maxHeight){
+            width += uiViewport.getScrollBarThickness();
+        }
+    }
+    
+    setSize (width, jmin(uiWrapper.sizeHeight, maxHeight)); // max plugin window UI size
+}
+
+
+//==============================================================================
+
+
+UIWrapperComponent::UIWrapperComponent ()
+{
+    setSize (10, 10);  // Is re-set when running resize()
+}
+
+UIWrapperComponent::~UIWrapperComponent()
+{
+    processor->removeActionListener(this);
+}
+
+
+void UIWrapperComponent::initialize (DdrmtimbreSpaceAudioProcessor* p, DdrmtimbreSpaceAudioProcessorEditor* e)
+{
+    // Set processor object
+    editor = e;
+    processor = p;
+    processor->addActionListener(this);  // Receive messages from processor
+    
+    // bg image
     bgImage = ImageCache::getFromMemory (BinaryData::UIBackground_png, BinaryData::UIBackground_pngSize);
-    setLookAndFeel(&customLookAndFeel);
     
     // Init header and footer components
-    header.initialize(&processor);
+    header.initialize(processor);
     addAndMakeVisible (header);
-    footer.initialize(&processor);
+    footer.initialize(processor);
     addAndMakeVisible (footer);
     
     // Add logo component (does not need initialization)
     addAndMakeVisible (logo);
     
     // Init MIDI settings panel
-    midiSettingsPanel.initialize(&processor);
+    midiSettingsPanel.initialize(processor);
     addAndMakeVisible (midiSettingsPanel);
     
     // Init preset control component
-    presetControlPanel.initialize(&processor);
+    presetControlPanel.initialize(processor);
     addAndMakeVisible (presetControlPanel);
     
+    // Add view button (after preset controls to be on top)
+    viewButton.addListener (this);
+    viewButton.setButtonText("View...");
+    addAndMakeVisible (viewButton);
+    
     // Init DDRM contorl panel component
-    ddrmControlPanel.initialize(&processor);
+    ddrmControlPanel.initialize(processor);
     addAndMakeVisible (ddrmControlPanel);
-    ddrmControlPanelExtra.initialize(&processor);
+    ddrmControlPanelExtra.initialize(processor);
     addAndMakeVisible (ddrmControlPanelExtra);
     
     // Init timbre space component
-    timbreSpace.initialize(&processor);
+    timbreSpace.initialize(processor);
     addAndMakeVisible (timbreSpace);
     
     // Init DDRM tone selector component
-    ddrmToneSelector.initialize(&processor);
+    ddrmToneSelector.initialize(processor);
     addAndMakeVisible (ddrmToneSelector);
 
     // Logging area
@@ -63,34 +144,27 @@ DdrmtimbreSpaceAudioProcessorEditor::DdrmtimbreSpaceAudioProcessorEditor (Ddrmti
         logArea.setColour (TextEditor::shadowColourId, Colour (0x16000000));
     }
     
-    // Register editor as an ActionListener for actions comming from the processor
-    processor.addActionListener(this);  // Receive messages from processor
-    
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
-    setSize (10, 10);  // Is re-set when running resize()
-    
-    // Disable resize
-    setResizable(false, false);
+    wasInitialized = true;
+    resized();
 }
 
-DdrmtimbreSpaceAudioProcessorEditor::~DdrmtimbreSpaceAudioProcessorEditor()
-{
-    setLookAndFeel (nullptr);
-    processor.removeActionListener(this);
-}
+
 
 //==============================================================================
-void DdrmtimbreSpaceAudioProcessorEditor::paint (Graphics& g)
+void UIWrapperComponent::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     //g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     g.drawImage(bgImage, getLocalBounds().toFloat());
 }
 
-void DdrmtimbreSpaceAudioProcessorEditor::resized()
+void UIWrapperComponent::resized()
 {
-    float scale = processor.uiScaleFactor;
+    if (!wasInitialized){
+        return;
+    }
+    
+    float scale = processor->uiScaleFactor;
     
     float unitMargin = 10 * scale;
     float unitRowHeight = 20 * scale;
@@ -123,6 +197,7 @@ void DdrmtimbreSpaceAudioProcessorEditor::resized()
     accumulatedHeight += unitMargin + midiSettingsHeight;
     
     presetControlPanel.setBounds (unitMargin, accumulatedHeight + unitMargin, fullWidth, presetLoaderHeight);
+    viewButton.setBounds(fullWidth - (unitRowHeight * 3 - unitMargin), accumulatedHeight + unitMargin, unitRowHeight * 3, unitRowHeight);
     accumulatedHeight += unitMargin + presetLoaderHeight;
     
     if (_showTimbreSpace){
@@ -149,20 +224,77 @@ void DdrmtimbreSpaceAudioProcessorEditor::resized()
         accumulatedHeight += unitMargin + logAreaHeight;
     }
     
-    setSize(fullWidth + 2 * unitMargin, accumulatedHeight + unitMargin);
+    setSize(fullWidth +  2 * unitMargin, accumulatedHeight + unitMargin);
+    sizeWidth = fullWidth +  2 * unitMargin;  // used by the viewport
+    sizeHeight = accumulatedHeight + unitMargin;  // used by the viewport
+    
+    editor->resized();
 }
 
 //==============================================================================
-void DdrmtimbreSpaceAudioProcessorEditor::actionListenerCallback (const String &message)
+void UIWrapperComponent::actionListenerCallback (const String &message)
 {
     if (message.startsWith(String(ACTION_LOG_PREFIX))){
         logMessageInUI(message.substring(String(ACTION_LOG_PREFIX).length()));
     } else if (message.startsWith(String(ACTION_UPDATE_UI_SCALE_FACTOR))){
+        editor->customLookAndFeel.scaleFactor = processor->uiScaleFactor;
         resized();  // No need to update any local member here as scale factor is stored in processor
+    } else if (message.startsWith(String(ACTION_FIRMWARE_UPDATE_REQUIRED))){
+        AlertWindow w ("Firmware out of date", "", AlertWindow::NoIcon);
+        w.addTextBlock ("Your Deckard's Dream has firmware version " + processor->currentFirmwareLabel + ", but J.F. Sebastian requires firmware " + processor->requiredFirmwareLabel + ". You can still use J.F. Sebastian but some things might not work as expected. You can download the new firmware from the J.F. Sebastian download page :)");
+        w.addButton ("Ok", 0, KeyPress (KeyPress::returnKey, 0, 0));
+        w.runModalLoop();
     }
 }
 
-void DdrmtimbreSpaceAudioProcessorEditor::logMessageInUI (const String& message)
+void UIWrapperComponent::buttonClicked (Button* button)
+{
+    int selectedActionID = -1;
+    
+    if (button == &viewButton)
+    {
+        PopupMenu zoomSubMenu;
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_60, "60%");
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_70, "70%");
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_80, "80%");
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_90, "90%");
+        zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_100, "100%");
+        
+        PopupMenu m;
+        m.addSubMenu ("Zoom", zoomSubMenu);
+        
+        int neverShowScrollbarsTicked = processor->neverShowScrollbars;
+        m.addItem (MENU_OPTION_TOGGLE_NEVER_SHOW_SCROLLBARS, "Hide scrollbars", true, neverShowScrollbarsTicked);
+                    
+        selectedActionID = m.showAt(button);
+    }
+    
+    if (selectedActionID > 0){
+        processMenuAction(selectedActionID);
+    }
+}
+
+void UIWrapperComponent::processMenuAction(int actionID)
+{
+    if (actionID == MENU_OPTION_ID_ZOOM_60){
+        processor->setUIScaleFactor(0.6);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_70){
+        processor->setUIScaleFactor(0.7);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_80){
+        processor->setUIScaleFactor(0.8);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_90){
+        processor->setUIScaleFactor(0.9);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_100){
+        processor->setUIScaleFactor(1.0);
+    } else if (actionID == MENU_OPTION_ID_ZOOM_75){
+        processor->setUIScaleFactor(0.75);
+    } else if (actionID == MENU_OPTION_TOGGLE_NEVER_SHOW_SCROLLBARS){
+        processor->neverShowScrollbars = !processor->neverShowScrollbars;
+        resized();
+    }
+}
+
+void UIWrapperComponent::logMessageInUI (const String& message)
 {
     logArea.moveCaretToEnd();
     logArea.insertTextAtCaret(message);

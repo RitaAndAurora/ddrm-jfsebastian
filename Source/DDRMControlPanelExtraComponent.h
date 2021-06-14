@@ -36,7 +36,7 @@ public:
         addAndMakeVisible (copyButton);
         
         randomizeButton.addListener (this);
-        randomizeButton.setButtonText("Randomize...");
+        randomizeButton.setButtonText("Randomize!");
         addAndMakeVisible (randomizeButton);
         
         sendButton.addListener (this);
@@ -83,7 +83,6 @@ public:
         if (button == &importButton)
         {
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addItem (MENU_OPTION_ID_IMPORT_FROM_PATCH_FILE, "From patch file");
             m.addItem (MENU_OPTION_ID_IMPORT_FROM_VOICE_FILE_TO_VOICE_1, "From voice file to channel I");
             m.addItem (MENU_OPTION_ID_IMPORT_FROM_VOICE_FILE_TO_VOICE_2, "From voice file to channel II");
@@ -92,7 +91,6 @@ public:
         else if (button == &saveButton)
         {
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addItem (MENU_OPTION_ID_SAVE_PATCH_TO_PATCH_FILE, "To patch file");
             m.addItem (MENU_OPTION_ID_SAVE_VOICE_1_TO_VOICE_FILE, "Channel I to voice file");
             m.addItem (MENU_OPTION_ID_SAVE_VOICE_2_TO_VOICE_FILE, "Channel II to voice file");
@@ -101,7 +99,6 @@ public:
         else if (button == &copyButton)
         {
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addItem (MENU_OPTION_ID_COPY_VOICE_1_TO_VOICE_2, "From channel I to channel II");
             m.addItem (MENU_OPTION_ID_COPY_VOICE_2_TO_VOICE_1, "From channel II to channel I");
             m.addItem (MENU_OPTION_ID_SWAP_VOICES, "Swap channels");
@@ -109,41 +106,21 @@ public:
         }
         else if (button == &randomizeButton)
         {
-            PopupMenu subMenuPatch;
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_5_ID, "5%");
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_10_ID, "10%");
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_25_ID, "25%");
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_50_ID, "50%");
-            subMenuPatch.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_100_ID, "100%");
-            
-            PopupMenu subMenuVoice1;
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_5_ID, "5%");
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_10_ID, "10%");
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_25_ID, "25%");
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_50_ID, "50%");
-            subMenuVoice1.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_1_100_ID, "100%");
-            
-            PopupMenu subMenuVoice2;
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_5_ID, "5%");
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_10_ID, "10%");
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_25_ID, "25%");
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_50_ID, "50%");
-            subMenuVoice2.addItem (MENU_OPTION_ID_RANDOMIZE_VOICE_2_100_ID, "100%");
-            
-            PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
-            m.addSubMenu ("Patch", subMenuPatch);
-            m.addSubMenu ("Channel I", subMenuVoice1);
-            m.addSubMenu ("Channel II", subMenuVoice2);
-            selectedActionID = m.showAt(button);
+            {
+                int64 currentTime = Time::getCurrentTime().toMilliseconds();
+                if ((currentTime - lastTimeRandomizeButtonPressed) > MIN_TIME_BETWEEN_NEXT_PREV_RAND_PATCH_BUTTON_PRESSED){
+                    selectedActionID = MENU_OPTION_ID_RANDOMIZE;
+                    lastTimeRandomizeButtonPressed = currentTime;
+                }
+            }
         }
         else if (button == &sendButton)
         {
             PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
             m.addItem (MENU_OPTION_ID_SEND_PATCH_TO_SYNTH, "Patch");
             m.addItem (MENU_OPTION_ID_SEND_VOICE_1_TO_SYNTH, "Channel I");
             m.addItem (MENU_OPTION_ID_SEND_VOICE_2_TO_SYNTH, "Channel II");
+            m.addItem (MENU_OPTION_ID_SEND_PERF_CONTROLS_TO_SYNTH, "Performance controls");
             selectedActionID = m.showAt(button);
         }
         
@@ -161,41 +138,15 @@ public:
         } else if (actionID == MENU_OPTION_ID_SWAP_VOICES){
             processor->swapDDRMChannels();
         } else if (actionID == MENU_OPTION_ID_SEND_PATCH_TO_SYNTH){
-            processor->sendControlsToSynth(0);  // 0 menans no channel filter
+            processor->sendControlsToSynth(-1);  // -1 menans no channel filter (all controls)
+        } else if (actionID == MENU_OPTION_ID_SEND_PERF_CONTROLS_TO_SYNTH){
+            processor->sendControlsToSynth(0);
         } else if (actionID == MENU_OPTION_ID_SEND_VOICE_1_TO_SYNTH){
             processor->sendControlsToSynth(1);
         } else if (actionID == MENU_OPTION_ID_SEND_VOICE_2_TO_SYNTH){
             processor->sendControlsToSynth(2);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_5_ID){
-            processor->randomizeControlValues(0, 0.05);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_10_ID){
-            processor->randomizeControlValues(0, 0.10);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_25_ID){
-            processor->randomizeControlValues(0, 0.25);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_50_ID){
-            processor->randomizeControlValues(0, 0.50);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_5_ID){
-            processor->randomizeControlValues(1, 0.05);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_10_ID){
-            processor->randomizeControlValues(1, 0.10);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_25_ID){
-            processor->randomizeControlValues(1, 0.25);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_50_ID){
-            processor->randomizeControlValues(1, 0.50);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_5_ID){
-            processor->randomizeControlValues(2, 0.05);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_10_ID){
-            processor->randomizeControlValues(2, 0.10);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_25_ID){
-            processor->randomizeControlValues(2, 0.25);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_50_ID){
-            processor->randomizeControlValues(2, 0.50);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_100_ID){
-            processor->randomizeControlValues(0, 1.0);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_1_100_ID){
-            processor->randomizeControlValues(1, 1.0);
-        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_VOICE_2_100_ID){
-            processor->randomizeControlValues(2, 1.0);
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE){
+            processor->randomizeControlValues();
         } else if (actionID == MENU_OPTION_ID_IMPORT_FROM_PATCH_FILE){
             processor->importFromPatchFile();
         } else if (actionID == MENU_OPTION_ID_IMPORT_FROM_VOICE_FILE_TO_VOICE_1){
@@ -222,6 +173,7 @@ private:
     TextButton saveButton;
     TextButton copyButton;
     TextButton randomizeButton;
+    int64 lastTimeRandomizeButtonPressed = 0;
     TextButton sendButton;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DDRMControlPanelExtraComponent);

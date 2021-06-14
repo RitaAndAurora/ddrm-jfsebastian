@@ -33,7 +33,7 @@ namespace BinaryData
     const int            RobotoCondensed_ttfSize = 158284;
 
     extern const char*   default_state_xml;
-    const int            default_state_xmlSize = 150239;
+    const int            default_state_xmlSize = 150440;
 
     extern const char*   Cholesky;
     const int            CholeskySize = 1206;

@@ -69,9 +69,8 @@ public:
         if (button == &aboutButton)
         {
             AlertWindow w ("J.F. Sebastian",
-                           "a Dekcard's Dream companion tool made by Rita & Aurora, v" + String(VERSION),
+                           "a Dekcard's Dream companion tool made by Rita & Aurora, v" + String(JucePlugin_VersionString),
                            AlertWindow::NoIcon);
-            w.setLookAndFeel(&customLookAndFeel);
             w.addCustomComponent(&about);
             w.addButton ("Ok", 0, KeyPress (KeyPress::returnKey, 0, 0));
             w.addButton ("More info", 1, KeyPress (KeyPress::returnKey, 0, 0));
@@ -88,12 +87,32 @@ public:
         }
         else if (button == &settingsButton)
         {
+            PopupMenu m;
             
-            PopupMenu zoomSubMenu;
-            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_70, "70%");
-            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_80, "80%");
-            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_90, "90%");
-            zoomSubMenu.addItem (MENU_OPTION_ID_ZOOM_100, "100%");
+            PopupMenu randomAmountOptionsSubmenu;
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_5_ID, "5%", true, processor->randomizationSettings.amount == 5);
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_10_ID, "10%", true, processor->randomizationSettings.amount == 10);
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_25_ID, "25%", true, processor->randomizationSettings.amount == 25);
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_50_ID, "50%", true, processor->randomizationSettings.amount == 50);
+            randomAmountOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PATCH_100_ID, "100%", true, processor->randomizationSettings.amount == 100);
+            
+            PopupMenu randomPanelOptionsSubmenu;
+            randomPanelOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_CH1, "Channel I", true, processor->randomizationSettings.channel1Controls == true);
+            randomPanelOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_CH2, "Channel II", true, processor->randomizationSettings.channel2Controls == true);
+            randomPanelOptionsSubmenu.addItem (MENU_OPTION_ID_RANDOMIZE_PERF, "Performance controls", true, processor->randomizationSettings.performanceControls == true);
+            
+            PopupMenu randomOptionsSubmenu;
+            randomOptionsSubmenu.addSubMenu ("Affected controls", randomPanelOptionsSubmenu);
+            randomOptionsSubmenu.addSubMenu ("Amount", randomAmountOptionsSubmenu);
+            m.addSubMenu ("Randomizer", randomOptionsSubmenu);
+            
+            PopupMenu timbreSpaceInterpolationControlsSubMenu;
+            timbreSpaceInterpolationControlsSubMenu.addItem (MENU_OPTION_ID_TIMBRE_SPACE_CH1, "Channel I", true, processor->timbreSpaceSettings.channel1Controls == true);
+            timbreSpaceInterpolationControlsSubMenu.addItem (MENU_OPTION_ID_TIMBRE_SPACE_CH2, "Channel II", true, processor->timbreSpaceSettings.channel2Controls == true);
+            timbreSpaceInterpolationControlsSubMenu.addItem (MENU_OPTION_ID_TIMBRE_SPACE_PERF, "Performance controls", true, processor->timbreSpaceSettings.performanceControls == true);
+            PopupMenu timbreSpaceSubMenu;
+            timbreSpaceSubMenu.addSubMenu ("Affected controls", timbreSpaceInterpolationControlsSubMenu);
+            m.addSubMenu ("Timbre Space", timbreSpaceSubMenu);
             
             PopupMenu midiDevicesSubMenu;
             bool autoScanTicked = processor->midiDevicesAutoScanEnabled;
@@ -101,11 +120,8 @@ public:
             bool scanNowEnabled = !processor->midiDevicesAutoScanEnabled;
             midiDevicesSubMenu.addItem (autoScanMenuOptionID, "Auto-scan MIDI devices", true, autoScanTicked);
             midiDevicesSubMenu.addItem (MENU_OPTION_MIDI_SCAN_NOW, "Scan devices now", scanNowEnabled, false);
-            
-            PopupMenu m;
-            m.setLookAndFeel(&customLookAndFeel);
-            m.addSubMenu ("Zoom", zoomSubMenu);
             m.addSubMenu ("MIDI device scan", midiDevicesSubMenu);
+            
             selectedActionID = m.showAt(button);
             
         }
@@ -117,24 +133,34 @@ public:
     
     void processMenuAction(int actionID)
     {
-        if (actionID == MENU_OPTION_ID_ZOOM_60){
-            processor->setUIScaleFactor(0.6);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_70){
-            processor->setUIScaleFactor(0.7);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_80){
-            processor->setUIScaleFactor(0.8);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_90){
-            processor->setUIScaleFactor(0.9);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_100){
-            processor->setUIScaleFactor(1.0);
-        } else if (actionID == MENU_OPTION_ID_ZOOM_75){
-            processor->setUIScaleFactor(0.75);
-        } else if (actionID == MENU_OPTION_MIDI_SET_AUTOSCAN_OFF){
+        if (actionID == MENU_OPTION_MIDI_SET_AUTOSCAN_OFF){
             processor->setMidiDevicesAutoScan(false);
         } else if (actionID == MENU_OPTION_MIDI_SET_AUTOSCAN_ON){
             processor->setMidiDevicesAutoScan(true);
         } else if (actionID == MENU_OPTION_MIDI_SCAN_NOW){
             processor->triggerMidiDevicesScan();
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_5_ID){
+            processor->randomizationSettings.amount = 5;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_10_ID){
+            processor->randomizationSettings.amount = 10;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_25_ID){
+            processor->randomizationSettings.amount = 25;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_50_ID){
+            processor->randomizationSettings.amount = 50;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PATCH_100_ID){
+            processor->randomizationSettings.amount = 100;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_CH1){
+            processor->randomizationSettings.channel1Controls = !processor->randomizationSettings.channel1Controls;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_CH2){
+            processor->randomizationSettings.channel2Controls = !processor->randomizationSettings.channel2Controls;
+        } else if (actionID == MENU_OPTION_ID_RANDOMIZE_PERF){
+            processor->randomizationSettings.performanceControls = !processor->randomizationSettings.performanceControls;
+        } else if (actionID == MENU_OPTION_ID_TIMBRE_SPACE_CH1){
+            processor->timbreSpaceSettings.channel1Controls = !processor->timbreSpaceSettings.channel1Controls;
+        } else if (actionID == MENU_OPTION_ID_TIMBRE_SPACE_CH2){
+            processor->timbreSpaceSettings.channel2Controls = !processor->timbreSpaceSettings.channel2Controls;
+        } else if (actionID == MENU_OPTION_ID_TIMBRE_SPACE_PERF){
+            processor->timbreSpaceSettings.performanceControls = !processor->timbreSpaceSettings.performanceControls;
         }
     }
     

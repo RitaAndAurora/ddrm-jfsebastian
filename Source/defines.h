@@ -8,10 +8,16 @@
 
 #pragma once
 
-#define VERSION "1.2"  // If changing this, remember to change it on Projucer as well
 #define MORE_INFO_URL "https://ritaandaurora.github.io/ddrm-jfsebastian"
 #define DONATE_URL "https://ritaandaurora.github.io/ddrm-jfsebastian/donate"
 #define SOURCE_CODE_URL "https://github.com/ritaandaurora/ddrm-jfsebastian"
+
+#define REQUIRED_FW_FIRST 1
+#define REQUIRED_FW_SECOND 4
+#define REQUIRED_FW_THIRD 0
+
+#define SYSEX_DDRM_ID 0x01
+#define SYSEX_FW_VERSION_COMMAND 0x15
 
 #define ACTION_LOG_PREFIX "LOG:"
 #define LOG_IN_UI 0
@@ -20,7 +26,8 @@
 #define LOG_MIDI_IN 0
 
 #define REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS 1000  // Set to 0 to disable the timer
-#define MIDI_IN_SAME_CC_TIME_THRESHOLD_MS 25
+#define MIDI_IN_SAME_CC_TIME_THRESHOLD_MS 0
+#define MIN_TIME_BETWEEN_NEXT_PREV_RAND_PATCH_BUTTON_PRESSED 50  // Don't allow next/previous/randomize buttons to be pressed faster than once every 100 ms
 
 #define DDRM_PRESET_NUM_BYTES 98
 #define DDRM_VOICE_NUM_BYTES 26
@@ -28,6 +35,7 @@
 #define EMPTY_PRESET_SUM_THRESHOLD 5.0
 #define EMPTY_PRESET_SUM_UPPER_THRESHOLD 999999.0  // Not really used in JF Sebast
 
+#define ACTION_FIRMWARE_UPDATE_REQUIRED "ACTION_FIRMWARE_UPDATE_REQUIRED"
 #define ACTION_LOAD_TS_SOLUTION "ACTION_LOAD_TS_SOLUTION:"
 #define ACTION_SET_IS_COMPUTING_TS_SOLUTION "ACTION_SET_IS_COMPUTING_TS_SOLUTION:"
 #define ACTION_LOAD_SELECTED_POINT_DATA "ACTION_LOAD_SELECTED_POINT_DATA:"
@@ -79,6 +87,8 @@
 
 #define STATE_UI_SCALE_FACTOR "UISacleFactor"
 
+#define STATE_TOGGLE_AUTO_SYNC_WITH_SYNTH "autoSyncWithSynth"
+
 #define STATE_PRESET_BANK_IDENTIFIER "DDRMPresetBank"
 #define STATE_PRESET_IDENTIFIER "DDRMPreset"
 #define STATE_PRESET_BYTES_IDENTIFIER "bytes"
@@ -97,11 +107,22 @@
 #define STATE_SELECTED_TONE_SELECTOR_ROW1 "toneSelectorRow1"
 #define STATE_SELECTED_TONE_SELECTOR_ROW2 "toneSelectorRow2"
 
+#define STATE_NEVER_SHOW_SCROLLBARS "neverShowScrollbars"
+
 #define STATE_MIDI_OUTPUT_DEVICE_NAME "midiOutputDeviceName"
 #define STATE_MIDI_INPUT_DEVICE_NAME "midiInputDeviceName"
 #define STATE_MIDI_INPUT_CHANNEL "midiInputChannel"
 #define STATE_MIDI_OUTPUT_CHANNEL "midiOutputChannel"
 #define STATE_MIDI_AUTOSCAN_ENABLED "midiDevicesAutoScanEnabled"
+
+#define STATE_RANDOMIZATION_AMOUNT "randomizationAmount"
+#define STATE_RANDOMIZATION_CHANNEL1_ENABLED "randomizationCh1"
+#define STATE_RANDOMIZATION_CHANNEL2_ENABLED "randomizationCh2"
+#define STATE_RANDOMIZATION_PERF_CONTROLS_ENABLED "randomizationPerfControls"
+
+#define STATE_TIMBRE_SPACE_CHANNEL1_ENABLED "timbreSpaceChannel1Enabled"
+#define STATE_TIMBRE_SPACE_CHANNEL2_ENABLED "timbreSpaceChannel2Enabled"
+#define STATE_TIMBRE_SPACE_PERF_CONTROLS_ENABLED "timbrePerfControlsEnabled"
 
 #define TIMBRE_SPACE_SOLUTION_IDENTIFIER "TimbreSpaceSolution"
 #define TIMBRE_SPACE_SOLUTION_POINTS_IDENTIFIER "solutionPoints"
@@ -120,6 +141,7 @@
 #define MENU_OPTION_ID_SEND_PATCH_TO_SYNTH 7
 #define MENU_OPTION_ID_SEND_VOICE_1_TO_SYNTH 8
 #define MENU_OPTION_ID_SEND_VOICE_2_TO_SYNTH 9
+// MENU_OPTION_ID_SEND_PERF_CONTROLS_TO_SYNTH 180 <- defined below to preserve ordering
 
 #define MENU_OPTION_ID_COPY_VOICE_1_TO_VOICE_2 10
 #define MENU_OPTION_ID_COPY_VOICE_2_TO_VOICE_1 11
@@ -153,11 +175,37 @@
 #define MENU_OPTION_MIDI_SET_AUTOSCAN_OFF 36
 #define MENU_OPTION_MIDI_SCAN_NOW 37
 
+#define MENU_OPTION_TOGGLE_NEVER_SHOW_SCROLLBARS 100
+
+#define MENU_OPTION_ID_RANDOMIZE_CH1 150
+#define MENU_OPTION_ID_RANDOMIZE_CH2 151
+#define MENU_OPTION_ID_RANDOMIZE_PERF 152
+#define MENU_OPTION_ID_RANDOMIZE 160
+
+#define MENU_OPTION_ID_TIMBRE_SPACE_CH1 170
+#define MENU_OPTION_ID_TIMBRE_SPACE_CH2 171
+#define MENU_OPTION_ID_TIMBRE_SPACE_PERF 172
+
+#define MENU_OPTION_ID_SEND_PERF_CONTROLS_TO_SYNTH 180
+
 #define DIMENSIONALITY_REDUCTION_METHOD_PCA "pca"
 #define DIMENSIONALITY_REDUCTION_METHOD_TSNE "tsne"
 #define DIMENSIONALITY_REDUCTION_METHOD_MDS "mds"
 #define DIMENSIONALITY_REDUCTION_METHOD_DEFAULT DIMENSIONALITY_REDUCTION_METHOD_MDS
 
+
+struct RandomizationConfigStruct {
+    int amount = 50;
+    bool channel1Controls = true;
+    bool channel2Controls = true;
+    bool performanceControls = true;
+};
+
+struct TimbreSpaceConfigStruct {
+    bool channel1Controls = true;
+    bool channel2Controls = true;
+    bool performanceControls = true;
+};
 
 typedef std::array<uint8, DDRM_VOICE_NUM_BYTES> DDRMVoiceBytes;
 typedef std::array<uint8, DDRM_PRESET_NUM_BYTES> DDRMPresetBytes;

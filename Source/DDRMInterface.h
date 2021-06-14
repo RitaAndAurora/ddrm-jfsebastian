@@ -63,8 +63,8 @@ public:
         synthControls.push_back(DDRMSynthControl("DDRM_SPEED_VCO_2", "Ch II: PWM Speed", 67, 30, 0, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_PWM_VCO_2", "Ch II: PWM Amount", 68, 31, 1, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_PW_VCO_2", "Ch II: PW", 69, 32, 2, 2, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_SQR_VCO_2", "Ch II: Square", 70, 76, 24, 2, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_SAW_VCO_2", "Ch II: Sawtooth", 71, 75, 25, 2, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_SQR_VCO_2", "Ch II: Square", 71, 76, 24, 2, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_SAW_VCO_2", "Ch II: Sawtooth", 70, 75, 25, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_NOISE_VCO_2", "Ch II: Noise", 72, 33, 3, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_HPF_VCF_2", "Ch II: HPF", 73, 34, 4, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_RESh_VCF_2", "Ch II: RESh", 119, 35, 5, 2, true));
@@ -86,31 +86,31 @@ public:
         synthControls.push_back(DDRMSynthControl("DDRM_INIT_LEV_TOUCH_2", "Ch II: Initial Level", 90, 45, 21, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_AT_BR_TOUCH_2", "Ch II: After Brilliance", 91, 46, 22, 2, true));
         synthControls.push_back(DDRMSynthControl("DDRM_AT_LEV_TOUCH_2", "Ch II: After Level", 92, 47, 23, 2, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_COARSE_PITCH", "Pitch Coarse", 93, 77, -1, -1, false));
-        synthControls.push_back(DDRMSynthControl("DDRM_FINE_PITCH", "Pitch Fine", 94, 78, -1, -1, false));
-        synthControls.push_back(DDRMSynthControl("DDRM_DETUNE_CH2_PITCH", "Detune Ch II", 95, 79, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_FEET_1_FEET", "Feet I", 102, 48, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_FEET_2_FEET", "Feet II", 103, 49, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_FUNCTION_SUB_OSC", "Sub Osc Function", 104, 50, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_SPEED_SUB_OSC", "Sub Osc Speed", 105, 51, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_VCO_SUB_OSC", "Sub Osc VCO Amount", 106, 52, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_VCF_SUB_OSC", "Sub Osc VCF Amount", 107, 53, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_VCA_SUB_OSC", "Sub Osc VCA Amount", 108, 54, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_MIX", "Mix", 8, 55, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_BRILL", "Brilliance", 109, 56, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_RESSO", "Ressonance", 110, 57, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_INITIAL_TOUCH", "Initial Pitch Bend", 111, 58, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_SPEED_TOUCH", "Touch Response Sub Osc Speed", 112, 59, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_VCO_TOUCH", "Touch Response Sub Osc VCO Amount", 113, 60, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_VCF_TOUCH", "Touch Response Sub Osc VCF Amount", 114, 61, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_BR_LOW_KBRD", "Brilliance Low", 115, 62, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_BR_HIGH_KBRD", "Brilliance High", 116, 63, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_LEV_LOW_KBRD", "Level Low", 117, 64, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_LEV_HIGH_KBRD", "Level High", 118, 65, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_GLIDE_MODE_GLIDE", "Glide Mode", 39, -1, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_GLIDE_TIME_GLIDE", "Glide Time", 5, 66, -1, -1, true));
-        synthControls.push_back(DDRMSynthControl("DDRM_SUSTAIN_MODE", "Sustain Mode", 9, -1, -1, -1, false));
-        synthControls.push_back(DDRMSynthControl("DDRM_SUSTAIN_TIME", "Sustain Time", 11, -1, -1, -1, false));
+        synthControls.push_back(DDRMSynthControl("DDRM_COARSE_PITCH", "Ch : Pitch Coarse", 93, 77, -1, 0, false));
+        synthControls.push_back(DDRMSynthControl("DDRM_FINE_PITCH", "Ch : Pitch Fine", 94, 78, -1, 0, false));
+        synthControls.push_back(DDRMSynthControl("DDRM_DETUNE_CH2_PITCH", "Ch : Detune Ch II", 95, 79, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_FEET_1_FEET", "Ch : Feet I", 102, 48, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_FEET_2_FEET", "Ch : Feet II", 103, 49, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_FUNCTION_SUB_OSC", "Ch : Sub Osc Function", 104, 50, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_SPEED_SUB_OSC", "Ch : Sub Osc Speed", 105, 51, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_VCO_SUB_OSC", "Ch : Sub Osc VCO Amount", 106, 52, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_VCF_SUB_OSC", "Ch : Sub Osc VCF Amount", 107, 53, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_VCA_SUB_OSC", "Ch : Sub Osc VCA Amount", 108, 54, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_MIX", "Ch : Mix", 8, 55, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_BRILL", "Ch : Brilliance", 109, 56, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_RESSO", "Ch : Ressonance", 110, 57, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_INITIAL_TOUCH", "Ch : Initial Pitch Bend", 111, 58, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_SPEED_TOUCH", "Ch : Touch Response Sub Osc Speed", 112, 59, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_VCO_TOUCH", "Ch : Touch Response Sub Osc VCO Amount", 113, 60, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_VCF_TOUCH", "Ch : Touch Response Sub Osc VCF Amount", 114, 61, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_BR_LOW_KBRD", "Ch : Brilliance Low", 115, 62, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_BR_HIGH_KBRD", "Ch : Brilliance High", 116, 63, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_LEV_LOW_KBRD", "Ch : Level Low", 117, 64, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_LEV_HIGH_KBRD", "Ch : Level High", 118, 65, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_GLIDE_MODE_GLIDE", "Ch : Glide Mode", 39, -1, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_GLIDE_TIME_GLIDE", "Ch : Glide Time", 5, 66, -1, 0, true));
+        synthControls.push_back(DDRMSynthControl("DDRM_SUSTAIN_MODE", "Ch : Sustain Mode", 9, -1, -1, 0, false));
+        synthControls.push_back(DDRMSynthControl("DDRM_SUSTAIN_TIME", "Ch : Sustain Time", 11, -1, -1, 0, false));
         // --> End auto-generated code A
         
         #if JUCE_DEBUG
@@ -138,7 +138,18 @@ public:
         return synthControlIDS;
     }
     
-    std::vector<String> getDDRMSynthControlIDsForTimbreSpace (){
+    std::vector<String> getDDRMSynthControlIDsForPerformanceControls (){
+        // Returns a vector with all synth control IDs for the performance controls section (channel 0 == performance controls)
+        std::vector<String> synthControlIDS;
+        for (int i=0; i < synthControls.size(); i++){
+            if (synthControls[i].getChannelNumber() == 0){
+                synthControlIDS.push_back(synthControls[i].getID());
+            }
+        }
+        return synthControlIDS;
+    }
+    
+    std::vector<String> getDDRMSynthControlIDsForTimbreSpaceMapComputation (){
         // Returns a vector with all synth control IDs to be included in the timbre space
         std::vector<String> synthControlIDS;
         for (int i=0; i < synthControls.size(); i++){
@@ -238,7 +249,7 @@ public:
         return getSynthControlIdValuePairsForPresetBytesArray(presetBytes);
     }
     
-    SynthControlIdValuePairs getSynthControlIdValuePairsForInterpolatedPresets(PresetDistancePairsToInterpolate interpolationData)
+    SynthControlIdValuePairs getSynthControlIdValuePairsForInterpolatedPresets(PresetDistancePairsToInterpolate interpolationData, TimbreSpaceConfigStruct timbreSpaceSettings)
     {
         // Returns a list of pairs of DDRMSynthControl and the value they should take to load a new preset which is created after the interpolation of N presets and distances.
         // TODO: explain all this bit better. New implementation uses maths from https://codeplea.com/triangular-interpolation
@@ -249,11 +260,31 @@ public:
             presetsBytes.push_back(presetBank.getPresetBytesAtIndex(interpolationData[i].presetIdx));
         }
         
+        // Select which controls should be used for the interpolation
+        std::vector<String> parameterIDs;
+        if (timbreSpaceSettings.channel1Controls){
+            std::vector<String> sectionParams =  getDDRMSynthControlIDsForChannel(1);
+            for (int i=0; i<sectionParams.size(); i++){
+                parameterIDs.push_back(sectionParams[i]);
+            }
+        }
+        if (timbreSpaceSettings.channel2Controls){
+            std::vector<String> sectionParams =  getDDRMSynthControlIDsForChannel(2);
+            for (int i=0; i<sectionParams.size(); i++){
+                parameterIDs.push_back(sectionParams[i]);
+            }
+        }
+        if (timbreSpaceSettings.performanceControls){
+            std::vector<String> sectionParams =  getDDRMSynthControlIDsForPerformanceControls();
+            for (int i=0; i<sectionParams.size(); i++){
+                parameterIDs.push_back(sectionParams[i]);
+            }
+        }
+        
         // Interpolate synth control values using the weights above
         SynthControlIdValuePairs idValuePairs;
-        std::vector<String> controlIDs = getDDRMSynthControlIDsForTimbreSpace();
-        for (int i=0; i < controlIDs.size(); i++){
-            DDRMSynthControl* synthControl = getDDRMSynthControlWithID(controlIDs[i]);
+        for (int i=0; i < parameterIDs.size(); i++){
+            DDRMSynthControl* synthControl = getDDRMSynthControlWithID(parameterIDs[i]);
             double newValue = 0.0;
             for (int j=0;j<interpolationData.size(); j++){
                 double value = (double)synthControl->getNormValueFromPresetByteArray(presetsBytes[j]);
@@ -350,7 +381,7 @@ public:
         // as input data for the timbre space. Each row in the matrix corresponds to one preset, each
         // column to the normalized value of one parameter.
         timbreSpaceInputDataMatrix data;
-        std::vector<String> controlIDs = getDDRMSynthControlIDsForTimbreSpace();
+        std::vector<String> controlIDs = getDDRMSynthControlIDsForTimbreSpaceMapComputation();
         for (int i=0; i < presetBank.getNumPresetsInBank(); i++){
             std::vector<float> presetValues;
             DDRMPresetBytes& presetBytes = presetBank.getPresetBytesAtIndex(i);
@@ -481,7 +512,7 @@ public:
             }
             if (channelToControlID != ""){
                 AudioParameterFloat* audioParameter = (AudioParameterFloat*)currentParameters->getParameter(channelFromControlID);
-                double channelFromParameterValueNorm = (double)audioParameter->get() / 127.0;  // Needs normalized value to set
+                double channelFromParameterValueNorm = (double)audioParameter->convertTo0to1(audioParameter->get());  // Needs normalized value to set
                 idValuePairs.emplace_back(channelToControlID, channelFromParameterValueNorm);
             }
         }

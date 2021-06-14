@@ -13,18 +13,22 @@
      * [2.2 MIDI configuration](#22-midi-configuration)
         * [2.2.1 MIDI input](#221-midi-input)
         * [2.2.2 MIDI output](#222-midi-output)
+        * [2.2.3 Automatic scanning of MIDI devices](#223-automatic-scanning-of-midi-devices)
      * [2.3 Bank file loader](#23-bank-file-loader)
         * [2.3.1 Loading a bank file](#231-loading-a-bank-file)
-        * [2.3.2 Saving the current preset to a specific bank location](#232-saving-the-current-preset-to-a-specific-bank-location)
+        * [2.3.2 Saving the current patch to a specific bank location](#232-saving-the-current-patch-to-a-specific-bank-location)
         * [2.3.3 Saving the bank file](#233-saving-the-bank-file)
      * [2.4 The Timbre Space](#24-the-timbre-space)
      * [2.5 CS80-like Tone Selector](#25-cs80-like-tone-selector)
      * [2.6 DDRM panel](#26-ddrm-panel)
      * [2.7 DDRM panel lower buttons](#27-ddrm-panel-lower-buttons)
-     * [2.8 UI size](#28-ui-size)
+     * [2.8 The Randomizer](#28-the-randomizer)
+     * [2.9 UI size](#29-ui-size)
   * [3. Known bugs and limitations](#3-known-bugs-and-limitations)
   * [4. Licensing](#4-licensing)
   * [5. Credits and acknowledgements](#5-credits-and-acknowledgements)
+  * [6. Support J.F. Sebastian development](#6-support-jf-sebastian-development)
+
 
 
 ## Overview
@@ -33,7 +37,7 @@ J. F. Sebastian, named after a former [genetic designer](https://bladerunner.fan
 
 The DDRM is an awesome synthesizer designed by [Black Corporation](http://black-corporation.com) in Japan and inspired by the all mighty [Yamaha CS80](https://reverbmachine.com/blog/exploring-the-yamaha-cs-80). If you're reading this... you most probably know all about it :)
 
-J.F. Sebastian interfaces with the DDRM and turns its sliders into audio plugin parameters that can be *modulated and automated* from your DAW. With J.F. Sebastian you can import DDRM bank files, edit patches and export them. When you import a bank file, a *Timbre Space* will be created which will allow you to navigate all the presets in a colorful space and create new ones. J.F. Sebastian also includes a *CS80-like tone selector* that allows you to use the original presetting system of the CS80 in the DDRM.
+J.F. Sebastian interfaces with the DDRM and turns its sliders into audio plugin parameters that can be *modulated and automated* from your DAW. With J.F. Sebastian you can import DDRM bank files, edit patches and export them. When you import a bank file, a *Timbre Space* will be created which will allow you to navigate all the patches in a colorful space and create new ones. J.F. Sebastian also includes a *CS80-like tone selector* that allows you to use the original presetting system of the CS80 in the DDRM.
 
 Here is a screenshot of J.F. Sebastian with the different parts of the interface highlighted. The sections below describe each one of them.
 
@@ -57,9 +61,9 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
 
  *windows*
  
-  * Stand-alone app: `c:\Program Files (x86)\JFSebastian\`
-  * VST2: `c:\Program Files (x86)\Common Files\VST2\`
-  * VST3: `c:\Program Files (x86)\Common Files\VST3\`
+  * Stand-alone app: `c:\Program Files\JFSebastian\`
+  * VST2: `c:\Program Files\Common Files\VST2\`
+  * VST3: `c:\Program Files\Common Files\VST3\`
 
  3. Run the stand-aloone app from the directory it has been installed or either open your favorite DAW. J.F. Sebastian should appear in the list of available plugins. If that is not the casem you might need to trigger a *re-scanning* of the plugins folder by the DAW. If after doing that J.F. Sebastian still does not appear, make sure your DAW is looking for plugins in the default locations listed above.
 
@@ -78,6 +82,25 @@ Installation of J.F. Sebastian should be straight-forward as we provide installe
    * windows 10 / Bitwig Studio 3
 
 ### 1.2 Release notes
+
+**Version 1.2.1**
+
+ * Fixed default installation paths for Windows installer
+ * Support for DDRM firmware 1.4.0, which includes some bug fixes
+ * J.F. Sebastian now check for DDRM's firmware version and shows a messages if DDRM firmware is out of date
+
+
+**Version 1.2**
+
+ * Improved the way patches are interpolated when using the Timbre Space. Now when you select points in the space which correspond to specific patches, these should sound much more similar to the patches themselves.
+ * Added feature to select which sets of parameters you want to be updated when navigating the Timbre Space.
+ * Improved the way in which slider values are sent to DDRM. In previous versions, it could happen that some parameters were not updated correctly if they had been changed in DDRM.
+ * Fix MIDI devices bug which would render some MIDI interfaces unselectable in some complex studio setups.
+ * Add `View...` button to the lower-right corner of J.F. Sebastian.
+ * Improved rendering of scaled UI sizes (including new 60% option).
+ * Added scrolling option to UI.
+ * Several internal improvements and optimizations.
+
 
 **Version 1.1**
 
@@ -134,32 +157,32 @@ To enable or disable automatic scanning of midi devices click on the `Settings..
 
 #### 2.3.1 Loading a bank file
 
-Use the `Load bank file...` button to load a DDRM bank file (file extension *.p*). Bank files contain up to 128 presets. Once loaded, you can use the left and right arrow buttons to navigate among the existing presets. You can also type the preset number you want to go to by clicking on the preset number. By default, J.F. Sebastian loads the official **factory presets** provided by Black Corporation.
+Use the `Load bank file...` button to load a DDRM bank file (file extension *.p*). Bank files contain up to 128 patches. Once loaded, you can use the left and right arrow buttons to navigate among the existing patches. You can also type the patch number you want to go to by clicking on the patch number. By default, J.F. Sebastian loads the official **factory patches** provided by Black Corporation.
 
-When a bank file is loaded, a new Timbre Space is built based on all the presets contained in the bank (more info in [Section 2.4](#24-the-timbre-space)).
+When a bank file is loaded, a new Timbre Space is built based on all the patches contained in the bank (more info in [Section 2.4](#24-the-timbre-space)).
 
-When navigating the different presets of a bank, you'll see how both the sliders on the screen and the sound of the DDRM change according to the selected preset. You'll also see how the selected point in the Timbre Space moves at each preset change. This indicates the point in the Timbre Space that corresponds to the selected preset (more info in [Section 2.4](#24-the-timbre-space)).
+When navigating the different patches of a bank, you'll see how both the sliders on the screen and the sound of the DDRM change according to the selected patch. You'll also see how the selected point in the Timbre Space moves at each patch change. This indicates the point in the Timbre Space that corresponds to the selected patch (more info in [Section 2.4](#24-the-timbre-space)).
 
-Finally, note that if any parameter changes its value after loading a specific preset, the symbol * appears next to the preset number to indicate that the sliders are no longer *in sync* with the stored values of that preset.
+Finally, note that if any parameter changes its value after loading a specific patch, the symbol * appears next to the patch number to indicate that the sliders are no longer *in sync* with the stored values of that patch.
 
-#### 2.3.2 Saving the current preset to a specific bank location
+#### 2.3.2 Saving the current patch to a specific bank location
 
-Use the `Save to bank location...` button to save the current preset (the slider values shown in the DDRM panel in J.F. Sebastian) to another location in the bank. When pressing the button a dialog will appear asking you to introduce the bank location to which the preset should be saved. This operation will overwrite any existing preset information in that location.
+Use the `Save to bank location...` button to save the current patch (the slider values shown in the DDRM panel in J.F. Sebastian) to another location in the bank. When pressing the button a dialog will appear asking you to introduce the bank location to which the patch should be saved. This operation will overwrite any existing patch information in that location.
 
 
 #### 2.3.3 Saving the bank file
 
-With J.F. Sebastian it is possible to export all the presets into a new bank file and save it to disk. You can do that by pressing the `Save bank file...` button and specifying the location where the bank file should be saved. If not specified, the file extension *.p* will be automatically added to the filename.
+With J.F. Sebastian it is possible to export all the patches into a new bank file and save it to disk. You can do that by pressing the `Save bank file...` button and specifying the location where the bank file should be saved. If not specified, the file extension *.p* will be automatically added to the filename.
 
-The bank files generated by J.F. Sebastian can be copied to the DDRM drive and DDRM will be able to read them. Note that when loading presets from J.F. Sebastian all non-MIDI-controllable parameters are ignored. However, when loading the bank file directly in DDRM any extra patch settings that might be stored in the file will be loaded as well. Check the [limitations](#3-known-bugs-and-limitations) section of this manual for more information about this issue.
+The bank files generated by J.F. Sebastian can be copied to the DDRM drive and DDRM will be able to read them. Note that when loading patches from J.F. Sebastian all non-MIDI-controllable parameters are ignored. However, when loading the bank file directly in DDRM any extra patch settings that might be stored in the file will be loaded as well. Check the [limitations](#3-known-bugs-and-limitations) section of this manual for more information about this issue.
 
 
 
 ### 2.4 The Timbre Space
 
-The Timbre Space is an innovative feature of J.F. Sebastian that allows to **explore the sonic possibilities of DDRM in completely new ways**. Every time a bank file is loaded, J.F. Sebastian creates a new Timbre Space which projects all the presents of that bank file into a *colorful* 2-dimensional space. **Simply click anywhere in the Timbre Space to generate new presets for DDRM**. Here you can see a [video of the Timbre Space in action](https://youtu.be/cHdO393UwKI?t=44).
+The Timbre Space is an innovative feature of J.F. Sebastian that allows to **explore the sonic possibilities of DDRM in completely new ways**. Every time a bank file is loaded, J.F. Sebastian creates a new Timbre Space which projects all the presents of that bank file into a *colorful* 2-dimensional space. **Simply click anywhere in the Timbre Space to generate new patches for DDRM**. Here you can see a [video of the Timbre Space in action](https://youtu.be/cHdO393UwKI?t=44).
 
-The Timbre Space uses **machine learning** to analyze the distribution of parameters values in a given bank file and to create a 2-dimensional representation of it in which presets are organized according to *some notion of similarity*. Here are some examples of spaces created using different DDRM bank files:
+The Timbre Space uses **machine learning** to analyze the distribution of parameters values in a given bank file and to create a 2-dimensional representation of it in which patches are organized according to *some notion of similarity*. Here are some examples of spaces created using different DDRM bank files:
 
 <p align="center">
 <img src="docs/tsA.png" width="500px" />
@@ -168,15 +191,24 @@ The Timbre Space uses **machine learning** to analyze the distribution of parame
 <img src="docs/tsD.png" width="500px" />
 </p>
 
-The Timbre Space contains a triangle mesh in which each triangle edge corresponds to the position of one of the bank's presets after its projection into the 2-dimensional space. Clicking on any point in the space will create a new preset based on the 3 presets of the enclosing triangle. **Close points in the Timbre Space are expected to produce similar sounding presets**.
+The Timbre Space contains a triangle mesh in which each triangle edge corresponds to the position of one of the bank's patches after its projection into the 2-dimensional space. Clicking on any point in the space will create a new patch based on the 3 patches of the enclosing triangle. **Close points in the Timbre Space are expected to produce similar sounding patches**.
 
 <p align="center">
 <img src="docs/ts_highlighted.png" width="300px" />
 </p>
 
-When selecting a point in the space, the preset numbers in which the new preset is based are displayed on screen (see picture above). If any of DDRM controls is changed after a specific point of the Timbre Space is loaded, the preset numbers on screen will disappear to indicate that the slider values are no longer *in sync* with the values of the selected Timbre Space position.
+When selecting a point in the space, the patch numbers in which the new patch is based are displayed on screen (see picture above). If any of DDRM controls is changed after a specific point of the Timbre Space is loaded, the patch numbers on screen will disappear to indicate that the slider values are no longer *in sync* with the values of the selected Timbre Space position.
 
-The selected position in the Timbre Space is also exposed by J.F. Sebastian as two **audio parameters** named **Space X** and **Space Y**. These parameters can also be automated. 
+The selected position in the Timbre Space is also exposed by J.F. Sebastian as two **audio parameters** named **Space X** and **Space Y**. These parameters can also be automated.
+
+Using the `Settings...` button on the lower right side of J.F. Sebastian and chosing the `Timbre Space` menu you can set some options to decide how the Timbre Space creates new patches:
+
+* `Affected controls`: using this menu option you can select which controls will be affected by the Timbre Space when selecting different points in it. You can enable or disable the controls of channel I, channel II and the performance controls section. In this way you can have the Timbre Space only affecting the control sets you want.
+
+The Timbre Space settings are stored with J.F. Sebastian's internal state and will be remembered between J.F. Sebastian runs.
+
+**IMPORTANT NOTE**: note that to make the points in the Timbre Space sound the same (or very similar) to the bank patches corresponding to these points (the edges of the triangles), you'll need to configure the `Affected controls` option to affect all channel I, channel II and the performance controls.
+
 
 
 ### 2.5 CS80-like Tone Selector
@@ -191,6 +223,8 @@ J.F. Sebastian incorporates a tone selector similar to the one that the original
 When a button is selected it will be highlighted. However, if any parameter is changed after the button is selected, it will become *unselected* again to indicate that the slider values are no longer *in sync* with the expected values for channel I or channel II button.
 
 Note that `Funky 4` button in the lower row does not work. Maybe there's some dust accumulated which should be cleaned...
+
+**IMPORTANT NOTE**: As in the original CS80, using the buttons of the CS80-like Tone Selector does not affect the state of the performance controls (the lower row of sliders). These might need finer adjustments to get the desired tone when combining channel I/II presets form the CS80-like Tone Selector.
 
 
 ### 2.6 DDRM panel
@@ -214,38 +248,50 @@ Note that the panel incorporates two extra controls in the lower-right side - `S
 
 J.F. Sebastian incorporates a number of features to **edit and manage the slider values** which can be accessed using the buttons below the DDRM sliders. Here is an explanation of what these do:
 
- * `Import...`: use this button to load a DDRM preset from either a *patch* (preset) file or a *voice* (channel) file. These file types store individual presets and voices respectively (instead of the whole contents of a bank file). *patch* and *voice* files are compatible with [Spektroaudio's DDRM editor](http://spektroaudio.com/deckards-dream-editor) and with [Ando's DDRM editor](https://drive.google.com/file/d/1xMHwV3TBTWAK5WPEw8NV0F6aiztP5ZnF/view?fbclid=IwAR2PQ81T-RIw0eQ8rtDKhi9R42i6s5xhgJjm-TmtUaHYMLSERUbs9Iirk3c) as well. Clicking the button will display a menu with the following options:
+ * `Import...`: use this button to load a DDRM patch from either a *patch* file or a *voice* (channel) file. These file types store individual patches and voices respectively (instead of the whole contents of a bank file). *patch* and *voice* files are compatible with [Spektroaudio's DDRM editor](http://spektroaudio.com/deckards-dream-editor) and with [Ando's DDRM editor](https://drive.google.com/file/d/1xMHwV3TBTWAK5WPEw8NV0F6aiztP5ZnF/view?fbclid=IwAR2PQ81T-RIw0eQ8rtDKhi9R42i6s5xhgJjm-TmtUaHYMLSERUbs9Iirk3c) as well. Clicking the button will display a menu with the following options:
    *  `From patch file`: will open a dialog to select the *patch* file you want to load. Patch files have extension *.ddpatch*. Patch files contain parameter settings for both channels of DDRM plus the performance controls section.
    *  `From voice file to channel I/II`: will open a dialog to select the *voice* file you want to load in the chosen channel (I or II). Patch files have extension *.ddvoice*. Voice files contain parameter settings for a single DDRM channel controls.
 
- * `Save...`: use this button to store the current DDRM preset into a *patch* file or a *voice* file (see menu option above more more information). Clicking the button will display a menu with the following options:
-   *  `To patch file`: will open a dialog in which the filename of the *patch* file to save can be specified. The *patch* file will store both channel settings and the performance controls of the current preset.
-   *  `Channel I/II to voice file`: will open a dialog in which the filename of the *voice* file to save can be specified. The *voice* file will store the settings of the selected channel of the current preset.
+ * `Save...`: use this button to store the current DDRM patch into a *patch* file or a *voice* file (see menu option above more more information). Clicking the button will display a menu with the following options:
+   *  `To patch file`: will open a dialog in which the filename of the *patch* file to save can be specified. The *patch* file will store both channel settings and the performance controls of the current patch.
+   *  `Channel I/II to voice file`: will open a dialog in which the filename of the *voice* file to save can be specified. The *voice* file will store the settings of the selected channel of the current patch.
 
  * `Copy...`: use this button to copy control settings from DDRM channels. Clicking the button will display a menu with the following options:
    *  `From channel I to channel II`: copy the slider settings from channel I to channel II.
    *  `From channel II to channel I`: copy the slider settings from channel II to channel I.
    *  `Swap channels`: swap slider settings of both channels.
 
- * `Randomize...`: use this button to add some randomization to the slider values of the current preset. Clicking the button will display a menu with the following options:  
-   *  `Patch [5%-100%]`: randmozies all control sliders of both channels plus the performance section with the specified amount (from 5% to 100%) around the current slider values. 100% randomization means a completely new random value for each control.
-   *  `Channel I/II [5%-100%]`: : randmozies all control sliders of the selected channel (I or II) with the specified amount (from 5% to 100%) around the current slider values. 100% randomization means a completely new random value for each control.
+ * `Randomize!`: use this button to add some randomization to the slider values of the current patch. See [The Randomizer](#28-the-randomizer) section below for more information about that option.
 
-* `Send to synth...`: use this button to synchronize the DDRM with the slider values of J.F. Sebastian. Note that when navigating presets, using the Timbre Space, the tone selector, or when moving sliders in J.F. Sebastian, DDRM is also updated accordingly and there is no need to *manually* send values to the synth. however, in some occasions it might be useful to re-send all control values to DDRM to make sure it is in sync.  Clicking the button will display a menu with the following options:
-   *  `Patch`: send values corresponding to the full preset (both channels and performance section).
+* `Send to synth...`: use this button to synchronize the DDRM with the slider values of J.F. Sebastian. Note that when navigating patches, using the Timbre Space, the tone selector, or when moving sliders in J.F. Sebastian, DDRM is also updated accordingly and there is no need to *manually* send values to the synth. however, in some occasions it might be useful to re-send all control values to DDRM to make sure it is in sync.  Clicking the button will display a menu with the following options:
+   *  `Patch`: send values corresponding to the full patch (both channels and performance section).
    *  `Channel I/II`: send only the values of the selected channel.
+   *  `Performance controls`: send only the values of the performance controls (the lower row of controls).
+
+### 2.8 The Randomizer
+
+J.F. Sebastian incorporates a feature to create slight (or wild!) variations of the currently loaded patch. This is called the **Randomizer**. Clicking on the `Randomize!` button in the lower part of the interface will instantly create a variation of the current patch. Using the `Settings...` button on the lower right side of J.F. Sebastian and chosing the `Randomizer` menu you can set some options to decide how the Randomizer will change the patch:
+
+* `Affected controls`: using that menu option you can select which controls will be affected by the Randomizer when pressing the `Randomize!` button. You can enable or disable the controls of channel I, channel II and the performance controls section.
+
+* `Amount`: using that menu you can choose how much will each parameter be randomized when pressing the `Randomize!` button. Range goes from 5% (small variation with respect to the current parameter value) to 100% (completely new random value). 
+
+Randomizer settings are stored with J.F. Sebastian's internal state and will be remembered between J.F. Sebastian runs.
 
 
-### 2.8 UI size
 
-As of version 1.1, J.F. Sebastian incorporates an option to adjust the size of the UI to match smaller screens. You can adjust the size clicking in the `Settings...` button in the lower-right corner of J.F. Sebastian and selecting the `Zoom` sub-menu. Available options are 70%, 80%, 90% and 100% of the original size. The zoom preference is stored togeether with other J.F. Sebastian properties to the preference is remembered in different runs of the app both running as stand-alone or as a plugin.
+### 2.9 UI size
+
+J.F. Sebastian incorporates an option to adjust the size of the UI to match smaller screens. You can adjust the size clicking in the `Settings...` button in the upper-right corner of J.F. Sebastian and selecting the `Zoom` sub-menu. Available options are 60%, 70%, 80%, 90% and 100% of the original size. The zoom preference is stored togeether with other J.F. Sebastian properties so the preference is remembered in different runs of the app both running as stand-alone or as a plugin.
+
+Furthermore, J.F. Sebastian can scroll the UI horizontally or vertically if it does not fit all on the screen. If that is the case, scrollbar(s) will appear. You can choose to hide scrollbars (but still be able to scroll using the mouse) by ticking the `Hide scrollbars` option in the `View...` menu.
 
 
 ## 3. Known bugs and limitations
 
 What follows is a list of known J.F. Sebastian bugs and limitations of the software. Please, for **bug reports** and **feature requests** visit [https://github.com/ritaandaurora/ddrm-jfsebastian/issues](https://github.com/ritaandaurora/ddrm-jfsebastian/issues).
 
- * J.F. Sebastian uses MIDI to communicate with DDRM and update its parameter values. However, as of firmware version 1.3.0, **not all parameters in DDRM are currently controllable via MIDI**. All the sliders and buttons in the front panel can be controlled via MIDI, but not other *hidden* parameters like envelope ranges, etc. What this means in practice is that loading presets from J.F. Sebastian **might not produce the exact same results** than loading them from the bank files copied in DDRM because the hidden controls can't be updated. Hopefully future updates of DDRM firmware will allow full MIDI control so that J.F. Sebastian (and other tools) can be updated accordingly.
+ * J.F. Sebastian uses MIDI to communicate with DDRM and update its parameter values. However, as of firmware version 1.3.0, **not all parameters in DDRM are currently controllable via MIDI**. All the sliders and buttons in the front panel can be controlled via MIDI, but not other *hidden* parameters like envelope ranges, etc. What this means in practice is that loading patches from J.F. Sebastian **might not produce the exact same results** than loading them from the bank files copied in DDRM because the hidden controls can't be updated. Hopefully future updates of DDRM firmware will allow full MIDI control so that J.F. Sebastian (and other tools) can be updated accordingly.
  
  * **DDRM firmware does not implement any method for dumping bank or slider values over MIDI**. Therefore, J.F. Sebastian has no way of knowing what's the current slider values in DDRM and displaying them. Hopefully this will be addressed in future DDRM firmware update and J.F. Sebastian updated accordingly :)
 
@@ -255,7 +301,7 @@ What follows is a list of known J.F. Sebastian bugs and limitations of the softw
 
  * When using J.F. Sebastian in stand-alone mode, it could happen that a **warning is displayed about potential audio feedback loops**. This is can be solved by clicking on the `Settings...` button that will appear next to the warning and unticking the *Mute audio input* checkbox. J.F. Sebastian will remember this choice so the warning is not displayed again. This is a bug that will be addressed in future updates of J.F. Sebastian as J.F. Sebastian uses no audio and the warning should never appear.
 
- * In some particular setups, **Deckard's Dream USB interface can't be selected in MIDI IN/OUT settings**. The device is correctly listed but when selected it gets unselected again. This is because of the automatic scanning of MIDI devices not working properly in some setups. As of version 1.1, you can turn of automatic scanning of MIDI devices to avoid this problem. To enable/disable automatic scanning of MIDI devices, click on the `Settings...` button on the lower-right corner of J.F. Sebastian.
+ * In some particular setups, **Deckard's Dream USB interface can't be selected in MIDI IN/OUT settings**. The device is correctly listed but when selected it gets unselected again. This was a bug **fixed in J.F. Sebastian v1.2**. Please make sure your app/plugins are updated.
  
  * Some users reported **issues using J.F. Sebastian as a plugin in Reaper and under Windows**. This is because MIDI devices are "locked" by the Reaper process and J.F. Sebastian can't talk directly to DDRM. This can be fixed by configuring J.F. Sebastian to `Run as > Separate process` as in the screenshot below. Many thanks to David Berndsen for the tip (and the screenshot)!
  
