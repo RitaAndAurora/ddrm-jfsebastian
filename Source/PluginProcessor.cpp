@@ -1325,6 +1325,9 @@ void DdrmtimbreSpaceAudioProcessor::sendControlsToSynth (int channelFilter)
             String parameterID = parameterIDs[i];
             int value = (int)getValueForAudioParameter(parameterID);
             sendControlToSynth(parameterID, value);
+            if (WAIT_INTERVAL_BETWEEN_CC_MESSAGES_MS > 0){
+                Time::waitForMillisecondCounter(Time::getMillisecondCounter() + WAIT_INTERVAL_BETWEEN_CC_MESSAGES_MS);
+            }
         }
     }
 }

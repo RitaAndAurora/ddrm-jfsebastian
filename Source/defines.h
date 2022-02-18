@@ -28,6 +28,7 @@
 #define REFRESH_MIDI_DEVICES_TIMER_INTERVAL_MS 1000  // Set to 0 to disable the timer
 #define MIDI_IN_SAME_CC_TIME_THRESHOLD_MS 0
 #define MIN_TIME_BETWEEN_NEXT_PREV_RAND_PATCH_BUTTON_PRESSED 50  // Don't allow next/previous/randomize buttons to be pressed faster than once every 100 ms
+#define WAIT_INTERVAL_BETWEEN_CC_MESSAGES_MS 4
 
 #define DDRM_PRESET_NUM_BYTES 98
 #define DDRM_VOICE_NUM_BYTES 26

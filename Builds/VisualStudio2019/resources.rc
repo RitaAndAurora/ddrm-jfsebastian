@@ -9,7 +9,7 @@
 #include <windows.h>
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION  1,2,1,0
+FILEVERSION  1,2,1,1
 BEGIN
   BLOCK "StringFileInfo"
   BEGIN
@@ -17,9 +17,9 @@ BEGIN
     BEGIN
       VALUE "CompanyName",  "Rita & Aurora\0"
       VALUE "FileDescription",  "JFSebastian\0"
-      VALUE "FileVersion",  "1.2.1\0"
+      VALUE "FileVersion",  "1.2.1.1\0"
       VALUE "ProductName",  "JFSebastian\0"
-      VALUE "ProductVersion",  "1.2.1\0"
+      VALUE "ProductVersion",  "1.2.1.1\0"
     END
   END
 
