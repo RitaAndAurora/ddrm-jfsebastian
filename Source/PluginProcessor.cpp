@@ -1027,10 +1027,15 @@ void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source,
                     // Set parameter value from MIDI message
                     const ScopedValueSetter<bool> scopedInputFlag (isReceivingFromMidiInput, true);
                     float newValue = (float)ccValue/127.0;
-                    const String parameterID = ddrmInterface->getParameterIDFromCCNumber(ccNumber);
-                    parameters.getParameter(parameterID)->beginChangeGesture();
-                    parameters.getParameter(parameterID)->setValueNotifyingHost(newValue);  // setValueNotifyingHost takes norm values from [0.0..1.0]
-                    parameters.getParameter(parameterID)->endChangeGesture();
+                    try {
+                        const String parameterID = ddrmInterface->getParameterIDFromCCNumber(ccNumber);
+                        parameters.getParameter(parameterID)->beginChangeGesture();
+                        parameters.getParameter(parameterID)->setValueNotifyingHost(newValue);  // setValueNotifyingHost takes norm values from [0.0..1.0]
+                        parameters.getParameter(parameterID)->endChangeGesture();
+                    } catch (...) {
+                        // The above will raise if the ccNumber does not correpsond to any DDRM number.
+                        // We should no nothing in this case. This try/catch will avoid app crashing.
+                    }
                 }
             }
         }
