@@ -1580,14 +1580,14 @@ void DdrmtimbreSpaceAudioProcessor::toggleAutomaticSyncWithSynth(){
 
 void DdrmtimbreSpaceAudioProcessor::requestFirmwareVersion(){
     if (midiInput.get() != nullptr){
-        if (!sysexProtocolResolved or !usesNewSysexProtocol){
+        if ((!sysexProtocolResolved) || (!usesNewSysexProtocol)){
             // Get version command (old protocol)
             uint8 sysexdata[] = { SYSEX_DDRM_ID, SYSEX_FW_VERSION_COMMAND};
             MidiMessage msg = MidiMessage::createSysExMessage(sysexdata, 2);
             midiOutput.get()->sendMessageNow(msg);
         }
         
-        if (!sysexProtocolResolved or usesNewSysexProtocol){
+        if ((!sysexProtocolResolved) || (usesNewSysexProtocol)){
             // Get version command (new protocol)
             uint8 sysexdata[] = { SYSEX_DDRM_ID_NEW_PROTOCOL_0, SYSEX_DDRM_ID_NEW_PROTOCOL_1, SYSEX_DDRM_ID_NEW_PROTOCOL_2, SYSEX_FW_VERSION_COMMAND};
             MidiMessage msg = MidiMessage::createSysExMessage(sysexdata, 4);
