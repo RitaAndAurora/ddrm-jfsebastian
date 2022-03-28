@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="ONyb0V" name="JFSebastian" projectType="audioplug" version="1.2.1.1"
+<JUCERPROJECT id="ONyb0V" name="JFSebastian" projectType="audioplug" version="1.2.1.2"
               companyName="Rita &amp; Aurora" companyEmail="frederic.font@gmail.com"
               pluginName="J.F. Sebastian" pluginManufacturerCode="RaAu" pluginCode="DDRA"
               pluginDesc="Explore the sonic possibilities of Deckard's Dream synthetizer in completely new ways"
@@ -8,7 +8,7 @@
               reportAppUsage="0" pluginAUExportPrefix="JFSebastianAU" aaxIdentifier="com.RaA.SFSebastian"
               headerPath="../../Includes" pluginFormats="buildAU,buildStandalone,buildVST,buildVST3"
               companyWebsite="https://ritaandaurora.github.io" projectLineFeed="&#10;"
-              jucerFormatVersion="1">
+              jucerFormatVersion="1" defines="JUCE_MODAL_LOOPS_PERMITTED=1">
   <MAINGROUP id="pLzrNG" name="JFSebastian">
     <GROUP id="{2C18E4FC-5DCD-1DA1-A8D5-AB212A37041B}" name="Resources">
       <FILE id="qXwzQt" name="AppIcon.png" compile="0" resource="1" file="Resources/AppIcon.png"/>

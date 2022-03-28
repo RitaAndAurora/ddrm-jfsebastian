@@ -976,10 +976,33 @@ void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source,
             const uint8 *buf = m.getSysExData();
             
             if (((int)buf[0] == SYSEX_DDRM_ID) && ((int)buf[1] == SYSEX_FW_VERSION_COMMAND)){
+                usesNewSysexProtocol = false;
+                sysexProtocolResolved = true;
+                
                 // Firmware version (check if supported, otherwise show alert)
                 int first = (int)buf[2];
                 int second = (int)buf[3];
                 int third = (int)buf[4];
+                int combined = first * 1000 + second * 100 + third;
+                int combinedRequired = REQUIRED_FW_FIRST * 1000 + REQUIRED_FW_SECOND * 100 + REQUIRED_FW_THIRD;
+                
+                if (combined < combinedRequired){
+                    currentFirmwareLabel = (String)first + "." + (String)second + "." + (String)third;
+                    logMessage("Old firmware detected: " + currentFirmwareLabel + ", should be " + requiredFirmwareLabel);
+                    sendActionMessage(ACTION_FIRMWARE_UPDATE_REQUIRED);
+                }
+            }
+        } else if (m.getSysExDataSize() == 7){
+            const uint8 *buf = m.getSysExData();
+            
+            if (((int)buf[0] == SYSEX_DDRM_ID_NEW_PROTOCOL_0) && ((int)buf[1] == SYSEX_DDRM_ID_NEW_PROTOCOL_1) && ((int)buf[2] == SYSEX_DDRM_ID_NEW_PROTOCOL_2) && ((int)buf[3] == SYSEX_FW_VERSION_COMMAND)){
+                usesNewSysexProtocol = true;
+                sysexProtocolResolved = true;
+                
+                // Firmware version (check if supported, otherwise show alert)
+                int first = (int)buf[4];
+                int second = (int)buf[5];
+                int third = (int)buf[6];
                 int combined = first * 1000 + second * 100 + third;
                 int combinedRequired = REQUIRED_FW_FIRST * 1000 + REQUIRED_FW_SECOND * 100 + REQUIRED_FW_THIRD;
                 
@@ -1557,9 +1580,20 @@ void DdrmtimbreSpaceAudioProcessor::toggleAutomaticSyncWithSynth(){
 
 void DdrmtimbreSpaceAudioProcessor::requestFirmwareVersion(){
     if (midiInput.get() != nullptr){
-        uint8 sysexdata[] = { SYSEX_DDRM_ID, SYSEX_FW_VERSION_COMMAND}; // Get version command
-        MidiMessage msg = MidiMessage::createSysExMessage(sysexdata, 2);
-        midiOutput.get()->sendMessageNow(msg);
+        if (!sysexProtocolResolved or !usesNewSysexProtocol){
+            // Get version command (old protocol)
+            uint8 sysexdata[] = { SYSEX_DDRM_ID, SYSEX_FW_VERSION_COMMAND};
+            MidiMessage msg = MidiMessage::createSysExMessage(sysexdata, 2);
+            midiOutput.get()->sendMessageNow(msg);
+        }
+        
+        if (!sysexProtocolResolved or usesNewSysexProtocol){
+            // Get version command (new protocol)
+            uint8 sysexdata[] = { SYSEX_DDRM_ID_NEW_PROTOCOL_0, SYSEX_DDRM_ID_NEW_PROTOCOL_1, SYSEX_DDRM_ID_NEW_PROTOCOL_2, SYSEX_FW_VERSION_COMMAND};
+            MidiMessage msg = MidiMessage::createSysExMessage(sysexdata, 4);
+            midiOutput.get()->sendMessageNow(msg);
+        }
+        // Note that if sysexProtocolResolved is not set, then the 2 messages for the 2 protocols will be sent
     }
 }
 

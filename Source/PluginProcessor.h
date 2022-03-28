@@ -152,6 +152,9 @@ public:
     
     String currentFirmwareLabel = "0.0.0";
     String requiredFirmwareLabel = "0.0.0";
+    
+    bool sysexProtocolResolved = false;
+    bool usesNewSysexProtocol = false;
 
 private:    
     //==============================================================================

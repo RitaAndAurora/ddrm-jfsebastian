@@ -29,11 +29,7 @@
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\3rdParty\JUCE\modules\juce_audio_plugin_client\VST\juce_VSTCallbackHandler.h">
-      <Filter>JUCE Modules\juce_audio_plugin_client\VST</Filter>
-    </ClInclude>
-  </ItemGroup>
+  <ItemGroup/>
   <ItemGroup>
     <None Include=".\icon.ico">
       <Filter>JUCE Library Code</Filter>
