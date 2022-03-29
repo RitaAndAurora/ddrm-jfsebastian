@@ -992,17 +992,17 @@ void DdrmtimbreSpaceAudioProcessor::handleIncomingMidiMessage(MidiInput* source,
                     sendActionMessage(ACTION_FIRMWARE_UPDATE_REQUIRED);
                 }
             }
-        } else if (m.getSysExDataSize() == 7){
+        } else if (m.getSysExDataSize() == 8){
             const uint8 *buf = m.getSysExData();
             
-            if (((int)buf[0] == SYSEX_DDRM_ID_NEW_PROTOCOL_0) && ((int)buf[1] == SYSEX_DDRM_ID_NEW_PROTOCOL_1) && ((int)buf[2] == SYSEX_DDRM_ID_NEW_PROTOCOL_2) && ((int)buf[3] == SYSEX_FW_VERSION_COMMAND)){
+            if (((int)buf[0] == SYSEX_BC_ID_0) && ((int)buf[1] == SYSEX_BC_ID_1) && ((int)buf[2] == SYSEX_BC_ID_2) && ((int)buf[3] == SYSEX_DDRM_ID) && ((int)buf[4] == SYSEX_FW_VERSION_COMMAND)){
                 usesNewSysexProtocol = true;
                 sysexProtocolResolved = true;
                 
                 // Firmware version (check if supported, otherwise show alert)
-                int first = (int)buf[4];
-                int second = (int)buf[5];
-                int third = (int)buf[6];
+                int first = (int)buf[5];
+                int second = (int)buf[6];
+                int third = (int)buf[7];
                 int combined = first * 1000 + second * 100 + third;
                 int combinedRequired = REQUIRED_FW_FIRST * 1000 + REQUIRED_FW_SECOND * 100 + REQUIRED_FW_THIRD;
                 
@@ -1589,8 +1589,8 @@ void DdrmtimbreSpaceAudioProcessor::requestFirmwareVersion(){
         
         if ((!sysexProtocolResolved) || (usesNewSysexProtocol)){
             // Get version command (new protocol)
-            uint8 sysexdata[] = { SYSEX_DDRM_ID_NEW_PROTOCOL_0, SYSEX_DDRM_ID_NEW_PROTOCOL_1, SYSEX_DDRM_ID_NEW_PROTOCOL_2, SYSEX_FW_VERSION_COMMAND};
-            MidiMessage msg = MidiMessage::createSysExMessage(sysexdata, 4);
+            uint8 sysexdata[] = { SYSEX_BC_ID_0, SYSEX_BC_ID_1, SYSEX_BC_ID_2, SYSEX_DDRM_ID, SYSEX_FW_VERSION_COMMAND};
+            MidiMessage msg = MidiMessage::createSysExMessage(sysexdata, 5);
             midiOutput.get()->sendMessageNow(msg);
         }
         // Note that if sysexProtocolResolved is not set, then the 2 messages for the 2 protocols will be sent
