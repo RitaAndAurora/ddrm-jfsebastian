@@ -584,6 +584,11 @@ void DdrmtimbreSpaceAudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
 {
     // Do nothing with AUDIO and MIDI buffers as MIDI is sent and received using MidiInput
     // and MidiOutput objects and this plugin does not process any audio.
+    
+#if JUCE_IOS
+    // In iOS we clear the buffer so we can close the "input muted" warning and get no feedback
+    buffer.clear();
+#endif
 }
 
 //==============================================================================
@@ -1255,9 +1260,13 @@ void DdrmtimbreSpaceAudioProcessor::savePresetToBankLocation (int bankLocation)
 
 void DdrmtimbreSpaceAudioProcessor::saveBankFile ()
 {
+    juce::String patternFilter = "*.p";
+#if JUCE_IOS
+    patternFilter = "";
+#endif
     FileChooser fileChooser ("",
                              getDirectoryForFileSaveLoad(),
-                             "*.p");
+                             patternFilter);
     if (fileChooser.browseForFileToSave(true))
     {
         File file (fileChooser.getResult());
@@ -1418,9 +1427,13 @@ void DdrmtimbreSpaceAudioProcessor::randomizeControlValues ()
 
 void DdrmtimbreSpaceAudioProcessor::importFromPatchFile ()
 {
+    juce::String patternFilter = "*.ddpatch";
+#if JUCE_IOS
+    patternFilter = "";
+#endif
     FileChooser fileChooser ("Please select a DDRM patch file to load...",
                              getDirectoryForFileSaveLoad(),
-                             "*.ddpatch");
+                             patternFilter);
     if (fileChooser.browseForFileToOpen())
     {
         File file (fileChooser.getResult());
@@ -1438,9 +1451,13 @@ void DdrmtimbreSpaceAudioProcessor::importFromPatchFile ()
 
 void DdrmtimbreSpaceAudioProcessor::importFromVoiceFile (int channelTo)
 {
+    juce::String patternFilter = "*.ddvoice";
+#if JUCE_IOS
+    patternFilter = "";
+#endif
     FileChooser fileChooser ("Please select a DDRM voice file to load...",
                              getDirectoryForFileSaveLoad(),
-                             "*.ddvoice");
+                             patternFilter);
     if (fileChooser.browseForFileToOpen())
     {
         File file (fileChooser.getResult());
@@ -1458,9 +1475,13 @@ void DdrmtimbreSpaceAudioProcessor::importFromVoiceFile (int channelTo)
 
 void DdrmtimbreSpaceAudioProcessor::saveToPatchFile ()
 {
+    juce::String patternFilter = "*.ddpatch";
+#if JUCE_IOS
+    patternFilter = "";
+#endif
     FileChooser fileChooser ("",
                              getDirectoryForFileSaveLoad(),
-                             "*.ddpatch");
+                             patternFilter);
     if (fileChooser.browseForFileToSave(true))
     {
         File file (fileChooser.getResult());
@@ -1480,9 +1501,13 @@ void DdrmtimbreSpaceAudioProcessor::saveToPatchFile ()
 
 void DdrmtimbreSpaceAudioProcessor::saveToVoiceFile (int channelFrom)
 {
+    juce::String patternFilter = "*.ddvoice";
+#if JUCE_IOS
+    patternFilter = "";
+#endif
     FileChooser fileChooser ("",
                              getDirectoryForFileSaveLoad(),
-                             "*.ddvoice");
+                             patternFilter);
     if (fileChooser.browseForFileToSave(true))
     {
         File file (fileChooser.getResult());

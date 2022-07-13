@@ -133,9 +133,13 @@ public:
     
     void loadBankFile()
     {
+        juce::String patternFilter = "*.p";
+    #if JUCE_IOS
+        patternFilter = "";
+    #endif
         FileChooser fileChooser ("Please select a DDRM bank file to load...",
                                  processor->getDirectoryForFileSaveLoad(),
-                                 "*.p");
+                                 patternFilter);
         if (fileChooser.browseForFileToOpen())
         {
             File bankFile (fileChooser.getResult());

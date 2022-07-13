@@ -31,8 +31,6 @@
     <string></string>
     <key>NSHighResolutionCapable</key>
     <true/>
-    <key>UIFileSharingEnabled</key>
-    <true/>
     <key>UIRequiresFullScreen</key>
     <true/>
     <key>UISupportedInterfaceOrientations</key>
