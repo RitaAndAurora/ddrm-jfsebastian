@@ -39,7 +39,7 @@ J.F. Sebastian is implemented as a JUCE audio plug-in/standalone app and can be 
 1) checktout the code repository including submodules;
 
 ```
-git clone https://github.com/RitaAndAurora/kijimi-babu-frik.git && cd kijimi-babu-frik.git && git submodule update --init
+git clone https://github.com/RitaAndAurora/ddrm-jfsebastian.git && cd ddrm-jfsebastian && git submodule update --init
 ```
 
 2) open the project files  for *XCode* (macOS) and *Visual Studio 2019* (windows) you'll find in the `Builds/` folder and compile the projects there.
